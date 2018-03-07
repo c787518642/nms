@@ -1,0 +1,112 @@
+ul.list{
+    position: absolute;
+    right: 6rem;
+    top:4.25rem;
+    list-style: none;
+    border: #40dc7e 2px solid;
+    padding-left:0.2rem;
+    padding-right:0.2rem;
+    background-color: #fff;
+    border-radius: 5px
+}
+ul.list>li{
+    border-bottom: 1px solid #efefef;
+}
+ul.list>li>a{
+    padding: 0.7rem 1rem;
+    display: flex;
+}
+ul.list>li.arrow{
+    position: absolute;
+      -webkit-transform: translate(-50%);
+      transform: translate(-50%);
+      left: 50%;
+      top: -22px;
+      width: 0;
+      height: 0;
+      border: 11px solid transparent;
+      border-bottom: 11px solid #40dc7e!important
+}
+ul.list>li.arrow:after{
+    position: absolute;
+    content: " ";
+    width: 0;
+    height: 0;
+    top: -9px;
+    left: 0;
+    margin-left: -12px;
+    display: block;
+    border: 12px solid transparent;
+    // border: 12px solid red;
+    border-bottom: 11px solid #fff!important
+}
+#npa{
+    right: 4.4rem;
+}
+#alarm{
+    right: 8.8rem;
+}
+span.time{
+    font-size: 1.25rem;
+    color: #010101;
+    margin-right: 0.2rem;
+    font-weight:400;
+}
+span.npa_text{
+    line-height: 0.75rem;
+    font-size: 0.75rem;
+    color: #8e8e8e;
+    margin-right: 2rem;
+    position: relative;
+    top:0.2rem;
+    font-weight:600;
+}
+span.npa_value{
+    background-color: #40dc7e;
+    border: #40cc78 1px solid;
+    padding: 0.25rem 0.3rem 0.2rem 0.3rem;
+    border-radius: 0.3rem;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight:600;
+    letter-spacing: 1px
+}
+li.seeMore{
+    padding-left: 2rem;
+    cursor: pointer;
+}
+li.seeMore>a{
+    color: #8e8e8e;
+}
+li.seeMore>a:hover{
+    color: #5f5f5f;
+}
+.seeMore:hover{
+    text-decoration: underline;
+}
+span.alarm_name{
+    font-size: 0.875rem;
+    position: relative;
+    top:0.2rem
+}
+span.alarm_value{
+    margin-left: 2rem;
+    padding: 0.25rem 0.3rem 0.2rem 0.3rem;
+    border-radius: 0.3rem;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight:600;
+    letter-spacing: 1px
+}
+span.alarm_value.red{
+    background-color: #fb7465;
+}
+span.alarm_value.orange{
+    background-color: #ffa400;
+}
+span.alarm_value.yellow{
+    background-color: #fddc42;
+}
+span.alarm_value.blue{
+    background-color: #4cc2ff;
+}

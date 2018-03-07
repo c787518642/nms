@@ -1,0 +1,245 @@
+@import '~@nebular/theme/styles/prebuilt/default';
+// @import '~@nebular/theme/styles/themes/_default';
+// :host{
+
+// }
+.html{
+    // width: 100%;
+    height: 100vh;
+    min-height: 48rem
+}
+#input_text,#input_password{
+    position: absolute;top:-10000000px
+}
+button:disabled{
+    background: rgb(161, 161, 161);
+}
+.errorInfo{
+    // display:none
+}
+// @font-face
+// {
+//     font-family: Exo;
+//     src: url('../font/Exo-Light.otf'),
+//     url('../font/Exo-Light.otf'); /* IE9+,可以是具体的实际链接 */
+// }
+
+.header{
+    // position: fixed;
+    width: 100%;
+    height: 3.82rem;
+  
+}
+.logo{
+    margin-left: 3.1rem;
+    margin-top: 2.5rem;
+}
+#logo-black{
+    display: none;
+}
+.content{
+    // border-bottom-left-radius: 1rem;
+    // border-bottom-right-radius: 1rem;
+    border-radius: 0.625rem;
+    background-color: #ffffff;
+    /*margin-top: ;*/
+    margin: 50px auto 0px;
+    // height: 40rem;
+    // width: 35rem;
+    width: 30rem;
+    height: 37.5rem;
+    box-shadow: 3px 3px 7px rgba(#000, 0.3);
+
+}
+// .content>div:first-child{
+//     background: -webkit-linear-gradient(left, #3cffb5, #43ff81); /* Safari 5.1 - 6.0 */
+//     background: -o-linear-gradient(right, #3cffb5, #43ff81); /* Opera 11.1 - 12.0 */
+//     background: -moz-linear-gradient(right, #3cffb5, #43ff81); /* Firefox 3.6 - 15 */
+//     background: linear-gradient(to right, #3cffb5 , #43ff81); /* 标准的语法（必须放在最后） */
+//     height: 0.5rem;
+//     // background-color: #00AA88;
+// }
+.welcome{
+    /*border: 1px solid #e0e0e0;*/
+    // height: 6.46rem;
+    padding-top: 3rem;
+    border-top-left-radius: 0.625rem;
+    border-top-right-radius: 0.625rem;
+    text-align: center;
+    background-color: #ffffff;
+}
+.welcome>div:nth-child(1){
+    color: #959595;
+    font-size: 22px
+}
+.welcome>div:nth-child(2){
+    color: #747474;
+    font-size: 1.875rem;
+    font-weight: 600;
+    /*紧凑程度*/
+    letter-spacing: 0.15em
+
+}
+.form-group{
+    text-align: center;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+.form-group.error{
+    margin-top: 1.35rem;
+    margin-bottom: 1.35rem;
+}
+
+.form-group-left{
+    -webkit-user-select: none;
+    user-select: none;
+    position: relative;
+    // margin-left:5.6rem;
+    margin-left:4.1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+input[type="text"],input[type="password"]{
+    outline:none;
+    -webkit-appearance:none;
+    -moz-appearance: none;
+    font-size:1.0rem;
+    padding-left: 1rem;
+    height:2.7rem;
+    border-radius:0.4rem;
+    border:1px solid #c8cccf;
+    color: #565656;
+    width: 22rem;
+    // width: 24rem;
+    
+
+}
+input.error{
+    border:2px solid #ff6c62;
+}
+
+input[type="text"]:focus,input[type="password"]:focus{
+    border-radius:0.4rem;
+
+    border:2px solid #4efbae;
+
+}
+input.error:focus{
+    border:2px solid #ff6c62;
+}
+input[type="text"]::-webkit-input-placeholder, input[type="password"]::-webkit-input-placeholder{
+    color: #949699;
+}
+input[type="text"]::-moz-placeholder,input[type="password"]::-moz-placeholder{
+    color: #949699;
+}
+input[type="text"]:-ms-input-placeholder,input[type="password"]:-ms-input-placeholder{
+    color: #949699;
+}
+button{
+    background: -webkit-linear-gradient(left, #35e2ab, #5aee90); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, #35e2ab, #5aee90); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, #35e2ab, #5aee90); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, #35e2ab , #5aee90); /* 标准的语法（必须放在最后） */
+    border-radius: 0.4rem;
+    width: 22rem;
+    // width: 24rem;
+    border: 0;
+    height:2.7rem;
+    cursor: pointer;
+    color: white;
+    font-size: 1.1rem;
+
+}
+button:focus{
+    outline:none;
+}
+button:hover{
+    background: -webkit-linear-gradient(left, #7cffcb, #7bff92); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, #7cffcb, #7bff92); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, #7cffcb, #7bff92); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, #7cffcb , #7bff92); /* 标准的语法（必须放在最后） */
+
+}
+label{
+    margin-left: 4.1rem;
+    // margin-left: 6rem;
+    color: #7b7d80;
+}
+.copyright{
+    color: #747474;
+    font-size: 0.9rem;
+}
+.errorInfo{
+    text-align: left;
+    // margin-left: 6.5rem;
+    margin-left: 4.1rem;
+    margin-top: 0.3rem;
+    color: #fe0101;
+    font-size: 0.8rem;
+}
+.upCaseInfo{
+    text-align: left;
+    // margin-left: 6.5rem;
+    margin-left: 4.1rem;
+    margin-top: 0.3rem;
+    color: #38e3a9;
+    font-size: 0.8rem;
+}
+@media(max-width: 1200px) {
+    // .content{
+    //     width: 30rem;
+    //     height: 37.5rem;
+    // }
+    // input[type="text"],input[type="password"],button{
+    //     width: 22rem;
+    // }
+    // label,.errorInfo{
+    //     margin-left: 4.5rem;
+    // }
+    // .form-group-left{
+    //     margin-left: 5.2rem;
+    // }
+}
+@media(max-width: 500px) {
+    input[type="text"],input[type="password"],button{
+        width: 80%;
+    }
+    .header{
+        background-color: #ffffff;
+        margin-top: 0;
+        height: 10vh;
+    }
+    .content{
+        width: 100%;
+        margin-top: 0;
+        border-radius: 0rem;
+        box-shadow: 0px 0px 0px #ffffff;
+    }
+    .form-group-left{
+        margin-left: 10%;
+    }
+    .html{
+        min-height: 0;
+        background: #ffffff!important
+    }
+  
+    label,.errorInfo{
+        margin-left: 12%;
+    }
+    .logo{
+        margin-left: 1rem;
+        padding-top: 3vh;
+        margin-top: 0;
+    }
+    #logo-black{
+        display: block;
+    }
+    #logo-white{
+        display: none;
+    }
+    .copyright{
+        color: #747474;
+    }
+    
+}

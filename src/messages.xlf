@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="collection" datatype="html">
+        <source>
+          <x id="INTERPOLATION"/>
+        </source>
+        <target> 
+         {i.name,plural, =upstream {no 狼} =downstream {one 狼} =2 {two wolves} other {a wolf pack}}
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\pages\dashboard\collection\collection-body\collection-body.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="hello" datatype="html">
+        <source>hello</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\pages\dashboard\collection\collection-body\collection-body.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

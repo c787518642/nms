@@ -1,0 +1,14 @@
+<nb-card>
+  <nb-card-header>
+    CTMS告警预览
+  </nb-card-header>
+  <nb-card-body>
+    <ul class="items">
+      <li *ngFor='let item of items'>
+        <span class="name">{{item.name  }}</span>
+        <span class="range">{{item.range }}</span>
+        <span class="value">{{item.value | number:'1.2-2' }}%</span>
+      </li>
+    </ul>
+  </nb-card-body>
+</nb-card>

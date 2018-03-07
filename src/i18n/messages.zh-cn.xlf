@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="collection" datatype="html">
+        <source>
+          <x id="INTERPOLATION"/>
+        </source>
+        <target> 
+            {i.id,plural, =0 {CM总数} =1 {CM在线数} =2 {上行端口数} =3 {下行端口数} =4 {64QAM<br>上行端口数} other {a wolf pack}}
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\pages\dashboard\collection\collection-body\collection-body.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="hello" datatype="html">
+        <source>hello</source>
+        <target>哈哈哈</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app\pages\dashboard\collection\collection-body\collection-body.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

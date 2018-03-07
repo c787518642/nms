@@ -1,0 +1,11 @@
+<nb-card>
+  <nb-tabset fullWidth>
+    <nb-tab *ngFor='let i of items' tabTitle="{{i.title}}">
+      <div class="slider-container">
+        <app-collection-body  [item]='i.item'></app-collection-body>
+      </div>
+    </nb-tab>
+    
+    
+  </nb-tabset>
+</nb-card>

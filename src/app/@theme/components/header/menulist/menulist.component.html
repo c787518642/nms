@@ -1,0 +1,22 @@
+<ul class="list" id="npa" *ngIf='menus[0].show'>
+  <li class="arrow"></li>
+  <li *ngFor='let npa of menus[0].npa'>
+    <a>
+      <span class="time">{{npa.time}}</span>
+      <span class="npa_text">平均值<br>npa</span>
+      <span class="npa_value">{{npa.value}}</span>
+    </a>
+  </li>
+  <li class="seeMore" ><a routerLink='{{menus[0].link}}'>查看更多></a></li>
+</ul>
+<ul class="list" id="alarm" *ngIf='menus[1].show'>
+  <li class="arrow"></li>
+  <li *ngFor='let alarm of menus[1].alarm'>
+    <a>
+      <span class="alarm_name">{{alarm.name}}</span>
+      <span class='alarm_value {{alarm.color}}'>{{alarm.value}}</span>
+      </a>
+  </li>
+  <li class="seeMore" ><a routerLink='{{menus[1].link}}'>查看更多></a></li>
+
+</ul>

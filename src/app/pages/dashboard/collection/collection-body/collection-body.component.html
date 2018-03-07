@@ -1,0 +1,7 @@
+<div class="value">{{value}}</div>
+<button  
+i18n='@@collection'
+type="button" class="btn"  *ngFor='let i of item' (click)='getValue(i.name)' [class.active]='i.id==activeIndex'>
+  <!-- {i.id,plural, =0 {CM <br class="br">Total} =1 {CM <br class="br">Online} =2 {us <br class="br">ports} =3 {ds<br class="br"> ports} =4 {64QAM<br>ports} other {CM Others}} -->
+  {i.id,plural, =0 {CM <br class="br">总数} =1 {CM <br class="br">在线数} =2 {上行<br class="br">端口数} =3 {下行<br class="br">端口数} =4 {64QAM<br>端口数} other {CM 其他}}
+</button>

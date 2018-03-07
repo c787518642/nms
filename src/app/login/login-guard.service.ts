@@ -1,0 +1,19 @@
+import { Injectable } from '@angular/core';
+import { Router, CanActivate } from '@angular/router';
+
+@Injectable()
+export class LoginGuardService implements CanActivate {
+
+  constructor(
+    private router:Router
+  ) { }
+  canActivate(){
+    if(Math.random()>0){
+      return true;
+    }
+    else{
+      this.router.navigate(['/login'])
+      return false
+    }
+  }
+}
