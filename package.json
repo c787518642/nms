@@ -21,7 +21,7 @@
     "build:prod": "npm run build -- --prod",
     "build:prod:aot": "npm run build:prod -- --aot ",
     "build:zh-cn": "ng build --prod --i18nFile=src/i18n/messages.zh-cn.xlf --locale=en",
-    "build:ci": "npm-run-all -p -r build:prod build:prod:aot",
+    "build:ci": "npm-run-all -p -r build:prod build:prod:aot"
 
   },
   "dependencies": {
