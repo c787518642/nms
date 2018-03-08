@@ -1,6 +1,6 @@
 {
-    "/tw-nms-cmts-server/": {
-        "target": "http://172.100.100.104:8079", 
+    "/tw-cmts-server/": {
+        "target": "http://172.100.30.163:8079/tw-cmts-server/", 
         "secure":false
     }
 }

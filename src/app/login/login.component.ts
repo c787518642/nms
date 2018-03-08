@@ -73,6 +73,7 @@ export class LoginComponent implements OnInit {
     if (jsonObj["pwd"] == '') { this.pwd_empty = true; return false }
     // http
     this.loginService.login(jsonObj).subscribe(data => {
+      console.log(data)
       // if失败显示错误
       this.hadError = true;
       // if成功,跳转
