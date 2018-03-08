@@ -15,6 +15,7 @@ export class LoginService {
     console.log(obj)
     // return this.http.post('http://jsonplaceholder.typicode.com/posts',{});
     return this.http.post('/tw-cmts-server/login/login_info',obj);
+    // 
     // setTimeout(()=>{
     //   return ({code:'1'});
     // } , 2000)
