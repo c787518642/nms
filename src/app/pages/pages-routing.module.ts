@@ -14,17 +14,18 @@ const routes: Routes = [{
     component: DashboardComponent,
   }, {
     path: 'equ-manage',
-    component: EquManageComponent,
-    children:[{
-      path: 'cmts',
-      component: CmtsComponent,
-    },{
-      path: '',
-      redirectTo: 'cmts', pathMatch: 'full'
-    },{
-      path: '**',
-      redirectTo: 'cmts'
-    }]
+    // component: EquManageComponent,
+    // children:[{
+    //   path: 'cmts',
+    //   component: CmtsComponent,
+    // },{
+    //   path: '',
+    //   redirectTo: 'cmts', pathMatch: 'full'
+    // },{
+    //   path: '**',
+    //   redirectTo: 'cmts'
+    // }]
+    loadChildren: './equ-manage/equ-manage.module#EquManageModule',
   }, {
     
     path: 'ui-features',
