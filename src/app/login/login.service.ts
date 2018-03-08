@@ -14,11 +14,10 @@ export class LoginService {
   login(obj){
     this.breadcrumb.set([{name:'主面板',link:'./'}])
     console.log(obj)
-   
-    let httpHeader=new HttpHeaders();
-    httpHeader.append('Content-Type','application/x-www-form-urlencoded');
-    return this.http.post('/tw-cmts-server/login/login_info',obj,{
-      headers:httpHeader
+    console.log(JSON.stringify(obj))
+    // httpHeader.append('Content-Type','application/x-www-form-urlencoded');
+    return this.http.post('/tw-cmts-server/login/login_info',JSON.stringify(obj),{
+      headers:new HttpHeaders({'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'}),
     });
     // 
     // setTimeout(()=>{

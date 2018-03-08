@@ -77,7 +77,7 @@ export class LoginComponent implements OnInit {
       // if失败显示错误
       this.hadError = true;
       // if成功,跳转
-      this.router.navigate(['/'])
+      // this.router.navigate(['/'])
       // console.log(data)
     })
     // if登录成功记住用户名
