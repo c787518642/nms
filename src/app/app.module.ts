@@ -18,6 +18,7 @@ import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
+// import { HttpHeaders } from '@angular/common/http';
 enableProdMode();
 @NgModule({
   declarations: [AppComponent,LoginComponent],
@@ -34,6 +35,7 @@ enableProdMode();
   bootstrap: [AppComponent],
   providers: [
     LoginService,
+    // HttpHeaders,
     // 路由前缀
     { provide: APP_BASE_HREF, useValue: '/' },
   ],
