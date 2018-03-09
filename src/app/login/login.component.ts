@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   pwd_empty = false
   default_username = "";
   upcase = false;
+  errorInfo: string;
   constructor(
     private loginService: LoginService,
     private router: Router,
@@ -66,6 +67,9 @@ export class LoginComponent implements OnInit {
     }
   }
   onSubmit(f) {
+    // var obj={name:"1112",pwd:"xxx"};
+    // obj.
+    // toForm(obj);
     this.username_empty = false
     this.pwd_empty = false;
     let jsonObj = f.value;
@@ -73,14 +77,17 @@ export class LoginComponent implements OnInit {
     if (jsonObj["pwd"] == '') { this.pwd_empty = true; return false }
     // http
     this.loginService.login(jsonObj).subscribe(data => {
-      console.log(data)
-      // if失败显示错误
-      this.hadError = true;
-      // if成功,跳转
-      this.router.navigate(['/'])
-      // console.log(data)
+      if (data['code'] && data['code'] == 1) {
+        // if成功,跳转
+        this.router.navigate(['./pages'])
+        // if登录成功记住用户名
+        localStorage.setItem("username", jsonObj.username)
+      } else {
+        // if失败显示错误
+        this.hadError = true;
+        this.errorInfo = data['message'] || "异常错误"
+      }
     })
-    // if登录成功记住用户名
-    localStorage.setItem("username", jsonObj.username)
+
   }
 }

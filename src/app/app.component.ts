@@ -12,7 +12,7 @@ import { AnalyticsService } from './@core/utils/analytics.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-
+  
   constructor(private analytics: AnalyticsService) {
   }
 
