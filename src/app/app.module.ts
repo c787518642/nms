@@ -38,6 +38,7 @@ enableProdMode();
     // HttpHeaders,
     // 路由前缀
     { provide: APP_BASE_HREF, useValue: '/' },
+    // { provide: APP_BASE_HREF, useValue: '/tw-cmts-server/' },
   ],
 })
 export class AppModule {
