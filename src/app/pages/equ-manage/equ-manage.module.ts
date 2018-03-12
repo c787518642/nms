@@ -8,6 +8,7 @@ import { CmtsDetailComponent } from './cmts-detail/cmts-detail.component';
 import { WaterChartComponent } from './cmts-detail/water-chart/water-chart.component';
 import { EquManageRoutingModule } from './equ-manage-routing.module';
 import { ThemeModule } from '../../@theme/theme.module';
+import { CmtsTableComponent } from './cmts-detail/cmts-table/cmts-table.component';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { ThemeModule } from '../../@theme/theme.module';
     CmtsComponent,
     CmtsDetailComponent,
     WaterChartComponent,
+    CmtsTableComponent,
   ]
 })
 export class EquManageModule { }
