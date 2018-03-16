@@ -14,7 +14,7 @@ export class LoginService {
     this.breadcrumb.set([{name:'主面板',link:'./'}]);
     console.log()
     // console.log(JSON.stringify(obj))
-    return this.http.post('/tw-cmts-server/login/login_info',toFormData(obj),{
+    return this.http.post('/login/login_info',toFormData(obj),{
       headers:new HttpHeaders({'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'}),
     });
     // 
