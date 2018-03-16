@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./upstream.component.scss']
 })
 export class UpstreamComponent implements OnInit {
-
+  show_detail=true;
   constructor() { }
 
   ngOnInit() {
   }
+  show(){
+    this.show_detail=!this.show_detail;
 
+   }
 }

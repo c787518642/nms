@@ -2,4 +2,27 @@
   <nb-card-header>
     上行通道信噪比全网周报表
   </nb-card-header>
+  <nb-card-body>
+     <div class="tab-head">
+       <label  (click)='show()' [class.selected]="show_detail"><i class="iconfont icon-bingtu"></i>饼状图</label>
+       <label  (click)='show()' [class.selected]="!show_detail"><i class="iconfont icon-quxiantu"></i>曲线图</label>
+     </div>
+     
+     <div class="row">
+        <div class="col-md-12" *ngIf='show_detail'>
+            <tw-snr-body></tw-snr-body>
+        </div>
+        <div class="col-md-12" *ngIf='!show_detail'>
+            <tw-snr-line></tw-snr-line>
+        </div>
+     </div>
+     
+       
+      
+   
+          
+      
+     
+    
+  </nb-card-body>
 </nb-card>

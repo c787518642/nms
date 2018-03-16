@@ -1,5 +1,20 @@
 <nb-card>
-  <nb-card-header>
-    CM全网上行电平
-  </nb-card-header>
-</nb-card>
+    <nb-card-header>
+      上行通道信噪比全网周报表
+    </nb-card-header>
+    <nb-card-body>
+       <div class="tab-head">
+         <label  (click)='show()' [class.selected]="show_detail"><i class="iconfont icon-bingtu"></i>饼状图</label>
+         <label  (click)='show()' [class.selected]="!show_detail"><i class="iconfont icon-quxiantu"></i>曲线图</label>
+       </div>
+       
+       <div class="row">
+          <div class="col-md-12" *ngIf='show_detail'>
+              <tw-up-pie></tw-up-pie>
+          </div>
+          <div class="col-md-12" *ngIf='!show_detail'>
+              <tw-up-line></tw-up-line>
+          </div>
+       </div>
+       
+         
