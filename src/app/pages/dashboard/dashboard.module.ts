@@ -15,6 +15,10 @@ import { AreaComponent } from './area/area.component';
 import { NetworkComponent } from './network/network.component';
 import { NpaComponent } from './npa/npa.component';
 import { PortsComponent } from './ports/ports.component';
+import { SnrBodyComponent } from './snr/snr-body/snr-body.component';
+import { SnrLineComponent } from './snr/snr-line/snr-line.component';
+import { UpLineComponent } from './upstream/up-line/up-line.component';
+import { UpPieComponent } from './upstream/up-pie/up-pie.component';
 
 @NgModule({
   imports: [
@@ -34,8 +38,12 @@ import { PortsComponent } from './ports/ports.component';
     CollectionBodyComponent,
     // 上行通道信噪比全网周报表
     SnrComponent,
+    SnrBodyComponent,
+    SnrLineComponent,
     // CM全网上行电平
     UpstreamComponent,
+    UpLineComponent,
+    UpPieComponent,
     // 全网小区运行质量统计
     AreaComponent,
     // 全网网络质量运行图
