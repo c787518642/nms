@@ -34,7 +34,8 @@
         "../node_modules/socicon/css/socicon.css",
         "../node_modules/pace-js/templates/pace-theme-flash.tmpl.css",
         "./app/@theme/styles/styles.scss",
-        "../src/assets/icon/TopwayIcon/iconfont.css"
+        "../src/assets/icon/TopwayIcon/iconfont.css",
+        "../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css"
       ],
       "scripts": [
        

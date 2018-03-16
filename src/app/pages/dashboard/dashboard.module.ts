@@ -15,11 +15,13 @@ import { AreaComponent } from './area/area.component';
 import { NetworkComponent } from './network/network.component';
 import { NpaComponent } from './npa/npa.component';
 import { PortsComponent } from './ports/ports.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   imports: [
     ThemeModule,
     AngularEchartsModule,
+    BsDatepickerModule.forRoot()
   ],
   declarations: [
     DashboardComponent,
