@@ -2,4 +2,30 @@
   <nb-card-header>
     全网NPA分数统计
   </nb-card-header>
+  <nb-card-body>
+      <div class="tab-head">
+          <label  (click)='show()' [class.selected]="show_detail"><i>上行</i></label>
+          <label  (click)='show()' [class.selected]="!show_detail"><i>光节点</i></label>
+        </div>
+        
+        <div class="row">
+           <div class="col-md-12" *ngIf='show_detail'>
+              <ul>
+                  <li *ngFor="let key of datas1"> 
+                       <span class="up_key"><i>{{ key.num  }}</i> </span>
+                       <span class="up_data"><i>{{ key.date  }}</i></span>
+                  </li>
+              </ul>
+           </div>
+           <div class="col-md-12" *ngIf='!show_detail'>
+              <ul>
+                  <li *ngFor="let key of datas2"> 
+                       <span class="up_key"><i>{{ key.num  }}</i> </span>
+                       <span class="up_data"><i>{{ key.date  }}</i></span>
+                  </li>
+              </ul>
+           </div>
+        </div>
+        
+  </nb-card-body>
 </nb-card>

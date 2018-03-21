@@ -19,11 +19,14 @@ import { SnrBodyComponent } from './snr/snr-body/snr-body.component';
 import { SnrLineComponent } from './snr/snr-line/snr-line.component';
 import { UpLineComponent } from './upstream/up-line/up-line.component';
 import { UpPieComponent } from './upstream/up-pie/up-pie.component';
+import { BsDatepickerModule } from 'ngx-bootstrap';
+
 
 @NgModule({
   imports: [
     ThemeModule,
     AngularEchartsModule,
+    BsDatepickerModule.forRoot(),
   ],
   declarations: [
     DashboardComponent,
