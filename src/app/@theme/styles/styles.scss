@@ -17,4 +17,19 @@
 
   // loading progress bar
   @include ngx-pace-theme();
+ 
 };
+
+.nb-theme-default ng2-smart-table table tr th, .nb-theme-default ng2-smart-table table tr th a{
+  color:#fff;
+  font-weight: normal;
+  font-size: 1.2rem
+
+  
+}
+.nb-theme-default ng2-smart-table thead tr.ng2-smart-titles{
+  background-color: #40dc7e
+}
+.nb-theme-default ng2-smart-table{
+  text-align: center
+}

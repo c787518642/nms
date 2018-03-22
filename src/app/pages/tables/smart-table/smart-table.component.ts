@@ -15,6 +15,7 @@ import { SmartTableService } from '../../../@core/data/smart-table.service';
 export class SmartTableComponent {
 
   settings = {
+    
     add: {
       addButtonContent: '<i class="nb-plus"></i>',
       createButtonContent: '<i class="nb-checkmark"></i>',
@@ -30,9 +31,11 @@ export class SmartTableComponent {
       confirmDelete: true,
     },
     columns: {
+      
       id: {
         title: 'ID',
         type: 'number',
+       
       },
       firstName: {
         title: 'First Name',

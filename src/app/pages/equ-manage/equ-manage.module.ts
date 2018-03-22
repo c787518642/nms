@@ -1,3 +1,4 @@
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AngularEchartsModule } from 'ngx-echarts';
@@ -9,6 +10,8 @@ import { WaterChartComponent } from './cmts-detail/water-chart/water-chart.compo
 import { EquManageRoutingModule } from './equ-manage-routing.module';
 import { ThemeModule } from '../../@theme/theme.module';
 import { CmtsTableComponent } from './cmts-detail/cmts-table/cmts-table.component';
+import { CmtsListTableComponent } from './cmts/cmts-list-table/cmts-list-table.component';
+import { CmtsListTableSnmpComponent } from './cmts/cmts-list-table/cmts-list-table-snmp/cmts-list-table-snmp.component';
 
 @NgModule({
   imports: [
@@ -16,8 +19,8 @@ import { CmtsTableComponent } from './cmts-detail/cmts-table/cmts-table.componen
     CommonModule,
     EquManageRoutingModule,
     AngularEchartsModule,
-    NgxChartsModule
-
+    NgxChartsModule,
+    Ng2SmartTableModule
   ],
   declarations: [
     EquManageComponent,
@@ -25,6 +28,11 @@ import { CmtsTableComponent } from './cmts-detail/cmts-table/cmts-table.componen
     CmtsDetailComponent,
     WaterChartComponent,
     CmtsTableComponent,
+    CmtsListTableComponent,
+    CmtsListTableSnmpComponent,
+  ],
+  entryComponents:[
+    CmtsListTableSnmpComponent
   ]
 })
 export class EquManageModule { }
