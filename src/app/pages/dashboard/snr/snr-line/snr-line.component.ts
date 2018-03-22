@@ -1,15 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-declare var echarts;
 @Component({
   selector: 'tw-snr-line',
   templateUrl: './snr-line.component.html',
   styleUrls: ['./snr-line.component.scss']
 })
+
 export class SnrLineComponent  implements OnInit {
   options: any;
+  CONTENT="显示最近一天";
+  data_length=[
+    { content: '显示最近一天' },
+    { content: '显示最近一周' },
+    { content: '显示最近一月' },
+  ];
+   
+  get_line(conetent){
+      this.CONTENT=conetent;
+      
+  }
+
   constructor() { }
 
   ngOnInit() {
+   
     this.options = {
         tooltip: {
             trigger: 'axis',
@@ -32,11 +45,16 @@ export class SnrLineComponent  implements OnInit {
             },
             extraCssText: 'box-shadow: 0 0 5px rgba(0,0,0,0.3)'
         },
+        grid:{
+            top:100,
+            bottom:35,
+            left:60
+        },
         xAxis: [
             {   
                 type: 'category',
                 axisLine: { show: true,lineStyle:{ color:'#212529' }},
-                axisLabel:{interval:0,textStyle:{color:'#212529',fontSize:16} },
+                axisLabel:{interval:0,textStyle:{color:'#212529',fontSize:14} },
                 axisTick : {show: false},
                 data:['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
             },
@@ -45,15 +63,15 @@ export class SnrLineComponent  implements OnInit {
             {   
                 axisTick : {show: false},
                 splitLine: {show:true},
-                axisLabel:{textStyle:{color:'#212529',fontSize:16} },
+                axisLabel:{textStyle:{color:'#212529',fontSize:14} },
                 axisLine: { show: false,lineStyle:{ color:'#212529'}},
             },
         ],
         legend: {
             x : 'center',
             y : 'top',
-            top:10,
-            itemGap:50,
+            top:15,
+            height:100,
             textStyle:{
                 fontSize:20,
             },
@@ -115,7 +133,7 @@ export class SnrLineComponent  implements OnInit {
             symbol:"emptyCircle",
             symbolSize:10,
             showSymbol: false,
-            itemStyle: {normal:{color: '#f39c11'}},
+            itemStyle: {normal:{color: '#e64d3d'}},
             lineStyle: {
                 normal: {
                     width: 4
