@@ -1,19 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 declare var echarts;
 @Component({
   selector: 'tw-network',
   templateUrl: './network.component.html',
   styleUrls: ['./network.component.scss']
 })
-export class NetworkComponent implements OnInit {
+export class NetworkComponent implements OnInit,AfterViewInit {
   options: any;
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() {}
+  ngAfterViewInit(){
     this.options = {
       tooltip: {
           trigger: 'axis',
-        
           axisPointer: {
               lineStyle: {
                   color: '#fff',
@@ -32,6 +32,7 @@ export class NetworkComponent implements OnInit {
           },
           extraCssText: 'box-shadow: 0 0 5px rgba(0,0,0,0.3)'
       },
+     
       xAxis: [
           {   
               type: 'category',

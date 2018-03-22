@@ -1,18 +1,17 @@
 <div class="row">
-    <div class="col-md-3">
-        <div class="dropdown" placement="bottom" ngbDropdown>
-            <button class="btn btn-outline-success" type="button" ngbDropdownToggle>
-                      选择时间
-            </button>
-            <ul class="dropdown-menu" ngbDropdownMenu>
-                <li class="dropdown-item">显示最近一天</li>
-                <li class="dropdown-item">显示最近一周</li>
-                <li class="dropdown-item">显示最近一月</li>
-            </ul>
+        <div class="col-xs-8 col-is-7 col-sm-5 col-md-8 col-lg-6 col-xxxl-4">
+            <div class="dropdown ghost-dropdown" placement="bottom" ngbDropdown>
+                <button id="date-length" class="btn btn-success" type="button" ngbDropdownToggle>
+                        {{CONTENT}}
+                </button>
+                <ul class="dropdown-menu" ngbDropdownMenu>
+                    <li class="dropdown-item" *ngFor="let key of data_length"  (click)="get_line(key.content)">
+                        {{key.content}}
+                    </li> 
+                </ul>
+            </div>
         </div>
     </div>
-  
-</div>
 <div echarts [options]="options"  class="echart"></div>
 
 

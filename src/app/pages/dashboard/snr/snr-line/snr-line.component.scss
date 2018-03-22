@@ -1,12 +1,18 @@
 .echart {
-    height: 400px;
+    height: 350px;
     width: 100%;
-    border: 1px soild red;
     display: block;
+    padding: 5px;
   }
-  #data-box{
-    height: 50px;
-    border: 2px solid red;
+ .row{
+   width: 90%;
+ }
+  #date-length{
+    margin-left: 20px;
+    margin-top: 10px;
+    height: 40px;
+    border: 2px solid #40dc7e;
+    line-height: 0px;
   }
   .data-control{
     height: 44px;

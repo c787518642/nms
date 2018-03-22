@@ -7,6 +7,18 @@ declare var echarts;
 })
 export class UpLineComponent implements OnInit {
   options: any;
+  CONTENT="显示最近一天";
+  data_length=[
+    { content: '显示最近一天' },
+    { content: '显示最近一周' },
+    { content: '显示最近一月' },
+  ];
+   
+  get_line(conetent){
+      this.CONTENT=conetent;
+      
+  }
+  
   constructor() { }
 
   ngOnInit() {
@@ -32,6 +44,11 @@ export class UpLineComponent implements OnInit {
           },
           extraCssText: 'box-shadow: 0 0 5px rgba(0,0,0,0.3)'
       },
+      grid:{
+        top:100,
+        bottom:35,
+        left:60
+      },
       xAxis: [
           {   
               type: 'category',
@@ -52,8 +69,7 @@ export class UpLineComponent implements OnInit {
       legend: {
           x : 'center',
           y : 'top',
-          top:10,
-          itemGap:50,
+          top:15,
           textStyle:{
               fontSize:20,
           },
