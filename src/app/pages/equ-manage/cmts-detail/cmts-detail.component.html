@@ -4,7 +4,7 @@
     <nb-card>
       <nb-card-header>CMTS详细信息</nb-card-header>
       <nb-card-body>
-        <div class="row">
+        <div class="row box1">
           <div class=" col-md-4">
             <div class="box-primary">
               <button  class="btn btn-hero-primary color"><i class="Msg ">332</i></button>
@@ -28,7 +28,16 @@
         </div>
       </nb-card-body>
       <nb-card-body>
-        <app-water-chart></app-water-chart>
+        <div class="box2">
+           <app-water-chart></app-water-chart>
+        </div>
+       
+      </nb-card-body>  
+      <nb-card-body>  
+          <div class="box2">
+              <ngx-temperature></ngx-temperature>
+           </div>
+       
       </nb-card-body>
     </nb-card> 
   </div>
@@ -41,3 +50,18 @@
      </nb-card>
    </div>
 </div>
+
+<div class="row"> 
+  <div class="col-md-12">
+    <nb-card>
+      <tw-cmts-collection-change></tw-cmts-collection-change>
+    </nb-card>
+  </div>
+</div>
+<div class="row"> 
+    <div class="col-md-12">
+      <nb-card>
+        <tw-cmts-detail-charts></tw-cmts-detail-charts>
+      </nb-card>
+    </div>
+  </div>

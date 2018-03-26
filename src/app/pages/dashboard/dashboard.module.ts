@@ -1,5 +1,5 @@
 import { NgModule, enableProdMode } from '@angular/core';
-import { AngularEchartsModule } from 'ngx-echarts';
+import { NgxEchartsModule } from 'ngx-echarts';
 import { FormsModule } from '@angular/forms';
 
 import { ThemeModule } from '../../@theme/theme.module';
@@ -26,7 +26,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
 @NgModule({
   imports: [
     ThemeModule,
-    AngularEchartsModule,
+    NgxEchartsModule,
     BsDatepickerModule.forRoot(),
     FormsModule
   ],

@@ -1,0 +1,25 @@
+<nb-card>
+ 
+
+       <div class="tab-head">
+         <label  (click)='show()' [class.selected]="show_detail"><i>Ping丢包率</i></label>
+         <label  (click)='show()' [class.selected]="!show_detail"><i>Ping延时</i></label>
+         <label  (click)='show()' [class.selected]="!show_detail"><i>内存</i></label>
+         <label  (click)='show()' [class.selected]="!show_detail"><i>温度</i></label>
+         <label  (click)='show()' [class.selected]="!show_detail"><i>CM在线数</i></label>
+         <label  (click)='show()' [class.selected]="!show_detail"><i>流量</i></label>
+         <label  (click)='show()' [class.selected]="!show_detail"><i>NPA</i></label>
+       </div>
+       
+       <div class="row">
+          <div class="col-md-12" *ngIf='show_detail'>
+            <div echarts [options]="options1"  class="echart"></div>
+          </div>
+          <div class="col-md-12" *ngIf='!show_detail'>
+            <div echarts [options]="options2"  class="echart"></div>
+          </div>
+       </div>
+
+ 
+  </nb-card>
+  

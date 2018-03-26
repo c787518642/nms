@@ -14,12 +14,6 @@ export class WaterChartComponent implements OnInit {
 
   ngOnInit() {
     this.options1 = {
-      grid:[{
-        width:"80%",
-        height:"80%",
-        top:10,
-        bottom:50
-      }],
       series: [{
         type: 'liquidFill',
         color: ['#49d088', '#38b470', '#2aaf66'],
@@ -27,7 +21,7 @@ export class WaterChartComponent implements OnInit {
         waveLength: '500px',
         period:900,
         data: [0.6],
-        radius: '48%',
+        radius: '72%',
         backgroundStyle: {
 
           borderColor: '#9FE2AF',
@@ -81,7 +75,7 @@ export class WaterChartComponent implements OnInit {
         waveLength: '500px',
         period:900,
         data: [0.6],
-        radius: '48%',
+        radius: '72%',
         backgroundStyle: {
 
           borderColor: '#4cc2ff',
@@ -135,7 +129,7 @@ export class WaterChartComponent implements OnInit {
         waveLength: '500px',
         period:900,
         data: [0.6],
-        radius: '48%',
+        radius: '72%',
         backgroundStyle: {
 
           borderColor: '#fb4765',
