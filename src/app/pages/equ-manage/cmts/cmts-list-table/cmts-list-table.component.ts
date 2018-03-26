@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CmtsListTableSnmpComponent } from './cmts-list-table-snmp/cmts-list-table-snmp.component';
+import { LocalDataSource } from 'ng2-smart-table';
 
 @Component({
   selector: 'tw-cmts-list-table',
@@ -7,75 +8,91 @@ import { CmtsListTableSnmpComponent } from './cmts-list-table-snmp/cmts-list-tab
   styleUrls: ['./cmts-list-table.component.scss']
 })
 export class CmtsListTableComponent implements OnInit {
+  private source:LocalDataSource;
   settings = {
-   
-    actions:{
-      add:false,
-      edit:false,
-      delete:false
+    hideSubHeader:true,
+    actions: {
+      add: false,
+      edit: false,
+      delete: false
     },
-    
     columns: {
       com: {
         title: '公司',
-        filter:false,
       },
       hub: {
         title: '机房',
-        filter:false
       },
       cmts: {
         title: 'CMTS',
-        filter:false
       },
       snmp: {
-        title: 'SNMP状态',
-        filter:false,
-        type:"custom",
-        renderComponent:CmtsListTableSnmpComponent
+        title: 'SNMP 状态',
+        type: "custom",
+        renderComponent: CmtsListTableSnmpComponent
       },
       npa: {
         title: 'NPA',
-        filter:false
       },
       online: {
         title: '在线率',
-        filter:false
       }
     }
   };
   data = [
     {
       com: 1,
-      hub: "撒大苏 打改 价哦i窘 境而将 其评为进 去我怕",
+      hub: "罗湖",
       cmts: "Bret",
       npa: "Sincere @april.biz",
-      snmp:0,
-      online:"10%"
+      snmp: 0,
+      online: "10%"
     },
     {
       com: 1,
-      hub: "撒大苏 打改 价哦i窘 境而将 其评为进 去我怕",
+      hub: "福田",
       cmts: "Bret",
       npa: "Sincere @april.biz",
-      snmp:1,
-      online:"12%"
+      snmp: 1,
+      online: "12%"
     },
-    
+
     // ... list of items
-    
+
     {
       com: 1,
-      hub: "撒大苏 打改 价哦i窘 境而将 其评为进 去我怕",
+      hub: "南山",
       cmts: "Bret",
       npa: "Sincere @april.biz",
-      snmp:2,
-      online:"30%"
+      snmp: 2,
+      online: "30%"
     }
   ];
-  constructor() { }
-
-  ngOnInit() {
+ 
+  constructor() { 
+    this.source = new LocalDataSource(this.data);
   }
 
+  ngOnInit(
+    
+  ) {
+  }
+  onUserRowSelect(event){
+    this.source.append( {
+      com: 1,
+      hub: "南山",
+      cmts: "Bret",
+      npa: "Sincere @april.biz",
+      snmp: 2,
+      online: "30%"
+    })
+    console.log()
+    // if(event.data.hub){
+    //   // console.log(event.data.hub);
+    this.settings.columns["sss"]={title:"xxxx"};
+      // delete this.settings.columns.npa
+      // delete this.settings.columns.snmp;
+    //   // console.log(this.settings)
+    // }
+  }
 }

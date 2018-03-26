@@ -12,6 +12,7 @@ export class CmtsListTableSnmpComponent implements ViewCell,OnInit {
   constructor() { }
   style
   ngOnInit() {
+    // 4cc2ff
     switch (this.value){
       case(0):{
         this.style="red";
@@ -26,8 +27,6 @@ export class CmtsListTableSnmpComponent implements ViewCell,OnInit {
         break
       }
     }
-    console.log(this.value)
-    console.log(this.rowData)
   }
 
 }
