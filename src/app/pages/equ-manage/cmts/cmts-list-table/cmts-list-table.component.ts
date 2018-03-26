@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { CmtsListTableSnmpComponent } from './cmts-list-table-snmp/cmts-list-table-snmp.component';
-import { LocalDataSource } from 'ng2-smart-table';
+import { CmtsService } from '../cmts.service';
+import { LocalDataSource } from '../../../../../assets/vendors/ng2-smart-table';
 
 @Component({
   selector: 'tw-cmts-list-table',
@@ -8,25 +9,22 @@ import { LocalDataSource } from 'ng2-smart-table';
   styleUrls: ['./cmts-list-table.component.scss']
 })
 export class CmtsListTableComponent implements OnInit {
-  public source:LocalDataSource;
-  settings = {
-    hideSubHeader:true,
+ 
+  public source: LocalDataSource;
+  settings:any= {
+    hideSubHeader: true,
     actions: {
       add: false,
       edit: false,
       delete: false
     },
     columns: {
-      index: {
-        title: '序号',
-        valuePrepareFunction:(s,row,cell)=>{
-          // console.log("cell",cell)
-          console.log(row);
-          return cell.row.index+1
-       
-          // console.log(s)
-        }
-      },
+      // index: {
+      //   title: '序号',
+      //   valuePrepareFunction: (s, row, cell) => {
+      //     return cell.row.index + 1
+      //   }
+      // },
       com: {
         title: '公司',
       },
@@ -43,7 +41,6 @@ export class CmtsListTableComponent implements OnInit {
       },
       npa: {
         title: 'NPA',
-        class:"npa"
       },
       online: {
         title: '在线率',
@@ -79,32 +76,31 @@ export class CmtsListTableComponent implements OnInit {
       online: "30%"
     }
   ];
-  
-  constructor() { 
+  show_detail = false;
+  settings_bat= this.settings
+  constructor(
+    private cmtsService:CmtsService
+  ) {
     this.source = new LocalDataSource(this.data);
-    // console.log(this.source)
   }
 
   ngOnInit(
-    
+
   ) {
+
   }
-  onUserRowSelect(event){
-    console.log(event)
-    this.source.append( {
-      com: 1,
-      hub: "南山",
-      cmts: "Bret",
-      npa: "Sincere @april.biz",
-      snmp: 2,
-      online: "30%"
-    })
-    console.log()
-    // if(event.data.hub){
-    //   // console.log(event.data.hub);
-      // delete this.settings.columns.npa
-      // delete this.settings.columns.snmp;
-    //   // console.log(this.settings)
+  onUserRowSelect(event) {
+    // this.cmtsService.emitter.emit("222")
+    // // 隐藏部分表格列
+    // if (this.show_detail) {
+    //   this.settings = Object.assign({}, this.settings_bat);
+    // } else {
+    //   let newSetting = {
+    //     hideSubHeader: true, actions: { add: false, edit: false, delete: false },
+    //     columns: { hub: { title: '机房', }, cmts: { title: 'CMTS', }, snmp: {title: 'SNMP 状态', type: "custom",renderComponent: CmtsListTableSnmpComponent},}
+    //   };
+    //   this.settings = Object.assign({}, newSetting)
     // }
+    // this.show_detail = !this.show_detail;
   }
 }

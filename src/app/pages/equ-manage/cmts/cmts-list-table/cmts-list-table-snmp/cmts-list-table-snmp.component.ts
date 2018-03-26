@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ViewCell } from 'ng2-smart-table';
+import { ViewCell } from '../../../../../../assets/vendors/ng2-smart-table';
 
 @Component({
   selector: 'tw-cmts-list-table-snmp',
