@@ -1,12 +1,15 @@
 .tw_table{
-    font-size: 30px;
+    font-size: 16px;
     color: black;
-    
-
+   
 }
-.table-bordered   tr , td {
-    border: 3px solid rgba(191, 191, 191, 0.717); /* 整体表格边框 */
+td {
+    padding-left:15px;    
 }
 .color_table{
-    background-color:#9ef3bd; 
+    width: 22%;
+    background-color:#edf9ff; 
+}
+.green-circle{
+    color: #40dc7e;
 }

@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-md-4">
+      <div class="slider-container">
+        <ngx-temperature-dragger [(value)]="data1"
+                                 [min]="0" [max]="100" [disableArcColor]="colors1.layoutBg"
+                                 [fillColors]="colors1.temperature">
+
+          <div class="slider-value-container"  >
+            <div class="value temperature">
+              {{ data1}}
+            </div>
+            <div class="desc">
+              CPU
+            </div>
+          </div>
+        </ngx-temperature-dragger>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="slider-container">
+        <ngx-temperature-dragger [(value)]="data2"
+                                 [min]="0" [max]="100" [disableArcColor]="colors2.layoutBg"
+                                 [fillColors]="colors2.temperature">
+
+          <div class="slider-value-container"  >
+            <div class="value temperature">
+              {{ data2}}
+            </div>
+            <div class="desc">
+              Memory
+            </div>
+          </div>
+        </ngx-temperature-dragger>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="slider-container">
+        <ngx-temperature-dragger [(value)]="data3"
+                                 [min]="0" [max]="100" [disableArcColor]="colors3.layoutBg"
+                                 [fillColors]="colors3.temperature">
+
+          <div class="slider-value-container"  >
+            <div class="value temperature">
+              {{data3}}
+            </div>
+            <div class="desc">
+              Temperature
+            </div>
+          </div>
+        </ngx-temperature-dragger>
+      </div>
+    </div>
+</div>
