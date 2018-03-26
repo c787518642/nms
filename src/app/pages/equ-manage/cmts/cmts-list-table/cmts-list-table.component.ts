@@ -8,7 +8,7 @@ import { LocalDataSource } from 'ng2-smart-table';
   styleUrls: ['./cmts-list-table.component.scss']
 })
 export class CmtsListTableComponent implements OnInit {
-  private source:LocalDataSource;
+  public source:LocalDataSource;
   settings = {
     hideSubHeader:true,
     actions: {
@@ -17,6 +17,16 @@ export class CmtsListTableComponent implements OnInit {
       delete: false
     },
     columns: {
+      index: {
+        title: '序号',
+        valuePrepareFunction:(s,row,cell)=>{
+          // console.log("cell",cell)
+          console.log(row);
+          return cell.row.index+1
+       
+          // console.log(s)
+        }
+      },
       com: {
         title: '公司',
       },
@@ -33,6 +43,7 @@ export class CmtsListTableComponent implements OnInit {
       },
       npa: {
         title: 'NPA',
+        class:"npa"
       },
       online: {
         title: '在线率',
@@ -68,9 +79,10 @@ export class CmtsListTableComponent implements OnInit {
       online: "30%"
     }
   ];
- 
+  
   constructor() { 
     this.source = new LocalDataSource(this.data);
+    // console.log(this.source)
   }
 
   ngOnInit(
@@ -78,6 +90,7 @@ export class CmtsListTableComponent implements OnInit {
   ) {
   }
   onUserRowSelect(event){
+    console.log(event)
     this.source.append( {
       com: 1,
       hub: "南山",
@@ -89,7 +102,6 @@ export class CmtsListTableComponent implements OnInit {
     console.log()
     // if(event.data.hub){
     //   // console.log(event.data.hub);
-    this.settings.columns["sss"]={title:"xxxx"};
       // delete this.settings.columns.npa
       // delete this.settings.columns.snmp;
     //   // console.log(this.settings)

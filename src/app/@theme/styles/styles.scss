@@ -42,3 +42,9 @@
   color: #28b962;
   // color: #40dc7e;
 }
+ng2-smart-table-pager{
+  justify-content: center!important;
+}
+ng2-smart-table-pager .page-link-next,ng2-smart-table-pager  .page-link-prev {
+  display: none;
+}

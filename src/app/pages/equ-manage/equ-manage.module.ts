@@ -12,6 +12,7 @@ import { ThemeModule } from '../../@theme/theme.module';
 import { CmtsTableComponent } from './cmts-detail/cmts-table/cmts-table.component';
 import { CmtsListTableComponent } from './cmts/cmts-list-table/cmts-list-table.component';
 import { CmtsListTableSnmpComponent } from './cmts/cmts-list-table/cmts-list-table-snmp/cmts-list-table-snmp.component';
+import { CmtsService } from './cmts/cmts.service';
 
 @NgModule({
   imports: [
@@ -33,6 +34,9 @@ import { CmtsListTableSnmpComponent } from './cmts/cmts-list-table/cmts-list-tab
   ],
   entryComponents:[
     CmtsListTableSnmpComponent
+  ],
+  providers:[
+    CmtsService
   ]
 })
 export class EquManageModule { }
