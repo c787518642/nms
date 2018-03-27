@@ -87,30 +87,30 @@
 .flat a.active:after {
 //   background: #fff;
 }
-@media screen and (max-width:1200px){
+@media screen and (max-width:1199px){
     .breadcrumb{
         left: 5.75rem;
     }
 }
-@media screen and (max-width:992px){
+@media screen and (max-width:991px){
     .breadcrumb{
         padding-left: 5rem;
         left: 0;
     }
 }
-@media screen and (max-width:768px){
+@media screen and (max-width:767px){
     .breadcrumb{
         padding-left: 4.5rem;
         left: 0;
     }
 }
-@media screen and (max-width:576px){
+@media screen and (max-width:575px){
     .breadcrumb{
         padding-left: 0;
         left: 1rem;
     }
 }
-@media screen and (max-width:400px){
+@media screen and (max-width:399px){
     .breadcrumb{
         left: 0.75rem;
         right: 0.3rem;

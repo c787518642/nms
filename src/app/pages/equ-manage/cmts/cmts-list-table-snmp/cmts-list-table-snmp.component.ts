@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ViewCell } from 'ng2-smart-table';
+import { ViewCell } from '../../../../../ng2-smart-table';
 
 @Component({
   selector: 'tw-cmts-list-table-snmp',
@@ -12,22 +12,21 @@ export class CmtsListTableSnmpComponent implements ViewCell,OnInit {
   constructor() { }
   style
   ngOnInit() {
+    // 4cc2ff
     switch (this.value){
       case(0):{
         this.style="red";
         break
       }
       case(1):{
-        this.style="orange";
-        break
-      }
-      case(2):{
         this.style="green";
         break
       }
+      default :{
+        this.style="grey";
+        break
+      }
     }
-    console.log(this.value)
-    console.log(this.rowData)
   }
 
 }

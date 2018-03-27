@@ -10,9 +10,6 @@ export class LoginGuardService implements CanActivate {
     private http:HttpClient
   ) { }
   canActivate(){
-    this.http.post('/tw-cmts-server/abc',{}).subscribe(data=>{
-      console.log(data)
-    })
     if(Math.random()>0){
       return true;
     }
