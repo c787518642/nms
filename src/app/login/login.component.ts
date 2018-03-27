@@ -27,7 +27,9 @@ export class LoginComponent implements OnInit {
     let isLogin = this.route.snapshot.paramMap.get("logout");
     if (isLogin === "logout") {
       // 清除登录信息
-      console.log('退出系统')
+      this.loginService.logout().subscribe((data)=>{
+        console.log('退出系统')
+      })
 
     }
     this.is_rem_user();

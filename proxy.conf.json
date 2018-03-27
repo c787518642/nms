@@ -1,9 +1,5 @@
 {
-    "/login/": {
-        "target": "http://172.100.30.163:8079/tw-cmts-server/", 
-        "secure":false
-    },
-    "/tw-cmts-server/abc": {
+    "/tw-cmts-server/": {
         "target": "http://172.100.30.163:8079", 
         "secure":false
     }

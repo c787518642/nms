@@ -5,10 +5,10 @@ import { Injectable, EventEmitter } from '@angular/core';
 export class CmtsService {
   public emitter=new EventEmitter()
   constructor(
-    private http:HttpClient,
-    
+    private http:HttpClient, 
   ) { }
+  // cmts列表
   getCmtsList(){
-    return this.http.post("",{})
+    return this.http.post("/tw-cmts-server/cmts/cmtsjcxx2",{})
   }
 }
