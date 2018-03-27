@@ -16,8 +16,8 @@ export class TemperatureDraggerComponent implements AfterViewInit, OnChanges {
   @Input() fillColors: string|string[] = '#2ec6ff';
   @Input() disableArcColor = '#999999';
   @Input() bottomAngle = 90;
-  @Input() arcThickness = 18; // CSS pixels
-  @Input() thumbRadius = 16; // CSS pixels
+  @Input() arcThickness = 14; // CSS pixels
+  @Input() thumbRadius = 15; // CSS pixels
   @Input() thumbBorder = 3;
   @Input() maxLeap = 0.4;
 
@@ -46,7 +46,7 @@ export class TemperatureDraggerComponent implements AfterViewInit, OnChanges {
   svgControlId = new Date().getTime();
   scaleFactor = 1;
   bottomAngleRad = 0;
-  radius = 100;
+  radius = 80;
   translateXValue = 0;
   translateYValue = 0;
   thickness = 6;

@@ -51,7 +51,7 @@ export class WaterChartComponent implements OnInit {
         label: {
           normal: {
             formatter: function(params) {
-              return    params.data*100+"%"+'\n'+"上行利用率";
+              return    params.data*100+"%";
             },
             textStyle: {
               fontSize: 26,
@@ -105,7 +105,7 @@ export class WaterChartComponent implements OnInit {
         label: {
           normal: {
             formatter: function(params) {
-              return    params.data*100+"%"+'\n'+"下行利用率";
+              return    params.data*100+"%";
             },
             textStyle: {
               fontSize: 26,
@@ -159,7 +159,7 @@ export class WaterChartComponent implements OnInit {
         label: {
           normal: {
             formatter: function(params) {
-              return    params.data*100+"%"+'\n'+"在线率";
+              return    params.data*100+"%";
             },
             textStyle: {
               fontSize: 26,

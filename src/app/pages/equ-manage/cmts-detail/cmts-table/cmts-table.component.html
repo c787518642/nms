@@ -3,13 +3,29 @@
     <td class="color_table">CMTS型号</td>
     <td >37_SBB_01_UBR10012</td>
     <td class="color_table">采集开关</td>
-    <td >ON</td>
+    <td>
+      <ul>
+        <li>ON</li>
+        <li><div (click)='change()' class="switch_on" *ngIf='show_detail'></div></li>
+        <li><div (click)='change()' [class.switch_box]="show_detail" class="box_normal"></div></li>
+        <li><div (click)='change()' class="switch_off" *ngIf='!show_detail'></div></li>
+        <li>OFF</li>
+       </ul> 
+    </td>
   </tr>
   <tr>
       <td class="color_table">CMTS名称</td>
       <td >cisco_上步北_01</td>
       <td class="color_table">NPA计算开关</td>
-      <td >ON</td>
+      <td>
+          <ul>
+             <li>ON</li>
+             <li><div (click)='change()' class="switch_on" *ngIf='show_detail'></div></li>
+             <li><div (click)='change()' [class.switch_box]="show_detail" class="box_normal"></div></li>
+             <li><div (click)='change()' class="switch_off" *ngIf='!show_detail'></div></li>
+             <li>OFF</li>
+          </ul> 
+      </td>
     </tr>
     <tr>
         <td class="color_table">运行时长</td>

@@ -13,3 +13,61 @@ td {
 .green-circle{
     color: #40dc7e;
 }
+ul{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+li{
+    list-style: none;
+    float: left;
+    padding-right:10px; 
+}
+.box_normal{
+    height: 20px;
+    width: 46px;
+    border:2px solid #dcdcdc;
+    border-radius:10px; 
+    position: relative;
+}
+.switch_box{
+    height: 20px;
+    width: 46px;
+    border:2px solid #40dc7e;
+    border-radius:10px; 
+    position: relative;
+}
+
+.switch_on{
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    background-color: #40dc7e;
+    border-radius:26px; 
+    margin-left: 0px;
+    margin-top: -3px;
+}
+
+.switch_off{
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    background-color: #dcdcdc;
+    border-radius:26px; 
+    margin-left: -34px;
+    margin-top: -3px;
+}
+.switch_box:hover{
+    cursor: pointer;
+} 
+.box_normal:hover{
+    cursor: pointer;
+}
+ .switch_on:hover {
+    cursor: pointer;
+}
+.switch_off:hover{
+    cursor: pointer;
+}
