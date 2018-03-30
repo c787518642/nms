@@ -1,6 +1,30 @@
-// @media (max-width:991px){
-//     tw-cmts-list-table{
-//         position: absolute;;
-//         top:-100000000000px
+// @media (max-width:399px){
+//     #cmts_header{
+//         position: fixed;
+//         z-index: 999;
+//         background-color: #fff;
+//         width: 100%;
 //     }
 // }
+#cmts_header{
+    padding-bottom: 1px;
+}
+.form-control {
+    display: inline;
+    // width: 20%;
+    width: 268px;
+    float: right;
+    position: relative;
+    right: 2rem;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    top:-10px;
+}
+@media (max-width:500px){
+    .form-control{
+        display: none
+    }
+    #cmts_header{
+        padding-bottom: 20px;
+    }
+}

@@ -5,7 +5,7 @@
     right: 1rem;
     left: 18.25rem;
     padding-top:1.25rem;
-    padding-bottom:1rem;
+    padding-bottom:0.85rem;
     // padding-left:2.25rem;
     background-color: #ebeff5;
     opacity: 1;
@@ -50,6 +50,7 @@
   border-radius: 0 5px 0 50px;
 }
 .breadcrumb a:first-child {
+    height: 36px;
     padding-left: 10px;
     border-radius: 5px 0 0 5px;
   }
@@ -106,13 +107,15 @@
 }
 @media screen and (max-width:575px){
     .breadcrumb{
-        padding-left: 0;
-        left: 1rem;
+        padding-left: 1rem;
+        left: 0;
     }
 }
 @media screen and (max-width:399px){
     .breadcrumb{
-        left: 0.75rem;
-        right: 0.3rem;
+        left: -3px;
+        right: 0;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 }

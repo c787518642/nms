@@ -15,6 +15,6 @@ export class TopologyComponent implements OnInit {
   ngOnInit() {
   }
   navigate(x){
-    this.router.navigate(['./'])
+    this.router.navigate(['./pages'])
   }
 }

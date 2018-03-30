@@ -17,7 +17,7 @@ div.img:last-child{
     position: absolute;
     bottom: 0;
 }
-@media screen and (max-width:1200px){
+@media screen and (max-width:1199px){
     div.img{
         width: 48.5%;
         display: inline-block;
@@ -31,12 +31,12 @@ div.img:last-child{
         top:0
     }
 }
-@media screen and (max-width:992px){
+@media screen and (max-width:991px){
     div.img{
         width: 48%;
     }
 }
-@media screen and (max-width:576px){
+@media screen and (max-width:575px){
     div.img{
         width: 100%;
     }
@@ -47,6 +47,11 @@ div.img:last-child{
         position: absolute;
         bottom: 0;
         top:auto;
-        right: auto;
+        right: 0;
+    }
+}
+@media screen and (max-width:399px){
+    div.img:last-child{
+        right: 0;
     }
 }
