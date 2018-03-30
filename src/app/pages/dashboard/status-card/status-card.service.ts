@@ -1,9 +1,11 @@
-import { Injectable } from '@angular/core';
-
+import { Injectable, EventEmitter } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class StatusCardService {
+  public emitter=new EventEmitter()
+  constructor(private http:HttpClient) {
 
-  constructor() { }
+   }
   deviceCount=[{
     name:'hub',
     count:40,
@@ -23,5 +25,8 @@ export class StatusCardService {
   }];
   get(){
     return this.deviceCount
+  }
+  getWlzy(){
+    return this.http.post("/tw-cmts-server/login/wlzy",{})
   }
 }

@@ -8,10 +8,25 @@ nb-card-body{
     padding: 5px;
   }
 .tab-head{
-    width: 108%;
+    width: 114%;
     height: 50px;
     border-bottom: 1px solid #efefef;
+   
 }
+.secleted-head{
+    height: 50px;
+    width: 30%;
+    display: none;  
+}
+#date-length{
+    margin-left: 20px;
+    margin-top: 10px;
+    height: 40px;
+    border: 2px solid #40dc7e;
+    line-height: 0px;
+  }
+
+
 label{
     cursor: pointer;
 }
@@ -58,4 +73,33 @@ label i{
 .tab-head label:hover{
     color: #2a2a2a;
     font-weight: 600;
+}
+@media screen and (max-width:700px){
+    .tab-head{
+        display: none;
+    }
+    .secleted-head{
+        display: block;
+    }
+    
+}
+@media screen and (max-width:600px){
+    .tab-head{
+        display: none;
+    }
+    .secleted-head{
+        display: block;
+        width: 36%;
+    }
+    
+}
+@media screen and (max-width:460px){
+    .tab-head{
+        display: none;
+    }
+    .secleted-head{
+        display: block;
+        width: 160px;
+    }
+    
 }

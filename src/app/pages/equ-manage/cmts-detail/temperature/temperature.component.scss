@@ -1,7 +1,10 @@
 @import '../../../../@theme/styles/themes';
 @import '~bootstrap/scss/mixins/breakpoints';
 @import '~@nebular/theme/styles/global/bootstrap/breakpoints';
-
+div{
+  padding: 0;
+  margin: 0;
+}
 @include nb-install-component() {
 
   nb-tabset {
@@ -45,29 +48,12 @@
       position: relative;
       color: nb-theme(color-fg-heading);
       font-family: nb-theme(font-secondary);
-      font-size: 3rem;
-      font-weight: nb-theme(font-weight-bolder);
-
-      &.temperature::before {
-        position: absolute;
-        content: '°';
-        top: 0;
-        right: -1.25rem;
-      }
-
-      &.humidity::before {
-        position: absolute;
-        content: '%';
-        bottom: 0.5rem;
-        right: -2.5rem;
-        color: nb-theme(color-fg);
-        font-size: 2.5rem;
-        font-weight: nb-theme(font-weight-light);
-      }
+      font-size: 2rem;
+      font-weight: 600; 
     }
 
     .desc {
-      color: nb-theme(color-fg);
+      color: #717171;
       font-weight: nb-theme(font-weight-light);
     }
 

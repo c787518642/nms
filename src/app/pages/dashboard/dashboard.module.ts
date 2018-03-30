@@ -1,15 +1,18 @@
+
 import { NgModule, enableProdMode } from '@angular/core';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { FormsModule } from '@angular/forms';
-
+import { HttpClientModule } from '@angular/common/http';
 import { ThemeModule } from '../../@theme/theme.module';
 import { DashboardComponent } from './dashboard.component';
 import { StatusCardComponent } from './status-card/status-card.component';
 import { StatusCardService } from './status-card/status-card.service';
 import { AlarmPreviewComponent } from './alarm-preview/alarm-preview.component';
+import { AlarmPreviewService } from './alarm-preview/alarm-preview.service';
 import { TopologyComponent } from './topology/topology.component';
 import { CollectionComponent } from './collection/collection.component';
 import { CollectionBodyComponent } from './collection/collection-body/collection-body.component';
+import { CollectionService } from './collection/collection.service';
 import { SnrComponent } from './snr/snr.component';
 import { UpstreamComponent } from './upstream/upstream.component';
 import { AreaComponent } from './area/area.component';
@@ -21,6 +24,7 @@ import { SnrLineComponent } from './snr/snr-line/snr-line.component';
 import { UpLineComponent } from './upstream/up-line/up-line.component';
 import { UpPieComponent } from './upstream/up-pie/up-pie.component';
 import { BsDatepickerModule } from 'ngx-bootstrap';
+import { imageOverlay } from 'leaflet';
 
 
 @NgModule({
@@ -28,7 +32,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
     ThemeModule,
     NgxEchartsModule,
     BsDatepickerModule.forRoot(),
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   declarations: [
     DashboardComponent,
@@ -59,7 +64,9 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
     PortsComponent,
   ],
   providers:[
-    StatusCardService
+    StatusCardService,
+    AlarmPreviewService,
+    CollectionService
   ]
 })
 export class DashboardModule { }

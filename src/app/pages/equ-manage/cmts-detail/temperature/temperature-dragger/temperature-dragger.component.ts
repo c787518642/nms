@@ -2,7 +2,7 @@ import {
   Component, HostListener, ViewChild, ElementRef, Input, Output, EventEmitter, AfterViewInit, OnChanges,
 } from '@angular/core';
 
-const VIEW_BOX_SIZE = 200;
+
 
 @Component({
   selector: 'ngx-temperature-dragger',
@@ -10,12 +10,12 @@ const VIEW_BOX_SIZE = 200;
   styleUrls: ['./temperature-dragger.component.scss'],
 })
 export class TemperatureDraggerComponent implements AfterViewInit, OnChanges {
-
+   VIEW_BOX_SIZE = 320;
   @ViewChild('svgRoot') svgRoot: ElementRef;
 
   @Input() fillColors: string|string[] = '#2ec6ff';
   @Input() disableArcColor = '#999999';
-  @Input() bottomAngle = 90;
+  @Input() bottomAngle = 80;
   @Input() arcThickness = 14; // CSS pixels
   @Input() thumbRadius = 15; // CSS pixels
   @Input() thumbBorder = 3;
@@ -37,6 +37,12 @@ export class TemperatureDraggerComponent implements AfterViewInit, OnChanges {
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
+    if(document.body.clientWidth<=1500&&document.body.clientWidth>1450){
+      this.VIEW_BOX_SIZE = 260;
+   }else if(document.body.clientWidth<=1450){
+      this.VIEW_BOX_SIZE = 280;
+   }
+    console.log( this.VIEW_BOX_SIZE)
     this.invalidate();
   }
 
@@ -54,7 +60,7 @@ export class TemperatureDraggerComponent implements AfterViewInit, OnChanges {
   colors: any = [];
 
   styles = {
-    viewBox: '0 0 300 300',
+    viewBox: '0 0 400 400',
     arcTranslateStr: 'translate(0, 0)',
     clipPathStr: '',
     gradArcs: [],
@@ -104,14 +110,14 @@ export class TemperatureDraggerComponent implements AfterViewInit, OnChanges {
 
     const svgBoundingRect = this.svgRoot.nativeElement.getBoundingClientRect();
     const svgAreaFactor = svgBoundingRect.height && svgBoundingRect.width / svgBoundingRect.height || 1;
-    const svgHeight = VIEW_BOX_SIZE / svgAreaFactor;
+    const svgHeight = this.VIEW_BOX_SIZE / svgAreaFactor;
     const thumbMaxRadius = this.thumbRadius + this.thumbBorder;
     const thumbMargin = 2 * thumbMaxRadius > this.arcThickness
       ? (thumbMaxRadius - this.arcThickness / 2) / this.scaleFactor
       : 0;
 
-    this.scaleFactor = svgBoundingRect.width / VIEW_BOX_SIZE || 1;
-    this.styles.viewBox = `0 0 ${VIEW_BOX_SIZE} ${svgHeight}`;
+    this.scaleFactor = svgBoundingRect.width / this.VIEW_BOX_SIZE || 1;
+    this.styles.viewBox = `0 0 ${this.VIEW_BOX_SIZE} ${svgHeight}`;
 
 
     const circleFactor = this.bottomAngleRad <= Math.PI
@@ -119,15 +125,15 @@ export class TemperatureDraggerComponent implements AfterViewInit, OnChanges {
       : ( 2 * Math.sin(halfAngle) / (1 + Math.cos(halfAngle)) );
     if (circleFactor > svgAreaFactor) {
       if (this.bottomAngleRad > Math.PI) {
-        this.radius = (VIEW_BOX_SIZE - 2 * thumbMargin) / (2 * Math.sin(halfAngle));
+        this.radius = (this.VIEW_BOX_SIZE - 2 * thumbMargin) / (2 * Math.sin(halfAngle));
       } else {
-        this.radius = VIEW_BOX_SIZE / 2 - thumbMargin;
+        this.radius = this.VIEW_BOX_SIZE / 2 - thumbMargin;
       }
     } else {
       this.radius = (svgHeight - 2 * thumbMargin) / (1 + Math.cos(halfAngle));
     }
 
-    this.translateXValue = VIEW_BOX_SIZE / 2 - this.radius;
+    this.translateXValue = this.VIEW_BOX_SIZE / 2 - this.radius;
     this.translateYValue = (svgHeight) / 2 - this.radius * (1 + Math.cos(halfAngle)) / 2;
 
     this.styles.arcTranslateStr = `translate(${this.translateXValue}, ${this.translateYValue})`;
@@ -284,7 +290,7 @@ export class TemperatureDraggerComponent implements AfterViewInit, OnChanges {
     if (this.isMouseDown && !this.off) {
       const rect = this.svgRoot.nativeElement.getBoundingClientRect();
       const center = {
-        x: rect.left + VIEW_BOX_SIZE * this.scaleFactor / 2,
+        x: rect.left + this.VIEW_BOX_SIZE * this.scaleFactor / 2,
         y: rect.top + (this.translateYValue + this.radius) * this.scaleFactor,
       };
       let actualAngle = Math.atan2(center.x - event.clientX, event.clientY - center.y);

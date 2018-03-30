@@ -20,7 +20,7 @@ export class WaterChartComponent implements OnInit {
         amplitude:10,
         waveLength: '500px',
         period:900,
-        data: [0.6],
+        data: [0.2],
         radius: '72%',
         backgroundStyle: {
 
@@ -43,7 +43,7 @@ export class WaterChartComponent implements OnInit {
         outline: {
           itemStyle: {
             borderColor: '#d6e4da',
-            borderWidth: 4,
+            borderWidth: 2,
             shadowBlur: 0
           },
           borderDistance: 3
@@ -74,7 +74,7 @@ export class WaterChartComponent implements OnInit {
         amplitude:10,
         waveLength: '500px',
         period:900,
-        data: [0.6],
+        data: [0.48],
         radius: '72%',
         backgroundStyle: {
 
@@ -97,7 +97,7 @@ export class WaterChartComponent implements OnInit {
         outline: {
           itemStyle: {
             borderColor: '#d6e4da',
-            borderWidth: 4,
+            borderWidth: 2,
             shadowBlur: 0
           },
           borderDistance: 3
@@ -151,7 +151,7 @@ export class WaterChartComponent implements OnInit {
         outline: {
           itemStyle: {
             borderColor: '#d6e4da',
-            borderWidth: 4,
+            borderWidth: 2,
             shadowBlur: 0
           },
           borderDistance: 3

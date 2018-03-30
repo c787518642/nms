@@ -3,13 +3,20 @@
 
        <div class="tab-head">
          <label  (click)='show(key)' *ngFor="let key of data"  [class.selected]="key=== selectedKey" class={{key.class}}><i>{{key.content}}</i></label>
-         <!-- <label  (click)='show()' [class.selected]="!show_detail"><i>Ping延时</i></label>
-         <label  (click)='show()' [class.selected]="!show_detail"><i>内存</i></label>
-         <label  (click)='show()' [class.selected]="!show_detail"><i>温度</i></label>
-         <label  (click)='show()' [class.selected]="!show_detail"><i>CM在线数</i></label>
-         <label  (click)='show()' [class.selected]="!show_detail"><i>流量</i></label>
-         <label  (click)='show()' [class.selected]="!show_detail"><i>NPA</i></label> -->
+  
        </div>
+       <div class="secleted-head">
+        <div class="dropdown ghost-dropdown" placement="bottom" ngbDropdown>
+          <button id="date-length" class="btn btn-success" type="button" ngbDropdownToggle>
+                  {{CONTENT}}
+          </button>
+          <ul class="dropdown-menu" ngbDropdownMenu>
+              <li class="dropdown-item" *ngFor="let key of data"  (click)="show2(key)">
+                  {{key.content}}
+              </li> 
+          </ul>
+      </div>
+      </div>
        
        <div class="row">
           <div class="col-md-12" *ngIf='show_detail[0]' >

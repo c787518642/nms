@@ -9,6 +9,7 @@ import { take } from 'rxjs/operators/take';
 export class CmtsDetailChartsComponent implements OnInit {
   show_detail=[true,false,false,false,false,false,false];
   selectedKey:any;
+  CONTENT="Ping丢包率";
   data=[
     {index:0, content: 'Ping丢包率',class:"selected"},
     {index:1, content: 'Ping延时',class:"normal"},
@@ -30,6 +31,13 @@ export class CmtsDetailChartsComponent implements OnInit {
   show(key){
     this.data[0].class="normal";
     this.selectedKey=key;
+    for(let i=0;i<this.show_detail.length;i++){
+        this.show_detail[i]=false;
+    }
+    this.show_detail[key.index]=true;  
+   }
+   show2(key){
+     this.CONTENT=key.content;
     for(let i=0;i<this.show_detail.length;i++){
         this.show_detail[i]=false;
     }
