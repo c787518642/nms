@@ -1,3 +1,4 @@
+import { CmtsUpstreamComponent } from './cmts-upstream/cmts-upstream.component';
 import { CmtsComponent } from './cmts/cmts.component';
 import { EquManageComponent } from './equ-manage.component';
 import { NgModule } from '@angular/core';
@@ -7,6 +8,9 @@ const routes: Routes = [{
   path: '',
   component: EquManageComponent,
   children: [{
+    path: 'cmts/cmts-upstream',
+    component: CmtsUpstreamComponent,
+  },{
     path: 'cmts',
     component: CmtsComponent,
   },{

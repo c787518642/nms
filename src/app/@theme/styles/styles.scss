@@ -23,11 +23,10 @@
 //表头字体
 .nb-theme-default ng2-smart-table table tr th, .nb-theme-default ng2-smart-table table tr th a{
   color:#fff;
-  font-weight: normal;
   font-size: 1.2rem
 }
 .nb-theme-default ng2-smart-table table tr.ng2-smart-titles th a:hover, .nb-theme-default ng2-smart-table table tr.ng2-smart-titles th a:active, .nb-theme-default ng2-smart-table table tr.ng2-smart-titles th a:visited{
-    color:rgb(224, 224, 224);
+    color:#fff;
 }
 //表格背景
 .nb-theme-default ng2-smart-table thead tr.ng2-smart-titles{
@@ -35,16 +34,15 @@
 }
 //表格内容居中
 .nb-theme-default ng2-smart-table{
-  text-align: center
+  text-align: center;
+  cursor: pointer;
 }
-// 表格选中
-.nb-theme-default ng2-smart-table tbody tr.selected,.nb-theme-default ng2-smart-table tbody tr.selected td{
-  color: #28b962;
-  // color: #40dc7e;
-}
+
 ng2-smart-table-pager{
   justify-content: center!important;
 }
-ng2-smart-table-pager .page-link-next,ng2-smart-table-pager  .page-link-prev {
-  display: none;
+@media (max-width:400px){
+  ng2-smart-table-pager .page-link-next,ng2-smart-table-pager  .page-link-prev {
+    display: none;
+  }  
 }
