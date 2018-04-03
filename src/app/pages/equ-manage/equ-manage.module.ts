@@ -16,6 +16,8 @@ import { CmtsDetailChartsComponent } from './cmts-detail/cmts-detail-charts/cmts
 import { Ng2SmartTableModule } from '../../../ng2-smart-table';
 import { CmtsListTableSnmpComponent } from './cmts/cmts-list-table-snmp/cmts-list-table-snmp.component';
 import { CmtsUpstreamComponent } from './cmts-upstream/cmts-upstream.component';
+import { CmtsDownstreamComponent } from './cmts-downstream/cmts-downstream.component';
+import { CmtsEthernetComponent } from './cmts-ethernet/cmts-ethernet.component';
 
 @NgModule({
   imports: [
@@ -37,6 +39,8 @@ import { CmtsUpstreamComponent } from './cmts-upstream/cmts-upstream.component';
     CmtsCollectionChangeComponent,
     CmtsDetailChartsComponent,
     CmtsUpstreamComponent,
+    CmtsDownstreamComponent,
+    CmtsEthernetComponent,
   ],
   entryComponents:[
     CmtsListTableSnmpComponent

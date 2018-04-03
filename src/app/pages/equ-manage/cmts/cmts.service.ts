@@ -18,4 +18,15 @@ export class CmtsService {
       headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' }),
     })
   }
+  getCmtsDownstreamList(obj: { cid }) {
+    return this.http.post('/tw-cmts-server/cmts/dowdata', toFormData(obj), {
+      headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' }),
+    })
+  }
+  getCmtsEthernetList(obj: { cid }) {
+    return this.http.post('/tw-cmts-server/cmts/cmts_ethernet', toFormData(obj), {
+      headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' }),
+    })
+  }
+  
 }

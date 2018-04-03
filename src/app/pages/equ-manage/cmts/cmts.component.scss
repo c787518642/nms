@@ -28,3 +28,19 @@
         padding-bottom: 20px;
     }
 }
+@media( min-width:768px){
+    #someColunms{
+        display: none
+    }
+}
+@media( max-width:767px){
+    #fullColunms{
+        display: none
+    }
+}
+@media( max-width:991px){
+    #cmts{
+        display: none;
+    }
+   
+}

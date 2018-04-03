@@ -1,8 +1,10 @@
+import { CmtsEthernetComponent } from './cmts-ethernet/cmts-ethernet.component';
 import { CmtsUpstreamComponent } from './cmts-upstream/cmts-upstream.component';
 import { CmtsComponent } from './cmts/cmts.component';
 import { EquManageComponent } from './equ-manage.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CmtsDownstreamComponent } from './cmts-downstream/cmts-downstream.component';
 
 const routes: Routes = [{
   path: '',
@@ -10,6 +12,12 @@ const routes: Routes = [{
   children: [{
     path: 'cmts/cmts-upstream',
     component: CmtsUpstreamComponent,
+  },{
+    path: 'cmts/cmts-downstream',
+    component: CmtsDownstreamComponent,
+  },{
+    path: 'cmts/cmts-ethernet',
+    component: CmtsEthernetComponent,
   },{
     path: 'cmts',
     component: CmtsComponent,
