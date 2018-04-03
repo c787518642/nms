@@ -20,6 +20,23 @@
  
 };
 //chai
+
+.menu-items>.menu-item{
+  font-size: 1rem;
+  font-weight: 500;
+}
+.nb-theme-default nb-menu .menu-item a:hover, .nb-theme-default nb-menu .menu-item a.active{
+  font-weight: 500;
+}
+.nb-theme-default nb-menu .menu-item .menu-icon{
+  font-weight: 500;
+  font-size: 2rem
+}
+.nb-theme-default nb-sidebar.fixed.right.collapsed + .content{
+  // margin-top: 2.5rem
+  position: relative;
+  top:2.5rem
+}
 //表头字体
 .nb-theme-default ng2-smart-table table tr th, .nb-theme-default ng2-smart-table table tr th a{
   color:#fff;

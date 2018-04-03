@@ -45,8 +45,8 @@
 
   nb-sidebar.menu-sidebar {
 
-    // margin-top: nb-theme(sidebar-header-gap);
-    margin-top: -1rem;
+    margin-top: nb-theme(sidebar-header-gap)-1;
+    // margin-top: -1rem;
     z-index: 9999;
     /deep/ .main-container {
       height:
