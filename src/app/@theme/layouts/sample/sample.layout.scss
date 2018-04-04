@@ -47,7 +47,7 @@
 
     margin-top: nb-theme(sidebar-header-gap)-1;
     // margin-top: -1rem;
-    z-index: 9999;
+    // z-index: 9999;
     /deep/ .main-container {
       height:
         calc(#{nb-theme(sidebar-height)} - #{nb-theme(header-height)} - #{nb-theme(sidebar-header-gap)}) !important;
@@ -118,7 +118,9 @@
   @include media-breakpoint-down(lg) {
     nb-sidebar.menu-sidebar {
       margin-top: 1rem;
+      z-index:9999
     }
+    
   }
   @include media-breakpoint-down(sm) {
 
@@ -141,4 +143,7 @@
       display: none;
     }
   }
+}
+.settings-sidebar{
+  opacity: 0;
 }

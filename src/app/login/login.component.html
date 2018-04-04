@@ -1,5 +1,4 @@
 <div class='html' style="background:url(./assets/img/login_bg.jpg) no-repeat 100%">
-    <!-- <img src="./assets/img/login_bg.jpg"> -->
     <input type="text" id="input_text" tabindex="-1">
     <input type="password" id="input_password" tabindex="-1">
     <div class="header">
@@ -7,13 +6,12 @@
         <img class="logo" id='logo-black' src="./assets/img/logo-black.png" width="130">
     </div>
     <div class="content">
-        <!-- <div></div> -->
         <div class="welcome">
             <div>Welcome to</div>
             <div>天威综合网管系统</div>
         </div>
 
-        <form #f='ngForm' (ngSubmit)='onSubmit(f)'>
+        <form #f='ngForm'>
             <div class="form-group" id="username_group">
                 <input ngModel name="username" #username='ngModel' [(ngModel)]='default_username' required (change)='changed(username)' (keyup)='resetStatus()'
                     class="username" type="text" placeholder="用户名" autocomplete="off" pattern="^[0-9a-zA-Z_]{1,}$">
@@ -21,8 +19,8 @@
                 <div *ngIf='username.touched&&username.invalid&&username.errors.pattern' class="errorInfo">用户名有误！</div>
             </div>
             <div class="form-group" id="password_group">
-                <input ngModel name='pwd' #pwd='ngModel' required (change)='changed(pwd)' (keyup)='resetStatus()' (keyup)='upCase($event)'
-                    class="password" type="password" placeholder="密码" autocomplete="off">
+                <input ngModel name='pwd' id="pwd" #pwd='ngModel' required (change)='changed(pwd)' (keyup)='resetStatus()' (keyup)='upCase($event)'
+                    (keyup.enter)='onSubmit(f)' class="password" type="password" placeholder="密码" autocomplete="off">
                 <div *ngIf='pwd.touched&&pwd.invalid&&pwd.errors.required||pwd_empty' class="errorInfo">密码为空！</div>
                 <div *ngIf='hadError' class="errorInfo">{{errorInfo}}</div>
                 <div *ngIf='upcase' class="upCaseInfo">大写已开启</div>
@@ -30,15 +28,11 @@
             </div>
 
             <div class="form-group-left">
-                <nb-checkbox [value]="rem_user" (click)='checkboxClick($event)'>记住用户名</nb-checkbox>
-
-                <!-- <label>
-                        <input  type="checkbox" id="remember_username">
-                       记住用户名
-                    </label> -->
+                <nb-checkbox  [value]="rem_user" (click)='checkboxClick($event)'>记住用户名</nb-checkbox>
             </div>
             <div class="form-group">
-                <button type="submit" class="submit">登录</button>
+                <button type="submit" class="submit" *ngIf="!isLogin" (click)="onSubmit(f)">登录</button>
+                <button type="submit" class="btn-ing" *ngIf="isLogin">登录中...</button>
             </div>
             <div class="form-group footer">
                 <div class="copyright">

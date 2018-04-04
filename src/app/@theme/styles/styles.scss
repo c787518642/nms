@@ -32,11 +32,28 @@
   font-weight: 500;
   font-size: 2rem
 }
-.nb-theme-default nb-sidebar.fixed.right.collapsed + .content{
-  // margin-top: 2.5rem
-  position: relative;
-  top:2.5rem
+@media (min-width:0px){
+  .nb-theme-default nb-sidebar.fixed.right.collapsed + .content{
+    top:3.7rem;
+    position: relative;
+  }
 }
+@media (min-width:500px){
+  .nb-theme-default nb-sidebar.fixed.right.collapsed + .content{
+    top:3.5rem;
+  }
+}
+@media (min-width:768px){
+  .nb-theme-default nb-sidebar.fixed.right.collapsed + .content{
+    top:3rem;
+  }
+}
+@media (min-width:992px){
+  .nb-theme-default nb-sidebar.fixed.right.collapsed + .content{
+    top:2.5rem
+  }
+}
+
 //表头字体
 .nb-theme-default ng2-smart-table table tr th, .nb-theme-default ng2-smart-table table tr th a{
   color:#fff;
@@ -62,4 +79,7 @@ ng2-smart-table-pager{
   ng2-smart-table-pager .page-link-next,ng2-smart-table-pager  .page-link-prev {
     display: none;
   }  
+}
+.nb-theme-default .custom-control .custom-control-description{
+  color: #747474;
 }
