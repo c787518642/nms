@@ -98,6 +98,7 @@
     nb-user /deep/ .user-name {
       display: none;
     }
+   
   }
 
   @include media-breakpoint-down(is) {
@@ -114,9 +115,10 @@
 
     nb-action:not(.toggle-layout) {
       padding: 0;
+      padding-left: 1rem;
     }
   }
-
+ 
   @include media-breakpoint-down(xs) {
     .right /deep/ {
       display: none;

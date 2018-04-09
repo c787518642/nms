@@ -5,6 +5,7 @@ import { NbMenuService, NbSidebarService, NbThemeService } from '@nebular/theme'
 import { UserService } from '../../../@core/data/users.service';
 import { AnalyticsService } from '../../../@core/utils/analytics.service';
 import { Router } from '@angular/router';
+import { SearchAllService } from './search-all/search-all.service';
 
 @Component({
   selector: 'ngx-header',
@@ -15,7 +16,7 @@ export class HeaderComponent implements OnInit {
 
 
   @Input() position = 'normal';
-
+  show_search=false;
   user: any;
   menus=[]
   userMenu = [{ 
@@ -32,7 +33,8 @@ export class HeaderComponent implements OnInit {
               private analyticsService: AnalyticsService,
               private router:Router,
               private themeService:NbThemeService,
-              private menulistService:MenulistService
+              private menulistService:MenulistService,
+              private searchAllService:SearchAllService
             ) {
   }
 
@@ -62,6 +64,16 @@ export class HeaderComponent implements OnInit {
   }
   onclick(x){
     this.menulistService.set(x)
-    this.themeService.appendLayoutClass("with-search")
+  
+  }
+  search(){
+    // this.themeService.appendLayoutClass("with-search");
+    this.themeService.appendLayoutClass("with-search");
+    this.themeService.appendLayoutClass("rotate-layout");
+    this.show_search=true;
+    this.searchAllService.toggle();
+
+    // this.analyticsService.trackEvent('startSearch');
+
   }
 }

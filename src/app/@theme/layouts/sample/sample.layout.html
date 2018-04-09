@@ -1,9 +1,9 @@
+<tw-search-all *ngIf="show_search"></tw-search-all>
 <nb-layout [center]="layout.id === 'center-column'" windowMode>
     <nb-layout-header fixed>
         <ngx-header [position]="sidebar.id === 'left' ? 'normal': 'inverse'"></ngx-header>
        
     </nb-layout-header>
- 
     <nb-sidebar class="menu-sidebar" tag="menu-sidebar" responsive [right]="sidebar.id === 'right'">
         <!-- <nb-sidebar-header> -->
             <!-- <a href="return:false" class="btn btn-hero-success main-btn">
@@ -15,6 +15,7 @@
     </nb-sidebar>
 
     <nb-layout-column class="main-content">
+
         <ng-content select="router-outlet"></ng-content>
     </nb-layout-column>
 

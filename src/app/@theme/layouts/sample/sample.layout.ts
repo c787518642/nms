@@ -13,6 +13,7 @@ import { StateService } from '../../../@core/data/state.service';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/withLatestFrom';
 import 'rxjs/add/operator/delay';
+import { SearchAllService } from '../../components/header/search-all/search-all.service';
 
 // TODO: move layouts into the framework
 @Component({
@@ -21,7 +22,7 @@ import 'rxjs/add/operator/delay';
   templateUrl: './sample.layout.html',
 })
 export class SampleLayoutComponent  implements OnDestroy {
-
+  show_search=false;
   subMenu: NbMenuItem[] = [
     {
       title: 'PAGE LEVEL MENU',
@@ -74,7 +75,12 @@ export class SampleLayoutComponent  implements OnDestroy {
               protected menuService: NbMenuService,
               protected themeService: NbThemeService,
               protected bpService: NbMediaBreakpointsService,
-              protected sidebarService: NbSidebarService) {
+              protected sidebarService: NbSidebarService,
+              protected searchAllService:SearchAllService
+  ) {
+    this.searchAllService.show_search.subscribe(data=>{
+      this.show_search=data;
+    })
     this.layoutState$ = this.stateService.onLayoutState()
       .subscribe((layout: string) => this.layout = layout);
 

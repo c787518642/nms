@@ -38,6 +38,8 @@ import { BreadcrumbComponent } from './components/header/breadcrumb/breadcrumb.c
 import { BreadcrumbService } from './components/header/breadcrumb/breadcrumb.service';
 import { MenulistComponent } from './components/header/menulist/menulist.component';
 import { MenulistService } from './components/header/menulist/menulist.service';
+import { SearchAllComponent } from './components/header/search-all/search-all.component';
+import { SearchAllService } from './components/header/search-all/search-all.service';
 
 const BASE_MODULES = [CommonModule, FormsModule, ReactiveFormsModule];
 
@@ -88,7 +90,8 @@ const NB_THEME_PROVIDERS = [
 @NgModule({
   imports: [...BASE_MODULES, ...NB_MODULES,RouterModule],
   exports: [...BASE_MODULES, ...NB_MODULES, ...COMPONENTS, ...PIPES],
-  declarations: [...COMPONENTS, ...PIPES, BreadcrumbComponent, MenulistComponent],
+  declarations: [...COMPONENTS, ...PIPES, BreadcrumbComponent, MenulistComponent, SearchAllComponent],
+  providers:[SearchAllService]
 })
 export class ThemeModule {
   static forRoot(): ModuleWithProviders {
