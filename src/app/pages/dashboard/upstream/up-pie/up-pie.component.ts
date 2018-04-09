@@ -1,3 +1,4 @@
+import { UpstreamService } from './../upstream.service';
 import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Observable }from'rxjs/Rx';
@@ -15,7 +16,7 @@ export class UpPieComponent implements OnInit,AfterViewInit,OnDestroy {
   Padding=0;
   sub:any;
   updateOptions: any;
-  constructor() { }
+  constructor(private upstreamService:UpstreamService) { }
   onChartInit(e: any) {
     this.echartsInstance = e;
    
@@ -28,6 +29,87 @@ export class UpPieComponent implements OnInit,AfterViewInit,OnDestroy {
    
    
   ngOnInit() {
+    this.upstreamService.getUpPie().subscribe(response =>{
+        if(response['code']&&response['code']==1){
+            let data=response['data'];
+            let value1=data.cmHisPieChart[0].cmnum;
+            let value2=data.cmHisPieChart[1].cmnum+data.cmHisPieChart[2].cmnum;
+            let value3=data.cmHisPieChart[3].cmnum+data.cmHisPieChart[4].cmnum;
+            let value4=data.cmHisPieChart[5].cmnum+data.cmHisPieChart[6].cmnum;
+            let value5=data.cmHisPieChart[7].cmnum+data.cmHisPieChart[8].cmnum;
+            
+            this.options = {
+    
+                tooltip: {
+                  trigger: 'item',
+                  formatter: "{a} <br/>{b}: {c} ({d}%)"
+              },
+          
+              legend: {
+                  x : 'center',
+                  y : 'bottom',
+          
+                  itemWidth:5,
+                  itemHeight:50,
+                  itemGap:this.Gap,
+                  padding:[0,0],
+                  textStyle:{
+                      fontSize:20,
+                  },
+                  formatter:function(name){
+                       if(name=="优秀"){
+                           return "30-45"+"\n"+name;
+                       }else if(name=="良好"){
+                          return "28-30"+"\n"+name;
+                       }else if(name=="一般"){
+                          return "28-26"+"\n"+name;
+                       }else if(name=="较差"){
+                          return "26-10"+"\n"+name;
+                       }else if(name=="差"){
+                          return "10-0"+"\n"+name;
+                       }
+                  },
+                  data:['优秀','良好','一般','较差','差'],
+              
+              },
+              series: [
+                  {
+                      name:'SNR',
+                      type:'pie',
+                      radius: ['40%', '65%'],
+                      center : ['50%', '40%'],
+                      avoidLabelOverlap: false,
+                      label: {
+                          normal: {
+                              show: false,
+                              position: 'center'
+                          },
+                          emphasis: {
+                              show: true,
+                              textStyle: {
+                                  fontSize: '30',
+                                  fontWeight: 'bold'
+                              }
+                          }
+                      },
+                      labelLine: {
+                          normal: {
+                              show: false
+                          }
+                      },
+                      data:[
+                          {value:value1, name:'优秀',itemStyle: {normal:{color: '#43d280'}}},
+                          {value:value2, name:'良好',itemStyle: {normal:{color: '#5fc7fe'}}},
+                          {value:value3, name:'一般',itemStyle: {normal:{color: '#fddc42'}}},
+                          {value:value4, name:'较差',itemStyle: {normal:{color: '#f39c11'}}},
+                          {value:value5, name:'差',itemStyle: {normal:{color: '#e64d3d'}}}
+                      
+                      ]
+                  }
+                ]
+              };
+        }
+    })
       
     if(document.body.clientWidth<=1336&&document.body.clientWidth>1257){
         this.Gap=20;
@@ -75,76 +157,7 @@ export class UpPieComponent implements OnInit,AfterViewInit,OnDestroy {
   
   ngAfterViewInit(){
  
-    this.options = {
     
-      tooltip: {
-        trigger: 'item',
-        formatter: "{a} <br/>{b}: {c} ({d}%)"
-    },
-
-    legend: {
-        x : 'center',
-        y : 'bottom',
-
-        itemWidth:5,
-        itemHeight:50,
-        itemGap:this.Gap,
-        padding:[0,0],
-        textStyle:{
-            fontSize:20,
-        },
-        formatter:function(name){
-             if(name=="优秀"){
-                 return "30-45"+"\n"+name;
-             }else if(name=="良好"){
-                return "28-30"+"\n"+name;
-             }else if(name=="一般"){
-                return "28-26"+"\n"+name;
-             }else if(name=="较差"){
-                return "26-10"+"\n"+name;
-             }else if(name=="差"){
-                return "10-0"+"\n"+name;
-             }
-        },
-        data:['优秀','良好','一般','较差','差'],
-    
-    },
-    series: [
-        {
-            name:'SNR',
-            type:'pie',
-            radius: ['40%', '65%'],
-            center : ['50%', '40%'],
-            avoidLabelOverlap: false,
-            label: {
-                normal: {
-                    show: false,
-                    position: 'center'
-                },
-                emphasis: {
-                    show: true,
-                    textStyle: {
-                        fontSize: '30',
-                        fontWeight: 'bold'
-                    }
-                }
-            },
-            labelLine: {
-                normal: {
-                    show: false
-                }
-            },
-            data:[
-                {value:935, name:'优秀',itemStyle: {normal:{color: '#43d280'}}},
-                {value:60, name:'良好',itemStyle: {normal:{color: '#5fc7fe'}}},
-                {value:44, name:'一般',itemStyle: {normal:{color: '#fddc42'}}},
-                {value:35, name:'较差',itemStyle: {normal:{color: '#f39c11'}}},
-                {value:35, name:'差',itemStyle: {normal:{color: '#e64d3d'}}}
-            
-            ]
-        }
-    ]
-    };
   }
 
   ngOnDestroy(){

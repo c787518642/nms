@@ -42,7 +42,7 @@ export class TemperatureDraggerComponent implements AfterViewInit, OnChanges {
    }else if(document.body.clientWidth<=1450){
       this.VIEW_BOX_SIZE = 280;
    }
-    console.log( this.VIEW_BOX_SIZE)
+  
     this.invalidate();
   }
 

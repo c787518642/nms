@@ -1,3 +1,4 @@
+import { NpaService } from './npa.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,17 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NpaComponent implements OnInit {
   show_detail=true;
-  constructor() { }
-
-  ngOnInit() {
-  }
-  show(){
-    this.show_detail=!this.show_detail;
-
-   }
   datas1: Array<any> = [
     { num: "低于65分", date: "2.43%"},
     { num: "低于75分", date: "4.88%"},
+    { num: "低于80分", date: "5.11%"},
     { num: "低于85分", date: "8.11%"},
     { num: "低于95分", date: "26.16%"},
     { num: "低于100分", date: "100%"},
@@ -26,12 +20,45 @@ export class NpaComponent implements OnInit {
    datas2: Array<any> = [
     { num: "低于65分", date: "7.23%"},
     { num: "低于75分", date: "8.43%"},
+    { num: "低于80分", date: "5.11%"},
     { num: "低于85分", date: "9.64%"},
     { num: "低于95分", date: "20.48%"},
     { num: "低于100分", date: "100%"},
   
    ];
    
+  constructor(private npaService:NpaService) { }
+
+  ngOnInit() {
+    this.npaService.getStatistical().subscribe(response =>{
+       if(response['code']&&response['code']==1){
+         let data1=response['data'];
+         this.datas1=[
+          { num: "低于65分", date: data1[0].p65},
+          { num: "低于75分", date: data1[0].p75},
+          { num: "低于80分", date: data1[0].p80},
+          { num: "低于85分", date: data1[0].p85},
+          { num: "低于95分", date: data1[0].p95},
+          { num: "低于100分", date: data1[0].p100},
+         ];
+         this.datas2=[
+          { num: "低于65分", date: data1[0].fs65},
+          { num: "低于75分", date: data1[0].fs75},
+          { num: "低于85分", date: data1[0].fs80},
+          { num: "低于85分", date: data1[0].fs85},
+          { num: "低于95分", date: data1[0].fs95},
+          { num: "低于100分", date:data1[0].fs100},
+        
+         ];
+
+       }
+    })
+  }
+  show(){
+    this.show_detail=!this.show_detail;
+
+   }
+ 
    
 
 }
