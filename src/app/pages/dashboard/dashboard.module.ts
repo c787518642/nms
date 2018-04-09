@@ -14,11 +14,17 @@ import { CollectionComponent } from './collection/collection.component';
 import { CollectionBodyComponent } from './collection/collection-body/collection-body.component';
 import { CollectionService } from './collection/collection.service';
 import { SnrComponent } from './snr/snr.component';
+import { SnrService } from './snr/snr.service';
 import { UpstreamComponent } from './upstream/upstream.component';
+import { UpstreamService } from './upstream/upstream.service';
 import { AreaComponent } from './area/area.component';
+import { AreaService } from './area/area.service';
 import { NetworkComponent } from './network/network.component';
+import { NetworkService } from './network/network.service';
 import { NpaComponent } from './npa/npa.component';
+import { NpaService } from './npa/npa.service';
 import { PortsComponent } from './ports/ports.component';
+import { PortsService } from './ports/ports.service';
 import { SnrBodyComponent } from './snr/snr-body/snr-body.component';
 import { SnrLineComponent } from './snr/snr-line/snr-line.component';
 import { UpLineComponent } from './upstream/up-line/up-line.component';
@@ -66,7 +72,13 @@ import { imageOverlay } from 'leaflet';
   providers:[
     StatusCardService,
     AlarmPreviewService,
-    CollectionService
+    CollectionService,
+    AreaService,
+    NetworkService,
+    NpaService,
+    PortsService,
+    SnrService,
+    UpstreamService
   ]
 })
 export class DashboardModule { }

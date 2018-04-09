@@ -1,6 +1,8 @@
+import { AreaService } from './area.service';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Observable }from'rxjs/Rx';
 import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
+
 
 @Component({
   selector: 'tw-area',
@@ -8,20 +10,106 @@ import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
   styleUrls: ['./area.component.scss']
 })
 export class AreaComponent implements OnInit,AfterViewInit,OnDestroy {
+  
   options: any;
+  npa1:any;
+  npa2:any;
+  npa3:any;
+  npa4:any;
+  npa5:any;
   echartsInstance: any;
   Echart_width:any;
   Gap=30;
   Padding=0;
   sub:any;
   updateOptions: any;
-  constructor() { }
+  constructor(
+    private areaService:AreaService
+  ) { }
   onChartInit(e: any) {
     this.echartsInstance = e;
   }
  
 
   ngOnInit() {
+    this.areaService.getNpavalues().subscribe(response => {
+        let data=response['data']
+        this.npa1=data[0].npa1;
+        this.npa2=data[0].npa2;
+        this.npa3=data[0].npa3;
+        this.npa4=data[0].npa4;
+        this.npa5=data[0].npa5;
+      
+
+        this.options = {
+    
+            tooltip: {
+              trigger: 'item',
+              formatter: "{a} <br/>{b}: {c} ({d}%)"
+          },
+          legend: {
+              x : 'center',
+              y : 'bottom',
+              itemWidth:5,
+              itemHeight:50,
+              itemGap:this.Gap,
+              textStyle:{
+                  fontSize:20,
+              },
+              formatter:function(name){
+                   if(name=="优秀"){
+                       return "95-100"+"\n"+name;
+                   }else if(name=="良好"){
+                      return "85-95"+"\n"+name;
+                   }else if(name=="一般"){
+                      return "70-85"+"\n"+name;
+                   }else if(name=="较差"){
+                      return "60-70"+"\n"+name;
+                   }else if(name=="差"){
+                    return "低于60"+"\n"+name;
+                 }
+              },
+              data:['优秀','良好','一般','较差','差'],
+          
+          },
+          series: [
+              {
+                  name:'SNR',
+                  type:'pie',
+                  radius: ['40%', '65%'],
+                  center : ['50%', '45%'],
+                  avoidLabelOverlap: false,
+                  label: {
+                      normal: {
+                          show: false,
+                          position: 'center'
+                      },
+                      emphasis: {
+                          show: true,
+                          textStyle: {
+                              fontSize: '30',
+                              fontWeight: 'bold'
+                          }
+                      }
+                  },
+                  labelLine: {
+                      normal: {
+                          show: false
+                      }
+                  },
+                  data:[
+                      {value:this.npa5, name:'优秀',itemStyle: {normal:{color: '#43d280'}}},
+                      {value:this.npa4, name:'良好',itemStyle: {normal:{color: '#5fc7fe'}}},
+                      {value:this.npa3, name:'一般',itemStyle: {normal:{color: '#fddc42'}}},
+                      {value:this.npa2, name:'较差',itemStyle: {normal:{color: '#f39c11'}}},
+                      {value:this.npa1, name:'差',itemStyle: {normal:{color: '#e64d3d'}}}
+      
+                  
+                  ]
+              }
+          ]
+          };
+      })
     if(document.body.clientWidth<=1336&&document.body.clientWidth>1257){
         this.Gap=20;
         this.Padding=0;
@@ -60,84 +148,14 @@ export class AreaComponent implements OnInit,AfterViewInit,OnDestroy {
         legend:{
             itemGap:this.Gap,
             padding:[0,this.Padding=0]
-        }
+        } 
       };
       
          
     });
   }
 
-  ngAfterViewInit(){
-    this.options = {
-    
-      tooltip: {
-        trigger: 'item',
-        formatter: "{a} <br/>{b}: {c} ({d}%)"
-    },
-    legend: {
-        x : 'center',
-        y : 'bottom',
-        itemWidth:5,
-        itemHeight:50,
-        itemGap:this.Gap,
-        textStyle:{
-            fontSize:20,
-        },
-        formatter:function(name){
-             if(name=="优秀"){
-                 return "95-100"+"\n"+name;
-             }else if(name=="良好"){
-                return "85-95"+"\n"+name;
-             }else if(name=="一般"){
-                return "70-85"+"\n"+name;
-             }else if(name=="较差"){
-                return "60-70"+"\n"+name;
-             }else if(name=="差"){
-              return "低于60"+"\n"+name;
-           }
-        },
-        data:['优秀','良好','一般','较差','差'],
-    
-    },
-    series: [
-        {
-            name:'SNR',
-            type:'pie',
-            radius: ['40%', '65%'],
-            center : ['50%', '45%'],
-            avoidLabelOverlap: false,
-            label: {
-                normal: {
-                    show: false,
-                    position: 'center'
-                },
-                emphasis: {
-                    show: true,
-                    textStyle: {
-                        fontSize: '30',
-                        fontWeight: 'bold'
-                    }
-                }
-            },
-            labelLine: {
-                normal: {
-                    show: false
-                }
-            },
-            data:[
-                {value:935, name:'优秀',itemStyle: {normal:{color: '#43d280'}}},
-                {value:60, name:'良好',itemStyle: {normal:{color: '#5fc7fe'}}},
-                {value:44, name:'一般',itemStyle: {normal:{color: '#fddc42'}}},
-                {value:35, name:'较差',itemStyle: {normal:{color: '#f39c11'}}},
-                {value:35, name:'差',itemStyle: {normal:{color: '#e64d3d'}}}
-
-            
-            ]
-        }
-    ]
-    };
-    
-  }
+  ngAfterViewInit(){}
 
   ngOnDestroy(){
     this.sub.unsubscribe();

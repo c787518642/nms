@@ -1,11 +1,41 @@
 <nb-card>
-  <nb-tabset fullWidth>
-    <nb-tab *ngFor='let i of items' tabTitle="{{i.title}}">
+    <nb-card-body>
+        <div class="tab-head">
+            <label  (click)='show(items[0].title)' [class.selected]="show_detail1"><i>{{items[0].title}}</i></label>
+            <label  (click)='show(items[1].title)' [class.selected]="show_detail2"><i>{{items[1].title}}</i></label>
+            <label  (click)='show(items[2].title)' [class.selected]="show_detail3"><i>{{items[2].title}}</i></label>
+          </div>
+          
+          <div class="row">
+             <div class="col-md-12" *ngIf='show_detail1'>
+                <div class="slider-container">
+                    <app-collection-body  [item]='items[0].item'></app-collection-body>
+                  </div>
+             </div>
+             <div class="col-md-12" *ngIf='show_detail2'>
+                <div class="slider-container">
+                    <app-collection-body  [item]='items[1].item'></app-collection-body>
+                  </div>
+             </div>
+             <div class="col-md-12" *ngIf='show_detail3'>
+                <div class="slider-container">
+                    <app-collection-body  [item]='items[2].item'></app-collection-body>
+                  </div>
+             </div>
+          </div>
+          
+    </nb-card-body>
+
+
+
+
+
+
+  <!-- <nb-tabset fullWidth>
+    <nb-tab *ngFor='let i of items' tabTitle="{{i.title}}" >
       <div class="slider-container">
         <app-collection-body  [item]='i.item'></app-collection-body>
       </div>
-    </nb-tab>
-    
-    
-  </nb-tabset>
+    </nb-tab>  
+  </nb-tabset> -->
 </nb-card>
