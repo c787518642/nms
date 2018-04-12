@@ -5,11 +5,14 @@
     <button disabled class="btn ">机房</button>
 
   </div>
-  <div class="input-group has-person-icon"  (click)="search(items,input.value)">
-      <input #input (keyup.enter)="search(items,input.value)" (click)="preventDeault($event)" type="text" tabindex="-1" placeholder="请输入查询关键字..." id="search" class="search-input" autocomplete="off">
-    </div>
+  <div class="input-group has-person-icon">
+    <input #input (keyup)="search(items,input.value)" (click)="preventDeault($event)" type="text" tabindex="-1" placeholder="请输入查询关键字..."
+      id="search" class="search-input" autocomplete="off">
+  </div>
   <ul id="result">
-    <li   *ngFor="let i of result" (click)="i.link?saveToHistory(i):false"  routerLink="{{i.link}}" [queryParams]="{cid:i.id}">
+    <li class="searchHistory" *ngIf="searchHistory"> 搜索记录</li>
+    <li *ngFor="let i of result" (click)="i.link?saveToHistory(i):false" routerLink="{{i.link}}" [queryParams]="{cid:i.id}">
+      <i  *ngIf="!searchHistory" class="nb-search"></i>
       【{{i.type | uppercase }}】 {{i.name}}
     </li>
     <li *ngIf="result.length<=0">无结果</li>

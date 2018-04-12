@@ -12,7 +12,7 @@ export class SearchAllComponent implements OnInit {
   cmts_selected = JSON.parse(localStorage.getItem("cmts"));
   items: { name: string, id: string, selected }[]
   result = [];
-  liClass=false
+  searchHistory=true;
   constructor(
     private searchAllService: SearchAllService,
     private themeService: NbThemeService,
@@ -44,7 +44,8 @@ export class SearchAllComponent implements OnInit {
   }
   search(items,value) {
    
-    if (!value) { return }
+    if (!value) { return };
+    this.searchHistory=false;
     let type=[];
     for(let i of items){
       i.selected?type.push(i.id):"";

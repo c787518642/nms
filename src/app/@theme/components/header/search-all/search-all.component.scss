@@ -63,7 +63,7 @@
     background-color: rgba(251,251,251, 0.45);
     border:rgba(223,223,223, 0.45) 1px solid;
     display: inline-block;
-    color: #929292;
+    color: #6d6d6d;
     text-align: left;
     font-size: 20px;
     padding-left: 0;
@@ -86,6 +86,10 @@
     outline: none;
     color:#737373;
    background-color: #e6e9ec;
+ }
+ .searchHistory{
+     color: #3a3a3a;
+     font-size: 75%;
  }
 i#close{
     font-size: 3rem;
@@ -191,4 +195,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
   .input-group.has-person-icon>input{
     pointer-events: auto  ;
   }
- 
+  i.nb-search{
+     font-weight: 700;
+     color: #929292;
+ }
