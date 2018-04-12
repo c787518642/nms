@@ -53,7 +53,6 @@ export class LoginComponent implements OnInit {
     localStorage.setItem("is_rem", String(this.rem_user))
   }
   changed(f) {
-    // console.log(f)
     this.hadError = false;
   }
   resetStatus() {

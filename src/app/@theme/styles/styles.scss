@@ -83,3 +83,32 @@ ng2-smart-table-pager{
 .nb-theme-default .custom-control .custom-control-description{
   color: #747474;
 }
+// @media (max-width:1600px){
+  @media (max-height:800px){
+    nb-layout.rotate-layout.with-search .scrollable-container{
+      transform: perspective(1000px) translate3d(0, 55vh, 0) rotate3d(1, 0, 0, 30deg)!important;
+    }
+  }
+  @media (max-height:700px){
+    nb-layout.rotate-layout.with-search .scrollable-container{
+      transform: perspective(1000px) translate3d(0, 60vh, 0) rotate3d(1, 0, 0, 30deg)!important;
+    }
+  }
+  @media (max-height:600px){
+    nb-layout.rotate-layout.with-search .scrollable-container{
+      transform: perspective(1000px) translate3d(0, 70vh, 0) rotate3d(1, 0, 0, 30deg)!important;
+    }
+  }
+ 
+  @media (max-height:500px){
+    nb-layout.rotate-layout.with-search .scrollable-container{
+      transform: perspective(1000px) translate3d(0, 85vh, 0) rotate3d(1, 0, 0, 30deg)!important;
+    }
+  }
+  @media (max-height:400px){
+    nb-layout.rotate-layout.with-search .scrollable-container{
+      transform: perspective(1000px) translate3d(0, 100vh, 0) rotate3d(1, 0, 0, 30deg)!important;
+    }
+  }
+// }
+

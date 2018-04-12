@@ -8,10 +8,11 @@ import { NbThemeService } from '@nebular/theme';
   styleUrls: ['./search-all.component.scss']
 })
 export class SearchAllComponent implements OnInit {
-  cm_selected = JSON.parse(localStorage.getItem("cm"));
+  hub_selected = JSON.parse(localStorage.getItem("cm"));
   cmts_selected = JSON.parse(localStorage.getItem("cmts"));
-  items:{name:string,id:string,selected}[]
-  search_data=["111","222","333","444","444"].slice(0,4)
+  items: { name: string, id: string, selected }[]
+  result = [];
+  searchHistory=true;
   constructor(
     private searchAllService: SearchAllService,
     private themeService: NbThemeService,
@@ -19,11 +20,13 @@ export class SearchAllComponent implements OnInit {
 
   ngOnInit() {
     document.getElementById("search").focus();
-    this.items= [{
-    //   name: "CM", id: "cm", selected: this.cm_selected
-    // }, {
-      name: "CMTS", id: "cmts", selected: this.cmts_selected
+    this.items = [{
+      //   name: "机房", id: "1", selected: this.hub_selected
+      // }, {
+      name: "cmts", id: "2", selected: this.cmts_selected
     }];
+
+    this.result = this.searchAllService.getHistory().slice(0, 4)
   }
   closeSearch() {
     this.themeService.removeLayoutClass("with-search")
@@ -31,15 +34,48 @@ export class SearchAllComponent implements OnInit {
     this.searchAllService.toggle();
   }
 
-  onclick(id) {
+  onclick(name) {
     for (let i of this.items) {
-      if (i.id == id) {
+      if (i.name == name) {
         i.selected = !i.selected
       }
-      localStorage.setItem(i.id, JSON.stringify(i.selected))
+      localStorage.setItem(i.name, JSON.stringify(i.selected))
     }
+  }
+  search(items,value) {
+   
+    if (!value) { return };
+    this.searchHistory=false;
+    let type=[];
+    for(let i of items){
+      i.selected?type.push(i.id):"";
+    }
+    this.searchAllService.search({ type: type.join(","), value: value }).subscribe(data => {
+      if (data["code"] && data["code"] == 1) {
+        let result = [];
+        let arr: [{ id, type, name }] = data["data"];
+        for (let i of arr) {
+          switch (i.type) {
+            case "cmts": {
+              result.push({ link: "./equ-manage/cmts", id: i.id, name: i.name, type: i.type })
+              break;
+            }
+          }
+        }
+        this.result = result.slice(0, 4);
+      }
 
-    // console.log(id)
-    // localStorage.setItem("searchItems", JSON.stringify())
+    })
+
+  }
+  saveToHistory(i) {
+    this.closeSearch();
+    let searchHistory = this.searchAllService.getHistory();
+    localStorage.setItem("searchHistory", JSON.stringify(!searchHistory ? i : (JSON.stringify(i) == JSON.stringify(searchHistory[0])) ? searchHistory : [i, ...searchHistory].slice(0, 10)))
+
+  }
+  preventDeault(e) {
+    e.preventDefault();
+    e.stopPropagation()
   }
 }

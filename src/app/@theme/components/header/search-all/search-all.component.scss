@@ -21,25 +21,35 @@
     width: 65%;
     font-size: 5vw;
     color: #929292;
-    font-weight: 100;
+    font-weight: 400;
     margin-top: 3vh;
     padding-left: 1rem;
     padding-right: 1rem;
     padding-bottom: 0.5rem;
 }
-@media (min-width:992px){
-    #search{
-        font-size: 3vw;
-    }
-}
+
 #search:focus{
     outline: none;
 }
 #items{
-    // width: 65%;
+    width: 65%;
     margin-top: 8vh;
     margin-left: 2%;
     margin-right: 2%;
+    text-align: left;
+    display: inline-block;
+}
+@media (max-width:992px){
+    #items{
+     
+        width: 80%;
+    }
+}
+@media (max-width:768px){
+    #items{
+        text-align: center;
+        width: 90%;
+    }
 }
 #items button{
     margin-top: 2vh;
@@ -48,30 +58,40 @@
     border-color: #40dc7e;
     color: #40dc7e;
 }
-#search_content{
+#result{
     width: 65%;
     background-color: rgba(251,251,251, 0.45);
     border:rgba(223,223,223, 0.45) 1px solid;
     display: inline-block;
-    color: #929292;
+    color: #6d6d6d;
     text-align: left;
     font-size: 20px;
     padding-left: 0;
 }
-#search_content>li{
+#result>li{
     list-style-type:none;
     padding: 0.5rem 0.5rem 0rem 1rem;
     cursor: pointer;
    
 }
-#search_content>li:nth-last-child(1){
+#result>li:nth-last-child(1){
     margin-bottom: 1rem
 }
-#search_content>li:hover{
+
+#result>li:visited,#result>li:hover,#result>li:active{
    color:#737373;
    background-color: #e6e9ec;
 }
-i{
+#result>li:focus{
+    outline: none;
+    color:#737373;
+   background-color: #e6e9ec;
+ }
+ .searchHistory{
+     color: #3a3a3a;
+     font-size: 75%;
+ }
+i#close{
     font-size: 3rem;
     color: rgb(158, 158, 158);
     position: absolute;
@@ -79,6 +99,8 @@ i{
     top:0.5rem;
     cursor: pointer;
 }
+
+
 .btn,.btn:focus,.btn:hover{
     color: #a4a4a4;
     border: #c3c3c3 2px solid;
@@ -121,8 +143,11 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
         color:  #a1a1a1; 
     }
 }
-
-
+@media (min-width:992px){
+    #search{
+        font-size: 3vw;
+    }
+}
 
 
 .btn:focus{
@@ -131,3 +156,46 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 .btn:disabled{
     cursor: not-allowed
 }
+
+.input-group.has-person-icon {
+    position: relative;
+    display: inline-block;
+    right: -2.7rem;
+    pointer-events: none;
+    &::after {
+      content: '\E90C';
+      cursor: pointer;
+      font-family: 'nebular';
+      font-size: 80px;
+      position: relative;
+      z-index: 100;
+      right: 5.2rem;
+      background-color: #5ce191;
+      color: #fff;
+      border-radius: 5px;
+      top: 0.25rem;
+      pointer-events: auto;
+    }
+    @media (max-width:1600px) {
+        right: -2.2vw;
+        &::after {
+            font-size: 4vw;
+            right: 4.4vw;
+        } 
+    }
+    @media (max-width:992px) {
+        right: -4vw;
+        &::after {
+            font-size: 7vw;
+            right: 8vw;
+        } 
+    }
+   
+  }
+  .input-group.has-person-icon>input{
+    pointer-events: auto  ;
+  }
+  i.nb-search{
+     font-weight: 700;
+     color: #929292;
+ }

@@ -1,13 +1,21 @@
 <div id="search_div">
-  <div id="items">
-    <button class="btn" *ngFor="let i of items" [class.selected]="i.selected" (click)="onclick(i.id)">{{i.name}}</button>
+  <div id="items" #item>
+    <button class="btn" *ngFor="let i of items" [class.selected]="i.selected" (click)="onclick(i.name)">{{i.name}}</button>
     <button disabled class="btn">上行端口</button>
     <button disabled class="btn ">机房</button>
- 
+
   </div>
-  <input type="text" tabindex="-1" placeholder="请输入查询关键字..." id="search" class="search-input" autocomplete="off">
-  <ul id="search_content">
-    <li *ngFor="let i of search_data">{{i}}</li>
+  <div class="input-group has-person-icon">
+    <input #input (keyup)="search(items,input.value)" (click)="preventDeault($event)" type="text" tabindex="-1" placeholder="请输入查询关键字..."
+      id="search" class="search-input" autocomplete="off">
+  </div>
+  <ul id="result">
+    <li class="searchHistory" *ngIf="searchHistory"> 搜索记录</li>
+    <li *ngFor="let i of result" (click)="i.link?saveToHistory(i):false" routerLink="{{i.link}}" [queryParams]="{cid:i.id}">
+      <i  *ngIf="!searchHistory" class="nb-search"></i>
+      【{{i.type | uppercase }}】 {{i.name}}
+    </li>
+    <li *ngIf="result.length<=0">无结果</li>
   </ul>
-  <i class="nb-close-circled" (click)="closeSearch()"></i>
+  <i class="nb-close-circled" id="close" (click)="closeSearch()"></i>
 </div>
