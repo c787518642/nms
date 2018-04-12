@@ -33,7 +33,6 @@ export class ThemeSwitcherComponent implements OnInit {
 
   toggleTheme(theme: boolean) {
     const boolTheme = this.boolToTheme(theme);
-    console.log(theme)
     this.themeService.changeTheme(boolTheme);
     this.analyticsService.trackEvent('switchTheme');
   }

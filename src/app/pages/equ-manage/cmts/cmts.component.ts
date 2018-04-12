@@ -54,6 +54,7 @@ export class CmtsComponent implements OnInit {
           { name: 'CMTS', link: '/pages/equ-manage/cmts' }
         ]);
       } else {
+        this.showDetail = true;
         this.breadcrumb.set([
           { name: '设备管理', link: '/pages/equ-manage' },
           { name: 'CMTS', link: '/pages/equ-manage/cmts' },
