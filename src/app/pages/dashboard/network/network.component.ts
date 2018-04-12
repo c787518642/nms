@@ -33,14 +33,12 @@ export class NetworkComponent implements OnInit,AfterViewInit {
                         type:"dashed"
                     }
                 },
-                backgroundColor: 'rgba(255,255,255,1)',
-                borderRadius: 8,   
+                borderRadius: 4,   
                 padding: [5, 10],
                 textStyle: {
-                    fontSize:26,
-                    color:'#000',
-                    fontWeight: 500,
-                    fontFamily:"Arial"
+                    fontSize:16,
+                    fontWeight: 200,
+                
                 
                 },
                 extraCssText: 'box-shadow: 0 0 5px rgba(0,0,0,0.3)'

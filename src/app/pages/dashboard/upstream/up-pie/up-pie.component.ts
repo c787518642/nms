@@ -42,7 +42,7 @@ export class UpPieComponent implements OnInit,AfterViewInit,OnDestroy {
     
                 tooltip: {
                   trigger: 'item',
-                  formatter: "{a} <br/>{b}: {c} ({d}%)"
+                 
               },
           
               legend: {
