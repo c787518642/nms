@@ -39,8 +39,6 @@ export class SnrLineComponent  implements OnInit {
                 value4[i]=data[i].data[3].pie;
             
             }
-        console.log(x);
-        console.log(value1);
         this.options = {
             tooltip: {
                 trigger: 'axis',

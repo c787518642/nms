@@ -12,39 +12,39 @@ export class CollectionComponent implements OnInit {
   // items:{title:string,item:{}[] }[] ;
   items=[{
     title: "全网CM", item: [{
-      name: "total", value: 60000,id:0
+      name: "total", value: 0,id:0
     }, {
-      name: "online", value: 50000,id:1
+      name: "online", value: 0,id:1
     }, {
-      name: "upstream", value: 40000,id:2
+      name: "upstream", value: 0,id:2
     }, {
-      name: "downstream", value: 30000,id:3
+      name: "downstream", value: 0,id:3
     }, {
-      name: "qam64", value: 20000,id:4
+      name: "qam64", value: 0,id:4
     }]
   },{
     title: "CMTS-CM", item: [{
-      name: "total", value: 40000,id:0
+      name: "total", value: 0,id:0
     }, {
-      name: "online", value: 30000,id:1
+      name: "online", value: 0,id:1
     }, {
-      name: "upstream", value: 20000,id:2
+      name: "upstream", value: 0,id:2
     }, {
-      name: "downstream", value: 10000,id:3
+      name: "downstream", value: 0,id:3
     }, {
-      name: "qam64", value: 8000,id:4
+      name: "qam64", value: 0,id:4
     }]
   },{
     title: "DCMTS-CM", item: [{
-      name: "total", value: 20000,id:0
+      name: "total", value: 0,id:0
     }, {
-      name: "online", value: 15000,id:1
+      name: "online", value: 0,id:1
     }, {
-      name: "upstream", value: 12000,id:2
+      name: "upstream", value: 0,id:2
     }, {
-      name: "downstream", value:3000,id:3
+      name: "downstream", value:0,id:3
     }, {
-      name: "qam64", value: 2000,id:4
+      name: "qam64", value: 0,id:4
     }]
   }]
   
@@ -92,7 +92,7 @@ export class CollectionComponent implements OnInit {
           }]
         }]
      
-        this.show(this.items[1].title);
+        this.show("CMTS-CM");
      
       }
       
@@ -100,15 +100,18 @@ export class CollectionComponent implements OnInit {
   
   }
   show(title){
-     if(title==this.items[0].title){
+     if(title=='全网CM'){
+      console.log(title);
        this.show_detail1=true;
        this.show_detail2=false;
        this.show_detail3=false;
-     }else if(title==this.items[1].title){
+     }else if(title=="CMTS-CM"){
+      console.log(title);
        this.show_detail1=false;
        this.show_detail2=true;
        this.show_detail3=false;
-     }else if(title==this.items[2].title){
+     }else if(title=="DCMTS-CM"){
+      console.log(title);
       this.show_detail1=false;
       this.show_detail2=false;
       this.show_detail3=true;

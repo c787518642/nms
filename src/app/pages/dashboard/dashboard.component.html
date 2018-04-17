@@ -1,27 +1,27 @@
 <div class="row">
   <div class="col-xxxl-3 col-md-6">
-    <ngx-status-card title="机房" count='{{device_data[0].room}}' color='{{device_count[0].color}}' type="primary">
+    <ngx-status-card title="机房" count='{{device_data.room}}' color='{{device_count[0].color}}' type="primary">
       <!-- <i class="nb-lightbulb"></i> -->
       <i class="iconfont icon-jifang"></i>
     </ngx-status-card>
   </div>
 
   <div class="col-xxxl-3 col-md-6">
-    <ngx-status-card title="CMTS" count='{{device_data[0].cmts}}' color='{{device_count[1].color}}' type="success">
+    <ngx-status-card title="CMTS" count='{{device_data.cmts}}' color='{{device_count[1].color}}' type="success">
       <!-- <i class="nb-roller-shades"></i> -->
       <i class="iconfont icon-CMTS"></i>
     </ngx-status-card>
   </div>
 
   <div class="col-xxxl-3 col-md-6">
-    <ngx-status-card title="DCMTS" count='{{device_data[0].dcmts}}' color='{{device_count[2].color}}' type="info">
+    <ngx-status-card title="DCMTS" count='{{device_data.dcmts}}' color='{{device_count[2].color}}' type="info">
       <!-- <i class="nb-audio"></i> -->
       <i class="iconfont icon-DCMTS"></i>
     </ngx-status-card>
   </div>
 
   <div class="col-xxxl-3 col-md-6">
-    <ngx-status-card title="光节点" count='{{device_data[0].fs}}' color='{{device_count[3].color}}' type="warning">
+    <ngx-status-card title="光节点" count='{{device_data.fs}}' color='{{device_count[3].color}}' type="warning">
       <!-- <i class="nb-coffee-maker"></i> -->
       <i class="iconfont icon-guangjiedian"></i>
     </ngx-status-card>

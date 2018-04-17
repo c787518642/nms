@@ -8,21 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PortsComponent implements OnInit {
   data_obj={
-    ber1:"14518",
-    ber2:"60",
-    ber3:"231",
-    qam2:"15.37%",
-    qam3:"0.00%",
-    qam4:"20.46%",
-    qam5:"0.00%",
-    qam6:"64.17%",
-    snr0:"717",
-    snr280:"647",
-    snr300:"13446",
+    ber1:"0",
+    ber2:"0",
+    ber3:"0",
+    qam2:"0%",
+    qam3:"0%",
+    qam4:"0%",
+    qam5:"0%",
+    qam6:"0%",
+    snr0:"0",
+    snr280:"0",
+    snr300:"0",
     width40W:"0",
-    width80W:"1",
-    width160W:"56",
-    width320W:"13539",
+    width80W:"0",
+    width160W:"0",
+    width320W:"0",
     width640W:"0"
   }
   constructor(private portsService:PortsService) { }
@@ -31,7 +31,10 @@ export class PortsComponent implements OnInit {
     this.portsService.getState().subscribe(response =>{
       if(response['code']&&response['code']==1){
         let data=response['data'];
-        this.data_obj=data[0];
+        if(data){
+          this.data_obj=data;
+        }
+        
       }
     })
   }
