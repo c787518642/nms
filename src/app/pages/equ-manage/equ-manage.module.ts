@@ -1,9 +1,11 @@
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { EquManageComponent } from './equ-manage.component';
 import { CmtsComponent } from './cmts/cmts.component';
 import { CmtsDetailComponent } from './cmts-detail/cmts-detail.component';
+import { DetailNumService } from './cmts-detail/detail-num.service';
 import { WaterChartComponent } from './cmts-detail/water-chart/water-chart.component';
 import { TemperatureComponent } from './cmts-detail/temperature/temperature.component';
 import { TemperatureDraggerComponent } from './cmts-detail/temperature/temperature-dragger/temperature-dragger.component';
@@ -46,7 +48,8 @@ import { CmtsEthernetComponent } from './cmts-ethernet/cmts-ethernet.component';
     CmtsListTableSnmpComponent
   ],
   providers:[
-    CmtsService
+    CmtsService,
+    DetailNumService
   ]
 })
 export class EquManageModule { }

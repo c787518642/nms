@@ -19,12 +19,12 @@ export class NetworkComponent implements OnInit,AfterViewInit {
       this.networkService.getNetwork().subscribe(response => {
         let code=response['code'];
         let data=response['data'];
-        for(let i=0;i<data.length;i++){
+        if(data){
+           for(let i=0;i<data.length;i++){
             this.X_data[i]=data[i].time
             this.Data_obj[i]=data[i].npa
-        }
-      
-        this.options = {
+            }
+           this.options = {
             tooltip: {
                 trigger: 'axis',
                 axisPointer: {
@@ -94,9 +94,12 @@ export class NetworkComponent implements OnInit,AfterViewInit {
                 },
                 data: this.Data_obj,
                 
-            }
-        ]
-        };
+              }
+            ]
+          };
+
+        }
+    
       })
   }
   ngAfterViewInit(){

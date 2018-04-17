@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 @Injectable()
-export class PortsService {
+export class DetailNumService {
 
   constructor(private http:HttpClient) { }
-  getState(){
-    return this.http.post("/tw-cmts-server/login/state",{})
+  getNum(){
+    return this.http.post("/tw-cmts-server/login/network_trends",{})
   }
-
 }

@@ -13,11 +13,11 @@ export class AlarmPreviewComponent implements OnInit {
   ) { }
   
   items=[{
-    name:'SNR',range:'<= 27dB',value:"4.74%"
+    name:'SNR',range:'<= 27dB',value:"0%"
   },{
-    name:'NPA',range:'< 60 Points',value:"1.25%"
+    name:'NPA',range:'< 60 Points',value:"0%"
   },{
-    name:'BER',range:'>= 0.01',value:"1.00%"
+    name:'BER',range:'>= 0.01',value:"0%"
   }
   ]
   code:any;
@@ -27,9 +27,9 @@ export class AlarmPreviewComponent implements OnInit {
       this.code=response["code"];
       if(this.code==1){
         this.alarm_data=response['data'];
-        this.items[0].value=this.alarm_data[0].snr;
-        this.items[1].value=this.alarm_data[0].cmts;
-        this.items[2].value=this.alarm_data[0].ber;
+        this.items[0].value=this.alarm_data.snr;
+        this.items[1].value=this.alarm_data.cmts;
+        this.items[2].value=this.alarm_data.ber;
       }
       
    })
