@@ -1,5 +1,6 @@
 import { NetworkService } from './network.service';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 
 declare var echarts;
 @Component({
@@ -100,7 +101,7 @@ export class NetworkComponent implements OnInit,AfterViewInit {
 
         }
     
-      })
+      }, error => { environment.error(error["status"]) })
   }
   ngAfterViewInit(){
    

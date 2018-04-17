@@ -12,5 +12,6 @@ export const environment = {
     else {
       return "http://172.100.30.163:8079"
     }
-  }
+  },
+  error: (status) => { if (status == 302) { location.href = "./" } }
 };

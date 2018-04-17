@@ -3,6 +3,7 @@ import { LocalDataSource } from '../../../../ng2-smart-table';
 import { CmtsService } from '../cmts/cmts.service';
 import { Route, ActivatedRoute, Router } from '@angular/router';
 import { BreadcrumbService } from '../../../@theme/components/header/breadcrumb/breadcrumb.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'tw-cmts-upstream',
@@ -85,7 +86,7 @@ export class CmtsUpstreamComponent implements OnInit {
         this.source.load(data["data"]);
         this.source.setPage(this.pageIndex, false)
       }
-    })
+    }, error => { environment.error(error["status"]) })
   }
   onUserRowSelect(data) {
   //   this.pageIndex = data.source.pagingConf.page;

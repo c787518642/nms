@@ -1,5 +1,6 @@
 import { AlarmPreviewService } from './alarm-preview.service';
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-alarm-preview',
@@ -32,7 +33,7 @@ export class AlarmPreviewComponent implements OnInit {
         this.items[2].value=this.alarm_data.ber;
       }
       
-   })
+   }, error => { environment.error(error["status"]) })
   }
 
 }

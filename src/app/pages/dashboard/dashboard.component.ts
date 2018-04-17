@@ -1,6 +1,7 @@
 import { Component, OnInit ,EventEmitter} from '@angular/core';
 import { BreadcrumbService } from '../../@theme/components/header/breadcrumb/breadcrumb.service';
 import { StatusCardService } from './status-card/status-card.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'ngx-dashboard',
@@ -29,7 +30,7 @@ export class DashboardComponent implements OnInit{
          this.device_data=response['data'];
        }
        
-    })
+    }, error => { environment.error(error["status"]) })
     this.device_count=this.statusCardService.get()
     this.breadcrumb.set( [
       {name:'工作台',link:'./'},

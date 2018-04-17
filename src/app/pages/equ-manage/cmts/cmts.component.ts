@@ -1,3 +1,4 @@
+import { environment } from './../../../../environments/environment';
 import { Component, OnInit, EventEmitter } from '@angular/core';
 import { CmtsService } from './cmts.service';
 import { LocalDataSource } from '../../../../ng2-smart-table';
@@ -32,7 +33,7 @@ export class CmtsComponent implements OnInit {
     columns: { c_nickname: { title: 'CMTS', }, snmpStatus: { title: 'SNMP 状态', type: "custom", renderComponent: CmtsListTableSnmpComponent }, }
   };
   cid;
-  pageIndex=1;
+  pageIndex = 1;
   showDetail = false;
 
   constructor(
@@ -41,7 +42,7 @@ export class CmtsComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) { }
-  
+
   ngOnInit() {
     this.route.queryParamMap.subscribe(data => {
       this.getCmtsList();
@@ -66,7 +67,7 @@ export class CmtsComponent implements OnInit {
 
   // 筛选框
   onSearch(query: string = '') {
-    if (!query) { this.source.setFilter([]) ;return}
+    if (!query) { this.source.setFilter([]); return }
     this.source.setFilter([
       { field: 'company_name', search: query },
       { field: 'sr_name', search: query },
@@ -88,6 +89,6 @@ export class CmtsComponent implements OnInit {
         this.source.load(data["data"]);
         this.source.setPage(this.pageIndex, false)
       }
-    })
+    }, error => { environment.error(error["status"]) })
   }
 }

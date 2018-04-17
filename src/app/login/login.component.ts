@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     if (isLogin === "logout") {
       // 清除登录信息
       this.loginService.logout().subscribe((data) => {
-        console.log('退出系统')
+        // console.log('退出系统')
       })
 
     }
@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit {
   }
   onEnter() {
 
-    console.log("enter")
+    // console.log("enter")
   }
   onSubmit(f) {
     var input = document.getElementById("pwd");
@@ -87,7 +87,6 @@ export class LoginComponent implements OnInit {
     this.isLogin = true;
     this.loginService.login(jsonObj).subscribe(
       data => {
-        console.log(data)
         if (data['code'] && data['code'] == 1) {
           // if成功,跳转
           this.router.navigate(['./pages'])
@@ -101,7 +100,7 @@ export class LoginComponent implements OnInit {
         }
       },
       error => {
-        console.log(error);
+        // console.log(error);
         this.isLogin = false;
         this.hadError = true;
         this.errorInfo = "异常错误"
