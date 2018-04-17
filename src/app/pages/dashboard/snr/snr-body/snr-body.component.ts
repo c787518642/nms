@@ -2,6 +2,7 @@ import { SnrService } from './../snr.service';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Observable }from'rxjs/Rx';
 import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'tw-snr-body',
@@ -91,7 +92,7 @@ export class SnrBodyComponent implements OnInit , AfterViewInit,OnDestroy{
                   };
                }
            }
-        })
+        }, error => { environment.error(error["status"]) })
         if(document.body.clientWidth<=1336&&document.body.clientWidth>1257){
             this.Gap=20;
             this.Padding=0;

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchAllService } from './search-all.service';
 import { NbThemeService } from '@nebular/theme';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'tw-search-all',
@@ -65,7 +66,7 @@ export class SearchAllComponent implements OnInit {
         this.result = result.slice(0, 4);
       }
 
-    })
+    }, error => { environment.error(error["status"]) })
 
   }
   saveToHistory(i) {

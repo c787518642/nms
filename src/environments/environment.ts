@@ -10,5 +10,6 @@
 
 export const environment = {
   production: false,
-  getPath: () => { return ""}
+  getPath: () => { return "" },
+  error: (status) => { if (status == 302) { location.href = "./" } }
 };

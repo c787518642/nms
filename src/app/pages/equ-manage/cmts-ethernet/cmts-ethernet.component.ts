@@ -3,6 +3,7 @@ import { LocalDataSource } from '../../../../ng2-smart-table';
 import { ActivatedRoute } from '@angular/router';
 import { CmtsService } from '../cmts/cmts.service';
 import { BreadcrumbService } from '../../../@theme/components/header/breadcrumb/breadcrumb.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'tw-cmts-ethernet',
@@ -78,7 +79,7 @@ export class CmtsEthernetComponent implements OnInit {
         this.source.load(data["data"])
       }
 
-    })
+    }, error => { environment.error(error["status"]) })
   }
   onUserRowSelect(data) {
     

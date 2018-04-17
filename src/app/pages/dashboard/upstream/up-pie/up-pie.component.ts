@@ -2,6 +2,7 @@ import { UpstreamService } from './../upstream.service';
 import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Observable }from'rxjs/Rx';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'tw-up-pie',
@@ -109,7 +110,7 @@ export class UpPieComponent implements OnInit,AfterViewInit,OnDestroy {
                 ]
               };
         }
-    })
+    }, error => { environment.error(error["status"]) })
       
     if(document.body.clientWidth<=1336&&document.body.clientWidth>1257){
         this.Gap=20;

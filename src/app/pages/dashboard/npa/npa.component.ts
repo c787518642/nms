@@ -1,5 +1,6 @@
 import { NpaService } from './npa.service';
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'tw-npa',
@@ -55,7 +56,7 @@ export class NpaComponent implements OnInit {
          
 
        }
-    })
+    }, error => { environment.error(error["status"]) })
   }
   show(){
     this.show_detail=!this.show_detail;

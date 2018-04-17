@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CollectionService } from './collection.service';
+import { environment } from '../../../../environments/environment';
 @Component({
   selector: 'app-collection',
   templateUrl: './collection.component.html',
@@ -96,22 +97,19 @@ export class CollectionComponent implements OnInit {
      
       }
       
-   })
+   }, error => { environment.error(error["status"]) })
   
   }
   show(title){
      if(title=='全网CM'){
-     
        this.show_detail1=true;
        this.show_detail2=false;
        this.show_detail3=false;
      }else if(title=="CMTS-CM"){
-     
        this.show_detail1=false;
        this.show_detail2=true;
        this.show_detail3=false;
      }else if(title=="DCMTS-CM"){
-     
       this.show_detail1=false;
       this.show_detail2=false;
       this.show_detail3=true;

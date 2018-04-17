@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SnrService } from './../snr.service';
+import { environment } from '../../../../../environments/environment';
 @Component({
   selector: 'tw-snr-line',
   templateUrl: './snr-line.component.html',
@@ -161,7 +162,7 @@ export class SnrLineComponent  implements OnInit {
 
         }
         
-    })
+    }, error => { environment.error(error["status"]) })
   
     
   }

@@ -10,7 +10,7 @@ export class CmtsService {
   ) { }
   // cmts列表
   getCmtsList() {
-    return this.http.post("/tw-cmts-server/cmts/cmtsjcxx2", {})
+    return this.http.post("/tw-cmts-server/cmts/cmtsjcxx2", { })
   }
   // cmts列表
   getCmtsUpstreamList(obj: { cid }) {

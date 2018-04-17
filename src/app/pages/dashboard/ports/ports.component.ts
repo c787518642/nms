@@ -1,5 +1,6 @@
 import { PortsService } from './ports.service';
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'tw-ports',
@@ -36,7 +37,7 @@ export class PortsComponent implements OnInit {
         }
         
       }
-    })
+    }, error => { environment.error(error["status"]) })
   }
 
 }

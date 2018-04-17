@@ -1,6 +1,7 @@
 import { UpstreamComponent } from './../upstream.component';
 import { UpstreamService } from './../upstream.service';
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../../../../environments/environment';
 declare var echarts;
 @Component({
   selector: 'tw-up-line',
@@ -176,7 +177,7 @@ export class UpLineComponent implements OnInit {
           };
 
         }
-    })
+    }, error => { environment.error(error["status"]) })
 
    
   }
