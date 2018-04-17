@@ -12,6 +12,7 @@ import { TemperatureDraggerComponent } from './cmts-detail/temperature/temperatu
 import { EquManageRoutingModule } from './equ-manage-routing.module';
 import { ThemeModule } from '../../@theme/theme.module';
 import { CmtsTableComponent } from './cmts-detail/cmts-table/cmts-table.component';
+import { CmtsTableService } from './cmts-detail/cmts-table/cmts-table.service';
 import { CmtsService } from './cmts/cmts.service';
 import { CmtsCollectionChangeComponent } from './cmts-detail/cmts-collection-change/cmts-collection-change.component';
 import { CmtsDetailChartsComponent } from './cmts-detail/cmts-detail-charts/cmts-detail-charts.component';
@@ -20,6 +21,7 @@ import { CmtsListTableSnmpComponent } from './cmts/cmts-list-table-snmp/cmts-lis
 import { CmtsUpstreamComponent } from './cmts-upstream/cmts-upstream.component';
 import { CmtsDownstreamComponent } from './cmts-downstream/cmts-downstream.component';
 import { CmtsEthernetComponent } from './cmts-ethernet/cmts-ethernet.component';
+
 
 @NgModule({
   imports: [
@@ -34,6 +36,7 @@ import { CmtsEthernetComponent } from './cmts-ethernet/cmts-ethernet.component';
     CmtsComponent,
     CmtsDetailComponent,
     WaterChartComponent,
+   
     TemperatureComponent,
     TemperatureDraggerComponent,
     CmtsTableComponent,
@@ -43,13 +46,15 @@ import { CmtsEthernetComponent } from './cmts-ethernet/cmts-ethernet.component';
     CmtsUpstreamComponent,
     CmtsDownstreamComponent,
     CmtsEthernetComponent,
+
   ],
   entryComponents:[
     CmtsListTableSnmpComponent
   ],
   providers:[
     CmtsService,
-    DetailNumService
+    DetailNumService,
+    CmtsTableService
   ]
 })
 export class EquManageModule { }

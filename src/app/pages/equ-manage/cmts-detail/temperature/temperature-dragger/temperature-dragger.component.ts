@@ -10,12 +10,12 @@ import {
   styleUrls: ['./temperature-dragger.component.scss'],
 })
 export class TemperatureDraggerComponent implements AfterViewInit, OnChanges {
-   VIEW_BOX_SIZE = 320;
+   VIEW_BOX_SIZE = 300;
   @ViewChild('svgRoot') svgRoot: ElementRef;
 
   @Input() fillColors: string|string[] = '#2ec6ff';
   @Input() disableArcColor = '#999999';
-  @Input() bottomAngle = 80;
+  @Input() bottomAngle = 70;
   @Input() arcThickness = 14; // CSS pixels
   @Input() thumbRadius = 15; // CSS pixels
   @Input() thumbBorder = 3;

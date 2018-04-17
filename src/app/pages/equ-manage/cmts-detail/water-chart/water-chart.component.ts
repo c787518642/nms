@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,AfterViewInit} from '@angular/core';
 
 declare var echarts;
 @Component({
@@ -6,13 +6,17 @@ declare var echarts;
   templateUrl: './water-chart.component.html',
   styleUrls: ['./water-chart.component.scss']
 })
-export class WaterChartComponent implements OnInit {
+export class WaterChartComponent implements OnInit,AfterViewInit {
   options1: any;
   options2: any;
   options3: any;
   constructor() { }
 
   ngOnInit() {
+    
+  }
+
+  ngAfterViewInit(){
     this.options1 = {
       series: [{
         type: 'liquidFill',
@@ -176,4 +180,5 @@ export class WaterChartComponent implements OnInit {
       }]
     };
   }
+
 }

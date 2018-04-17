@@ -101,17 +101,17 @@ export class CollectionComponent implements OnInit {
   }
   show(title){
      if(title=='全网CM'){
-      console.log(title);
+     
        this.show_detail1=true;
        this.show_detail2=false;
        this.show_detail3=false;
      }else if(title=="CMTS-CM"){
-      console.log(title);
+     
        this.show_detail1=false;
        this.show_detail2=true;
        this.show_detail3=false;
      }else if(title=="DCMTS-CM"){
-      console.log(title);
+     
       this.show_detail1=false;
       this.show_detail2=false;
       this.show_detail3=true;
