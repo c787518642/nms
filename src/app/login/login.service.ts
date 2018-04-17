@@ -15,6 +15,7 @@ export class LoginService {
     this.breadcrumb.set([{name:'主面板',link:'./'}]);
     let path=environment.getPath()+'/tw-cmts-server/login/login_info';
     return this.http.post(path,toFormData(obj),{
+      // observe: 'response' ,
       headers:new HttpHeaders({'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'}),
     });
   }

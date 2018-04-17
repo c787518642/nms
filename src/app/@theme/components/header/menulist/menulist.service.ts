@@ -1,44 +1,27 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable, EventEmitter } from '@angular/core';
+import { environment } from '../../../../../environments/environment';
 
 @Injectable()
 export class MenulistService {
-  public menulist = new EventEmitter();
+  public npa = new EventEmitter();
+  public alarm = new EventEmitter();
   npaShow: boolean = false;
   alarmShow: boolean = false;
+ 
   private items;
   constructor(
-
+    private http:HttpClient
   ) { }
-  get() {
-    this.items = [
-      {
-        npa: [{
-          time: '日', value: 93
-        }, {
-          time: '周', value: 94
-        }, {
-          time: '月', value: 93.5
-        }],
-        link: './',
-        show: this.npaShow
-      },
-      {
-        alarm: [{
-          name: '严重告警', value: '4000',color:'red'
-        }, {
-          name: '主要告警', value: '0',color:'orange'
-        }, {
-          name: '次要告警', value: '0',color:'yellow'
-        }, { 
-          name: '提示告警', value: '4000' ,color:'blue'
-      }],
-        link: './',
-        show: this.alarmShow
-      }];
-    this.menulist.emit(this.items)
-    // return 
+  getAlarm(){
+    let path=environment.getPath()+'/tw-cmts-server/login/get_gj_count';
+    return this.http.post(path,{})
   }
-  set(x) {
+  getNpa(){
+    let path=environment.getPath()+'/tw-cmts-server/login/get_npa_info';
+    return this.http.post(path,{})
+  }
+  toggle(x) {
     if (x == 'user') {
       this.npaShow = false;
       this.alarmShow = false;
@@ -64,54 +47,7 @@ export class MenulistService {
       this.npaShow = false;
       this.alarmShow = false;
     }
-    this.items = [
-      {
-        npa: [{
-          time: '日', value: 93
-        }, {
-          time: '周', value: 94
-        }, {
-          time: '月', value: 93.5
-        }],
-        link: './',
-        show: this.npaShow
-      },
-      {
-        alarm: [{
-          name: '严重告警', value: '4000',color:'red'
-        }, {
-          name: '主要告警', value: '0',color:'orange'
-        }, {
-          name: '次要告警', value: '0',color:'yellow'
-        }, { 
-          name: '提示告警', value: '4000' ,color:'blue'
-      }],
-        link: './',
-        show: this.alarmShow
-      }];
-    this.menulist.emit(this.items)
-
-    // for(let item of this.items){
-    //   console.log(item.show)
-    //   if(item.show===true){
-    //     console.log("x:",x)
-    //     if(x=="alarm"){
-    //       this.items=[{name:'1111',link:'./',show:false},{name:'2222',link:'./',show:false}]
-    //     }else if(x=="npa"){
-    //       this.items=[{name:'1111',link:'./',show:false},{name:'2222',link:'./',show:false}]
-    //     }
-    //     this.menulist.emit(this.items)
-    //     return
-    //   }
-    // }
-    //   if(x=="alarm"){
-    //     this.items=[{name:'1111',link:'./',show:false},{name:'2222',link:'./',show:true}]
-    //   }else if(x=="npa"){
-    //     this.items=[{name:'1111',link:'./',show:true},{name:'2222',link:'./',show:false}]
-    //   }
-
-    // // this.items=[{name:'1111',link:'./',show:false},{name:'2222',link:'./',show:false}]
-    // // console.log(this.items)
-    // this.menulist.emit(this.items)
+    this.alarm.emit(this.alarmShow)
+    this.npa.emit(this.npaShow)
   }
 }

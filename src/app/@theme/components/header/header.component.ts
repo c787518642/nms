@@ -62,8 +62,9 @@ export class HeaderComponent implements OnInit {
   startSearch() {
     this.analyticsService.trackEvent('startSearch');
   }
-  onclick(x){
-    this.menulistService.set(x)
+  toggle(x){
+    this.menulistService.toggle(x);
+ 
   
   }
   search(){

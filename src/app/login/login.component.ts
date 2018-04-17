@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   default_username = "";
   upcase = false;
   errorInfo: string;
-  isLogin=false;
+  isLogin = false;
   constructor(
     private loginService: LoginService,
     private router: Router,
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     let isLogin = this.route.snapshot.paramMap.get("logout");
     if (isLogin === "logout") {
       // 清除登录信息
-      this.loginService.logout().subscribe((data)=>{
+      this.loginService.logout().subscribe((data) => {
         console.log('退出系统')
       })
 
@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
       }
     }
   }
-  onEnter(){
+  onEnter() {
 
     console.log("enter")
   }
@@ -84,20 +84,29 @@ export class LoginComponent implements OnInit {
     if (jsonObj["username"] == '') { this.username_empty = true; return false }
     if (jsonObj["pwd"] == '') { this.pwd_empty = true; return false }
     // http
-    this.isLogin=true;
-    this.loginService.login(jsonObj).subscribe(data => {
-      if (data['code'] && data['code'] == 1) {
-        // if成功,跳转
-        this.router.navigate(['./pages'])
-        // if登录成功记住用户名
-        localStorage.setItem("username", jsonObj.username)
-      } else {
-        // if失败显示错误
-        this.isLogin=false;
+    this.isLogin = true;
+    this.loginService.login(jsonObj).subscribe(
+      data => {
+        console.log(data)
+        if (data['code'] && data['code'] == 1) {
+          // if成功,跳转
+          this.router.navigate(['./pages'])
+          // if登录成功记住用户名
+          localStorage.setItem("username", jsonObj.username)
+        } else {
+          // if失败显示错误
+          this.isLogin=false;
+          this.hadError = true;
+          this.errorInfo = data['message'] || "异常错误"
+        }
+      },
+      error => {
+        console.log(error);
+        this.isLogin = false;
         this.hadError = true;
-        this.errorInfo = data['message'] || "异常错误"
+        this.errorInfo = "异常错误"
       }
-    })
+    )
 
   }
 }
