@@ -92,7 +92,7 @@ export class SnrBodyComponent implements OnInit , AfterViewInit,OnDestroy{
                   };
                }
            }
-        }, error => { environment.error(error["status"]) })
+        })
         if(document.body.clientWidth<=1336&&document.body.clientWidth>1257){
             this.Gap=20;
             this.Padding=0;

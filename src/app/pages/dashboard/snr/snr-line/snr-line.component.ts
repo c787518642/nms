@@ -162,7 +162,7 @@ export class SnrLineComponent  implements OnInit {
 
         }
         
-    }, error => { environment.error(error["status"]) })
+    })
   
     
   }

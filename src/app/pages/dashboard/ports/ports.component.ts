@@ -37,7 +37,7 @@ export class PortsComponent implements OnInit {
         }
         
       }
-    }, error => { environment.error(error["status"]) })
+    })
   }
 
 }

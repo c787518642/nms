@@ -56,7 +56,7 @@ export class NpaComponent implements OnInit {
          
 
        }
-    }, error => { environment.error(error["status"]) })
+    })
   }
   show(){
     this.show_detail=!this.show_detail;

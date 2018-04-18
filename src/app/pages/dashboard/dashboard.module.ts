@@ -1,5 +1,5 @@
 
-import { NgModule, enableProdMode } from '@angular/core';
+import { NgModule, enableProdMode, ErrorHandler } from '@angular/core';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -31,6 +31,7 @@ import { UpLineComponent } from './upstream/up-line/up-line.component';
 import { UpPieComponent } from './upstream/up-pie/up-pie.component';
 import { BsDatepickerModule } from 'ngx-bootstrap';
 import { imageOverlay } from 'leaflet';
+import { AppErrorHandler } from '../../errors/errorHandler';
 
 
 @NgModule({
@@ -78,7 +79,7 @@ import { imageOverlay } from 'leaflet';
     NpaService,
     PortsService,
     SnrService,
-    UpstreamService
+    UpstreamService,
   ]
 })
 export class DashboardModule { }

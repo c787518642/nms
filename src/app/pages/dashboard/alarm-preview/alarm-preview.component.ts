@@ -33,7 +33,7 @@ export class AlarmPreviewComponent implements OnInit {
         this.items[2].value=this.alarm_data.ber;
       }
       
-   }, error => { environment.error(error["status"]) })
+   })
   }
 
 }

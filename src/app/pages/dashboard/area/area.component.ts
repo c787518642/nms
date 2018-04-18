@@ -32,6 +32,10 @@ export class AreaComponent implements OnInit,AfterViewInit,OnDestroy {
  
 
   ngOnInit() {
+
+  }
+
+  ngAfterViewInit(){
     this.areaService.getNpavalues().subscribe(response => {
         if(response['code']&&response['code']==1){
             let data=response['data'];
@@ -157,8 +161,6 @@ export class AreaComponent implements OnInit,AfterViewInit,OnDestroy {
          
     });
   }
-
-  ngAfterViewInit(){}
 
   ngOnDestroy(){
     this.sub.unsubscribe();

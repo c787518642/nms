@@ -11,5 +11,7 @@
 export const environment = {
   production: false,
   getPath: () => { return "" },
-  error: (status) => { if (status == 302) { location.href = "./" } }
+  error: (status) => { 
+    // if (status == 302) { location.href = "./" } else { alert("异常错误") } 
+  }
 };
