@@ -29,10 +29,10 @@ export class MenulistComponent implements OnInit {
   ) {
     this.menulistService.alarm.subscribe(data => {
       this.alarm_show = data;
-    }, error => { environment.error(error["status"]) })
+    })
     this.menulistService.npa.subscribe(data => {
       this.npa_show = data;
-    }, error => { environment.error(error["status"]) })
+    })
   }
 
   ngOnInit() {
@@ -57,7 +57,7 @@ export class MenulistComponent implements OnInit {
         this.alarm[2].value = a.yellow_num
         this.alarm[3].value = a.blue_num
       }
-    }, error => { environment.error(error["status"]) })
+    })
   }
   getNpa() {
     this.menulistService.getNpa().subscribe((data) => {
@@ -67,6 +67,6 @@ export class MenulistComponent implements OnInit {
         this.npa[1].value = a.avg_week
         this.npa[2].value = a.avg_month
       }
-    }, error => { environment.error(error["status"]) })
+    })
   }
 }

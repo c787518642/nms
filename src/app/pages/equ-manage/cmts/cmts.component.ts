@@ -89,6 +89,6 @@ export class CmtsComponent implements OnInit {
         this.source.load(data["data"]);
         this.source.setPage(this.pageIndex, false)
       }
-    }, error => { environment.error(error["status"]) })
+    })
   }
 }

@@ -66,7 +66,7 @@ export class SearchAllComponent implements OnInit {
         this.result = result.slice(0, 4);
       }
 
-    }, error => { environment.error(error["status"]) })
+    })
 
   }
   saveToHistory(i) {

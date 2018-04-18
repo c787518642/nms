@@ -177,7 +177,7 @@ export class UpLineComponent implements OnInit {
           };
 
         }
-    }, error => { environment.error(error["status"]) })
+    })
 
    
   }

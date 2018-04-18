@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 // import { BreadcrumbService } from './@theme/components/header/breadcrumb/breadcrumb.service';
 // import { BreadcrumbService } from './pages/breadcrumb.service';
 /**
@@ -8,7 +9,7 @@
 import { APP_BASE_HREF } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule, enableProdMode } from '@angular/core';
+import { NgModule, enableProdMode, ErrorHandler } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { CoreModule } from './@core/core.module';
 
@@ -18,6 +19,7 @@ import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
+import { AppErrorHandler } from './errors/errorHandler';
 // import { HttpHeaders } from '@angular/common/http';
 enableProdMode();
 @NgModule({
@@ -26,6 +28,7 @@ enableProdMode();
     BrowserModule,
     BrowserAnimationsModule,
     HttpModule,
+    HttpClientModule,
     AppRoutingModule,
 
     NgbModule.forRoot(),
@@ -35,6 +38,7 @@ enableProdMode();
   bootstrap: [AppComponent],
   providers: [
     LoginService,
+    {provide: ErrorHandler, useClass: AppErrorHandler},
     // HttpHeaders,
     // 路由前缀
     { provide: APP_BASE_HREF, useValue: '/' },

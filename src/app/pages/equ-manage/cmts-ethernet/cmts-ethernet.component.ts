@@ -79,7 +79,7 @@ export class CmtsEthernetComponent implements OnInit {
         this.source.load(data["data"])
       }
 
-    }, error => { environment.error(error["status"]) })
+    })
   }
   onUserRowSelect(data) {
     

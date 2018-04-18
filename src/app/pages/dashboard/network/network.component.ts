@@ -101,7 +101,7 @@ export class NetworkComponent implements OnInit,AfterViewInit {
 
         }
     
-      }, error => { environment.error(error["status"]) })
+      })
   }
   ngAfterViewInit(){
    

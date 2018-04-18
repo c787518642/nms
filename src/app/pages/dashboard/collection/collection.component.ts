@@ -97,7 +97,7 @@ export class CollectionComponent implements OnInit {
      
       }
       
-   }, error => { environment.error(error["status"]) })
+   })
   
   }
   show(title){

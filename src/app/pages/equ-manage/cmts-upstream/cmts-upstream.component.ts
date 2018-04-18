@@ -86,7 +86,7 @@ export class CmtsUpstreamComponent implements OnInit {
         this.source.load(data["data"]);
         this.source.setPage(this.pageIndex, false)
       }
-    }, error => { environment.error(error["status"]) })
+    })
   }
   onUserRowSelect(data) {
   //   this.pageIndex = data.source.pagingConf.page;
