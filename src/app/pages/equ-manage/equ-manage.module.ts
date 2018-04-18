@@ -21,6 +21,7 @@ import { CmtsListTableSnmpComponent } from './cmts/cmts-list-table-snmp/cmts-lis
 import { CmtsUpstreamComponent } from './cmts-upstream/cmts-upstream.component';
 import { CmtsDownstreamComponent } from './cmts-downstream/cmts-downstream.component';
 import { CmtsEthernetComponent } from './cmts-ethernet/cmts-ethernet.component';
+import { CanvasChartComponent } from './cmts-detail/canvas-chart/canvas-chart.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { CmtsEthernetComponent } from './cmts-ethernet/cmts-ethernet.component';
     CmtsUpstreamComponent,
     CmtsDownstreamComponent,
     CmtsEthernetComponent,
+    CanvasChartComponent,
 
   ],
   entryComponents:[

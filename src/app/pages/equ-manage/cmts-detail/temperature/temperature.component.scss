@@ -44,34 +44,21 @@ div{
     flex-direction: column;
     align-items: center;
 
-    .value {
-      position: relative;
-      color: nb-theme(color-fg-heading);
-      font-family: nb-theme(font-secondary);
-      font-size: 2rem;
-      font-weight: 600; 
-    }
+   // &.off {
+    //   .value {
+    //     color: nb-theme(color-fg);
+    //     letter-spacing: 0.25rem;
+    //     padding-left: 0.5rem;
 
-    .desc {
-      color: #717171;
-      font-weight: nb-theme(font-weight-light);
-    }
+    //     &::before {
+    //       display: none;
+    //     }
+    //   }
 
-    &.off {
-      .value {
-        color: nb-theme(color-fg);
-        letter-spacing: 0.25rem;
-        padding-left: 0.5rem;
-
-        &::before {
-          display: none;
-        }
-      }
-
-      .desc {
-        display: none;
-      }
-    }
+    //   .desc {
+    //     display: none;
+    //   }
+    // }
   }
 
   .btn-group {
@@ -114,20 +101,16 @@ div{
     ngx-temperature-dragger {
       max-width: 250px;
 
-      /deep/ .power-bg {
-        width: 4rem;
-        height: 4rem;
-        font-size: 3rem;
-      }
+    
     }
 
-    .slider-value-container .value {
-      font-size: 3rem;
-      &.humidity::before {
-        right: -2rem;
-        font-size: 2rem;
-      }
-    }
+    // .slider-value-container .value {
+    //   font-size: 3rem;
+    //   &.humidity::before {
+    //     right: -2rem;
+    //     font-size: 2rem;
+    //   }
+    // }
   }
   @include media-breakpoint-down(xs) {
     .btn-icon {
@@ -144,5 +127,41 @@ div{
         padding: 1.25rem 1rem;
       }
     }
+  }
+}
+
+.Value {
+  position: relative;
+  color: #2a2a2a;
+  font-family:Exo;
+  font-size: 2rem;
+  font-weight: 600; 
+}
+
+.desc {
+  color: #717171;
+  font-weight: 300;
+}
+@media screen and (max-width:1500px){
+  .Value{
+    font-size: 26px;
+  }
+}
+@media screen and (max-width:1400px){
+  .Value{
+    font-size: 20px;
+    font-weight: 400px;
+  }
+}
+@media screen and (max-width:700px){
+  .Value{
+    font-size: 16px;
+    font-weight: 500px;
+  }
+}
+@media screen and (max-width:576px){
+  .Value{
+    font-size: 12px;
+    font-weight: 500px;
   }
 }

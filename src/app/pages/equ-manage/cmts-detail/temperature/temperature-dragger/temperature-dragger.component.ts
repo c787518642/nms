@@ -37,13 +37,16 @@ export class TemperatureDraggerComponent implements AfterViewInit, OnChanges {
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
-    if(document.body.clientWidth<=1500&&document.body.clientWidth>1450){
-      this.VIEW_BOX_SIZE = 260;
-   }else if(document.body.clientWidth<=1450){
-      this.VIEW_BOX_SIZE = 280;
-   }
-  
-    this.invalidate();
+  //   if(document.body.clientWidth<=1500&&document.body.clientWidth>1450){
+  //     this.VIEW_BOX_SIZE = 320;
+  //  }else if(document.body.clientWidth<=1450&&document.body.clientWidth>576){
+  //     this.VIEW_BOX_SIZE = 340;
+  //  }
+  //  else if(document.body.clientWidth<=576){
+   
+  //  }
+    
+    // this.invalidate();
   }
 
   off = false;
@@ -103,6 +106,7 @@ export class TemperatureDraggerComponent implements AfterViewInit, OnChanges {
   }
 
   private calculateVars() {
+    console.log(this.thumbBorder);
     this.bottomAngleRad = TemperatureDraggerComponent.toRad(this.bottomAngle);
     this.colors = (typeof this.fillColors === 'string') ? [this.fillColors] : this.fillColors;
 
@@ -118,7 +122,7 @@ export class TemperatureDraggerComponent implements AfterViewInit, OnChanges {
 
     this.scaleFactor = svgBoundingRect.width / this.VIEW_BOX_SIZE || 1;
     this.styles.viewBox = `0 0 ${this.VIEW_BOX_SIZE} ${svgHeight}`;
-
+    
 
     const circleFactor = this.bottomAngleRad <= Math.PI
       ? ( 2 / (1 + Math.cos(halfAngle)) )

@@ -17,6 +17,7 @@ export class SnrBodyComponent implements OnInit , AfterViewInit,OnDestroy{
     Padding=0;
     sub:any;
     updateOptions: any;
+    
     constructor(private snrService:SnrService) { }
     onChartInit(e: any) {
       this.echartsInstance = e;
