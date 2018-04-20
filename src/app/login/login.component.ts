@@ -26,12 +26,15 @@ export class LoginComponent implements OnInit {
   ) { }
   ngOnInit() {
     let isLogin = this.route.snapshot.paramMap.get("logout");
+   
     if (isLogin === "logout") {
+      location.href = "./"
       // 清除登录信息
       this.loginService.logout().subscribe((data) => {
+        
         // console.log('退出系统')
       })
-
+      
     }
     this.is_rem_user();
     if (this.rem_user) {
@@ -94,7 +97,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem("username", jsonObj.username)
         } else {
           // if失败显示错误
-          this.isLogin=false;
+          this.isLogin = false;
           this.hadError = true;
           this.errorInfo = data['message'] || "异常错误"
         }
