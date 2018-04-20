@@ -14,41 +14,30 @@ const routes: Routes = [{
     component: DashboardComponent,
   }, {
     path: 'equ-manage',
-    // component: EquManageComponent,
-    // children:[{
-    //   path: 'cmts',
-    //   component: CmtsComponent,
-    // },{
-    //   path: '',
-    //   redirectTo: 'cmts', pathMatch: 'full'
-    // },{
-    //   path: '**',
-    //   redirectTo: 'cmts'
-    // }]
     loadChildren: './equ-manage/equ-manage.module#EquManageModule',
   }, {
     
-    path: 'ui-features',
-    loadChildren: './ui-features/ui-features.module#UiFeaturesModule',
-  }, {
-    path: 'components',
-    loadChildren: './components/components.module#ComponentsModule',
-  }, {
-    path: 'maps',
-    loadChildren: './maps/maps.module#MapsModule',
-  }, {
-    path: 'charts',
-    loadChildren: './charts/charts.module#ChartsModule',
-  }, {
-    path: 'editors',
-    loadChildren: './editors/editors.module#EditorsModule',
-  }, {
-    path: 'forms',
-    loadChildren: './forms/forms.module#FormsModule',
-  }, {
-    path: 'tables',
-    loadChildren: './tables/tables.module#TablesModule',
-  }, {
+  //   path: 'ui-features',
+  //   loadChildren: './ui-features/ui-features.module#UiFeaturesModule',
+  // }, {
+  //   path: 'components',
+  //   loadChildren: './components/components.module#ComponentsModule',
+  // }, {
+  //   path: 'maps',
+  //   loadChildren: './maps/maps.module#MapsModule',
+  // }, {
+  //   path: 'charts',
+  //   loadChildren: './charts/charts.module#ChartsModule',
+  // }, {
+  //   path: 'editors',
+  //   loadChildren: './editors/editors.module#EditorsModule',
+  // }, {
+  //   path: 'forms',
+  //   loadChildren: './forms/forms.module#FormsModule',
+  // }, {
+  //   path: 'tables',
+  //   loadChildren: './tables/tables.module#TablesModule',
+  // }, {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',
