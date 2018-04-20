@@ -1,11 +1,12 @@
-import { Component, OnInit,ViewChild,ElementRef } from '@angular/core';
-
+import { Component, OnInit,ViewChild,ElementRef,Input,OnChanges} from '@angular/core';
+import { DetailNumService } from '../detail-num.service';
 @Component({
   selector: 'tw-canvas-chart',
   templateUrl: './canvas-chart.component.html',
   styleUrls: ['./canvas-chart.component.scss']
 })
-export class CanvasChartComponent implements OnInit {
+export class CanvasChartComponent implements OnInit,OnChanges {
+  @Input() Item;
   @ViewChild('canvas1') canvas1: ElementRef;
   @ViewChild('canvas2') canvas2: ElementRef;
   @ViewChild('canvas3') canvas3: ElementRef;
@@ -16,23 +17,33 @@ export class CanvasChartComponent implements OnInit {
   mem_value=53;
   temp_value=42;
 
-  constructor() { }
+  constructor(private service:DetailNumService) { 
+     this.service.a.subscribe(data =>{
+        this.cpu_value=data.cpu_r;
+        this.mem_value=data.mem_r;
+        this.temp_value=data.temp;
+        this.draw(this.canvas1, this.cpu_value,0,100,"#42db7d");
+        this.draw(this.canvas2,this.mem_value,0,100,"#fddc42");
+        this.draw(this.canvas3,this.temp_value,0,100,"#4cc2ff");
+     })
+  }
  
   ngOnInit() {
-    this.draw(this.canvas1,this.cpu_value,0,100,"#42db7d");
-    this.draw(this.canvas2,this.mem_value,0,100,"#fddc42");
-    this.draw(this.canvas3,this.temp_value,0,100,"#4cc2ff");
+  }
+  ngOnChanges(){
+     console.log(this.Item);
   }
   //CPU
   draw(obj,value,min,max,color){
+    if(value=="--"){value=0;}
     let canvas1 = obj.nativeElement;
-    canvas1.width=canvas1.height;
+    canvas1.height=canvas1.width;
     var width=canvas1.height/2;
     var height=canvas1.height/2;
     var ctx = canvas1.getContext('2d');
     var centerX=width;       
-    var centrtY=height;
-    var radius=0.84*width;          //圆环半径
+    var centrtY=height-0.26*height;
+    var radius=0.6*width;          //圆环半径
     var linewidth=12;        //圆环粗细
     var color=color;     //圆环颜色   绿色为#5ce191  深色为#42db7d
     var min=min;
@@ -49,7 +60,7 @@ export class CanvasChartComponent implements OnInit {
     var timer=setInterval(draw_process,10)
    
     function draw_process(){
-        console.log(angle_obj);
+      
         if(angle_obj>enAngle){
             angle_obj=enAngle-(enAngle-angle_obj);
             clearTimeout(timer);

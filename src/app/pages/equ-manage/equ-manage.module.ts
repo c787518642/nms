@@ -15,6 +15,7 @@ import { CmtsTableComponent } from './cmts-detail/cmts-table/cmts-table.componen
 import { CmtsTableService } from './cmts-detail/cmts-table/cmts-table.service';
 import { CmtsService } from './cmts/cmts.service';
 import { CmtsCollectionChangeComponent } from './cmts-detail/cmts-collection-change/cmts-collection-change.component';
+import { CmtsCollettionService } from './cmts-detail/cmts-collection-change/cmts-collettion.service';
 import { CmtsDetailChartsComponent } from './cmts-detail/cmts-detail-charts/cmts-detail-charts.component';
 import { Ng2SmartTableModule } from '../../../ng2-smart-table';
 import { CmtsListTableSnmpComponent } from './cmts/cmts-list-table-snmp/cmts-list-table-snmp.component';
@@ -22,6 +23,13 @@ import { CmtsUpstreamComponent } from './cmts-upstream/cmts-upstream.component';
 import { CmtsDownstreamComponent } from './cmts-downstream/cmts-downstream.component';
 import { CmtsEthernetComponent } from './cmts-ethernet/cmts-ethernet.component';
 import { CanvasChartComponent } from './cmts-detail/canvas-chart/canvas-chart.component';
+import { PingLostComponent } from './cmts-detail/cmts-detail-charts/ping-lost/ping-lost.component';
+import { PingDelayComponent } from './cmts-detail/cmts-detail-charts/ping-delay/ping-delay.component';
+import { MemRateComponent } from './cmts-detail/cmts-detail-charts/mem-rate/mem-rate.component';
+import { TempChangeComponent } from './cmts-detail/cmts-detail-charts/temp-change/temp-change.component';
+import { CmOnlineComponent } from './cmts-detail/cmts-detail-charts/cm-online/cm-online.component';
+import { CmtsFlowComponent } from './cmts-detail/cmts-detail-charts/cmts-flow/cmts-flow.component';
+import { CmtsNpaComponent } from './cmts-detail/cmts-detail-charts/cmts-npa/cmts-npa.component';
 
 
 @NgModule({
@@ -48,6 +56,13 @@ import { CanvasChartComponent } from './cmts-detail/canvas-chart/canvas-chart.co
     CmtsDownstreamComponent,
     CmtsEthernetComponent,
     CanvasChartComponent,
+    PingLostComponent,
+    PingDelayComponent,
+    MemRateComponent,
+    TempChangeComponent,
+    CmOnlineComponent,
+    CmtsFlowComponent,
+    CmtsNpaComponent,
 
   ],
   entryComponents:[
@@ -56,7 +71,8 @@ import { CanvasChartComponent } from './cmts-detail/canvas-chart/canvas-chart.co
   providers:[
     CmtsService,
     DetailNumService,
-    CmtsTableService
+    CmtsTableService,
+    CmtsCollettionService
   ]
 })
 export class EquManageModule { }

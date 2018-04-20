@@ -8,7 +8,7 @@
           <div class="col-md-4">
             <div class="box-primary">
               <ul>
-                <li class="Msg Msg-primary"><i>332</i></li>
+                <li class="Msg Msg-primary"><i>{{data.cmts_up_sum}}</i></li>
                 <li class="port-num"><i>上行端口数</i></li>
               </ul>
               
@@ -17,7 +17,7 @@
           <div class=" col-md-4">
               <div class="box-info">
                 <ul>
-                  <li class="Msg Msg-info"><i>338</i></li>
+                  <li class="Msg Msg-info"><i>{{data.cmts_dow_sum}}</i></li>
                   <li class="port-num"><i>下行端口数</i></li>
                 </ul>
               </div>
@@ -25,7 +25,7 @@
           <div class=" col-md-4">
               <div class="box-warning">
                   <ul>
-                      <li class="Msg Msg-warning"><i>27</i></li>
+                      <li class="Msg Msg-warning"><i>{{data.cmts_eth_sum}}</i></li>
                       <li class="port-num"><i>上联端口数</i></li>
                     </ul>
               </div>
@@ -36,14 +36,14 @@
       </nb-card-body>
       <nb-card-body>
         <div class="box1">
-           <app-water-chart></app-water-chart>
+           <app-water-chart ></app-water-chart>
         </div>
        
       </nb-card-body>  
       <nb-card-body>  
           <div class="box2">
               <!-- <ngx-temperature></ngx-temperature> -->
-              <tw-canvas-chart></tw-canvas-chart>
+              <tw-canvas-chart [Item]='data'></tw-canvas-chart>
            </div>
        
       </nb-card-body>

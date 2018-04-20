@@ -1,5 +1,5 @@
 .echart {
-    height: 240px;
+    height: 230px;
     width: 100%;
     border: 1px soild red;
   }
@@ -14,6 +14,16 @@ canvas{
   font-size: 14px;
   color: #fff;
 }  
+@media screen and (max-width:1050px){
+  .echart {
+    height: 190px;
+  }
+  .water_title{
+    margin-top: -85px;
+    color: #fff;
+  }
+}
+
 @media screen and (max-width:650px){
   .echart {
     height: 180px;
@@ -21,7 +31,7 @@ canvas{
   }
   .water_title{
     margin-top: -18px;
-    color: #000;
+    color: #4b4b4b;
   } 
   
 }
@@ -32,7 +42,30 @@ canvas{
   }
   .water_title{
     margin-top: -18px;
-    color: #000;
+    color: #4b4b4b;
+  } 
+  
+}
+
+@media screen and (max-width:440px){
+  .echart {
+    height: 130px;
+ 
+  }
+  .water_title{
+    margin-top: -22px;
+    color: #4b4b4b;
+  } 
+  
+}
+@media screen and (max-width:400px){
+  .echart {
+    height: 110px;
+ 
+  }
+  .water_title{
+    margin-top: -22px;
+    color: #4b4b4b;
   } 
   
 }

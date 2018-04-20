@@ -20,25 +20,32 @@
        
        <div class="row">
           <div class="col-md-12" *ngIf='show_detail[0]' >
-            <div echarts [options]="options1"  class="echart"></div>
+            <tw-ping-lost></tw-ping-lost>
+            <!-- <div echarts [options]="options1"  class="echart"></div> -->
           </div>
           <div class="col-md-12" *ngIf='show_detail[1]'>
-            <div echarts [options]="options2"  class="echart"></div>
+            <tw-ping-delay></tw-ping-delay>
+            <!-- <div echarts [options]="options2"  class="echart"></div> -->
           </div>
           <div class="col-md-12" *ngIf='show_detail[2]'>
-            <div echarts [options]="options3"  class="echart"></div>
+            <tw-mem-rate></tw-mem-rate>
+            <!-- <div echarts [options]="options3"  class="echart"></div> -->
           </div>
           <div class="col-md-12" *ngIf='show_detail[3]'>
-            <div echarts [options]="options4"  class="echart"></div>
+            <tw-temp-change></tw-temp-change>
+            <!-- <div echarts [options]="options4"  class="echart"></div> -->
           </div>
           <div class="col-md-12" *ngIf='show_detail[4]'>
-            <div echarts [options]="options5"  class="echart"></div>
+            <tw-cm-online></tw-cm-online>
+            <!-- <div echarts [options]="options5"  class="echart"></div> -->
           </div>
           <div class="col-md-12" *ngIf='show_detail[5]'>
-            <div echarts [options]="options6"  class="echart"></div>
+            <tw-cmts-flow></tw-cmts-flow>
+            <!-- <div echarts [options]="options6"  class="echart"></div> -->
           </div>
           <div class="col-md-12" *ngIf='show_detail[6]'>
-            <div echarts [options]="options7"  class="echart"></div>
+            <tw-cmts-npa></tw-cmts-npa>
+            <!-- <div echarts [options]="options7"  class="echart"></div> -->
           </div>
        </div>
 
