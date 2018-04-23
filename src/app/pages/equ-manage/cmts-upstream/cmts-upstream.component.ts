@@ -11,6 +11,7 @@ import { environment } from '../../../../environments/environment';
   styleUrls: ['./cmts-upstream.component.scss']
 })
 export class CmtsUpstreamComponent implements OnInit {
+  title="cmts";
   public source = new LocalDataSource();
   settings: any = {
     // selectMode: 'multi',
@@ -55,6 +56,9 @@ export class CmtsUpstreamComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.route.url.subscribe(data=>{
+      this.title=data[0].path;
+    })
     this.route.queryParamMap.subscribe((data) => {
       document.getElementsByClassName("scrollable-container")[0].scrollTop = 0;
       this.cid = data.get("cid")
@@ -63,17 +67,17 @@ export class CmtsUpstreamComponent implements OnInit {
       if (!this.pid) {
         this.breadcrumb.set([
           { name: '设备管理', link: '/pages/equ-manage' },
-          { name: 'CMTS', link: '/pages/equ-manage/cmts' },
-          { name: '上行端口列表', link: '/pages/equ-manage/cmts/cmts-upstream', queryParams: { cid: this.cid } }
+          { name: this.title.toUpperCase(), link: `/pages/equ-manage/${this.title}` },
+          { name: '上行端口列表', link: `/pages/equ-manage/${this.title}/cmts-upstream`, queryParams: { cid: this.cid } }
         ]);
         this.show_detial = false;
       }
       else {
         this.breadcrumb.set([
           { name: '设备管理', link: '/pages/equ-manage' },
-          { name: 'CMTS', link: '/pages/equ-manage/cmts' },
-          { name: '上行端口列表', link: '/pages/equ-manage/cmts/cmts-upstream', queryParams: { cid: this.cid } },
-          { name: '详情', link: '/pages/equ-manage/cmts/cmts-upstream', queryParams: { cid: this.cid, pid: this.pid } }
+          { name: this.title.toUpperCase(), link: '/pages/equ-manage/'+this.title  },
+          { name: '上行端口列表', link: `/pages/equ-manage/${this.title}/cmts-upstream`, queryParams: { cid: this.cid } },
+          { name: '详情', link: `/pages/equ-manage/${this.title}/cmts-upstream`, queryParams: { cid: this.cid, pid: this.pid } }
         ]);
       }
     })
