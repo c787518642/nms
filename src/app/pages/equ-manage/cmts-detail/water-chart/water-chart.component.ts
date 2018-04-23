@@ -25,25 +25,26 @@ export class WaterChartComponent implements OnInit,AfterViewInit {
     private service:DetailNumService
   ) { 
     this.service.a.subscribe(data=>{
+      if(data){
         let cm_up_rate=data.cm_up_rate/100;
         let cm_dow_rate=data.cm_dow_rate/100;
         let cm_online=data.cm_online/100;
-      this.updateOptions1 = {
+        this.updateOptions1 = {
+            series:[{
+              data: [cm_up_rate]
+          }]
+        };
+        this.updateOptions2 = {
           series:[{
-            data: [cm_up_rate]
-        }]
-      };
-      this.updateOptions2 = {
-        series:[{
-          data: [cm_dow_rate]
-        }]
-      };
-      this.updateOptions3 = {
-        series:[{
-          data: [cm_online]
-        }]
-      };
-
+            data: [cm_dow_rate]
+          }]
+        };
+        this.updateOptions3 = {
+          series:[{
+            data: [cm_online]
+          }]
+        };
+      } 
     })
 
   }
@@ -71,7 +72,7 @@ export class WaterChartComponent implements OnInit,AfterViewInit {
       this.sub=Observable.fromEvent(window,'resize')
       .subscribe((event) => {
         this.Echart_width=this.echartsInstance.getWidth();
-        console.log(this.Echart_width)
+
         if(this.Echart_width<=500&&this.Echart_width>156){
           this.Font_size=26;
           this.BorderWidth=1.8; 
@@ -154,7 +155,7 @@ export class WaterChartComponent implements OnInit,AfterViewInit {
           amplitude:10,
           waveLength: '500px',
           period:900,
-          data: [0.2],
+          data: [0],
           radius: '72%',
           backgroundStyle: {
   
@@ -208,7 +209,7 @@ export class WaterChartComponent implements OnInit,AfterViewInit {
           amplitude:10,
           waveLength: '500px',
           period:900,
-          data: [0.48],
+          data: [0],
           radius: '72%',
           backgroundStyle: {
   
@@ -262,7 +263,7 @@ export class WaterChartComponent implements OnInit,AfterViewInit {
           amplitude:10,
           waveLength: '500px',
           period:900,
-          data: [0.6],
+          data: [0],
           radius: '72%',
           backgroundStyle: {
   

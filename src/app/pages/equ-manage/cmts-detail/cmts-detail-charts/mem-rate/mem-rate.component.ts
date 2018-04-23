@@ -1,12 +1,16 @@
-import { Component, OnInit,AfterViewInit } from '@angular/core';
+import { Component, OnInit,AfterViewInit,OnChanges,Input} from '@angular/core';
 
 @Component({
   selector: 'tw-mem-rate',
   templateUrl: './mem-rate.component.html',
   styleUrls: ['./mem-rate.component.scss']
 })
-export class MemRateComponent implements OnInit,AfterViewInit {
+export class MemRateComponent implements OnInit,AfterViewInit,OnChanges {
+  @Input() Item;
   options:any;
+  updateOptions:any;
+  x_obj=[];
+  data_obj=[];
   constructor() { }
 
   ngOnInit() {
@@ -38,15 +42,17 @@ export class MemRateComponent implements OnInit,AfterViewInit {
       grid:{
           top:100,
           bottom:35,
-          left:60
+          left:60,
+          width:"92%"
       },
       xAxis: [
           {   
+              show:false,
               type: 'category',
               axisLine: { show: true,lineStyle:{ color:'#212529' }},
-              axisLabel:{interval:0,textStyle:{color:'#212529',fontSize:14} },
+              axisLabel:{interval:40,textStyle:{color:'#212529',fontSize:14} },
               axisTick : {show: false},
-              data:['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+              data:this.x_obj,
           },
       ],
       yAxis: [
@@ -82,10 +88,36 @@ export class MemRateComponent implements OnInit,AfterViewInit {
                   width: 4
               }
           },
-          data: [18, 19, 19, 24, 29,33, 32],
+          data:this.data_obj,
           
        }
      ]
    };
+  }
+
+  ngOnChanges(){
+    var data=[];
+    var x=[];
+    if(this.Item){
+    
+        for(var i=0;i<this.Item.length;i++){
+            x.push(this.Item[i].time)
+            data.push(this.Item[i].mem_r);
+         }
+         
+    }
+    this.x_obj=x;
+    this.data_obj=data;
+    
+     //更新图表
+     this.updateOptions = {
+        xAxis: [{   
+            data:x,
+        }],
+        series:[{
+            data:data
+        }]
+    }; 
+
   }
 }

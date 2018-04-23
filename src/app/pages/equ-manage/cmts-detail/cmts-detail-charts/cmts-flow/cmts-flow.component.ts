@@ -1,12 +1,17 @@
-import { Component, OnInit,AfterViewInit } from '@angular/core';
+import { Component, OnInit,AfterViewInit, OnChanges,Input} from '@angular/core';
 
 @Component({
   selector: 'tw-cmts-flow',
   templateUrl: './cmts-flow.component.html',
   styleUrls: ['./cmts-flow.component.scss']
 })
-export class CmtsFlowComponent implements OnInit,AfterViewInit {
+export class CmtsFlowComponent implements OnInit,AfterViewInit,OnChanges {
+  @Input() Item;
   options:any;
+  updateOptions:any;
+  x_obj=[];
+  cm_up_flow=[];
+  cm_down_flow=[];
   constructor() { }
 
   ngOnInit() {
@@ -38,15 +43,17 @@ export class CmtsFlowComponent implements OnInit,AfterViewInit {
       grid:{
           top:100,
           bottom:35,
-          left:60
+          left:60,
+          width:"92%"
       },
       xAxis: [
           {   
+              show:false,
               type: 'category',
               axisLine: { show: true,lineStyle:{ color:'#212529' }},
-              axisLabel:{interval:0,textStyle:{color:'#212529',fontSize:14} },
+              axisLabel:{interval:40,textStyle:{color:'#212529',fontSize:14} },
               axisTick : {show: false},
-              data:['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+              data:this.x_obj,
           },
       ],
       yAxis: [
@@ -66,11 +73,11 @@ export class CmtsFlowComponent implements OnInit,AfterViewInit {
               fontSize:20,
           },
   
-          data:['流量'],
+          data:['上行','下行'],
       
       },
       series: [{
-          name:"流量",
+          name:"上行",
           type: 'line',
           smooth: true,
           symbol:"emptyCircle",
@@ -82,11 +89,54 @@ export class CmtsFlowComponent implements OnInit,AfterViewInit {
                   width: 4
               }
           },
-          data: [820, 932, 901, 934, 1290, 1330, 1320],
-          
-        }
+          data:this.cm_up_flow,
+        },
+        {
+            name:"下行",
+            type: 'line',
+            smooth: true,
+            symbol:"emptyCircle",
+            symbolSize:10,
+            showSymbol: false,
+            itemStyle: {normal:{color: '#5fc7fe'}},
+            lineStyle: {
+                normal: {
+                    width: 4
+                }
+            },
+            data: this.cm_down_flow,
+          }
       ]
     };
-  
+  }
+
+  ngOnChanges(){
+    var data1=[];
+    var data2=[];
+    var x=[];
+    if(this.Item){
+        for(var i=0;i<this.Item.length;i++){
+            x.push(this.Item[i].time)
+            data1.push(this.Item[i].cm_now_up);
+            data2.push(this.Item[i].cm_now_dow);
+         }
+         
+    }
+    this.x_obj=x;
+    this.cm_up_flow=data1;
+    this.cm_down_flow=data2;
+    
+     //更新图表
+     this.updateOptions = {
+        xAxis: [{   
+            data:x,
+        }],
+        series:[{
+            data:data1
+        },{
+            data:data2
+        }
+        ]
+    }; 
   }
 }

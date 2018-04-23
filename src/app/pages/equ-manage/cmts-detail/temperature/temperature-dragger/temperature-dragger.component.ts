@@ -106,7 +106,7 @@ export class TemperatureDraggerComponent implements AfterViewInit, OnChanges {
   }
 
   private calculateVars() {
-    console.log(this.thumbBorder);
+  
     this.bottomAngleRad = TemperatureDraggerComponent.toRad(this.bottomAngle);
     this.colors = (typeof this.fillColors === 'string') ? [this.fillColors] : this.fillColors;
 
