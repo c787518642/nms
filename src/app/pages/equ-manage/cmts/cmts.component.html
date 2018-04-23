@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-12 " *ngIf='!showDetail'>
     <nb-card>
-      <nb-card-header id="cmts_header">CMTS
+      <nb-card-header id="cmts_header">{{title | uppercase}}
         <input #search  class="form-control form-control-success" type="text" placeholder="Search..." (keydown.enter)="onSearch(search.value)">
       </nb-card-header>
       <nb-card-body id="cmts_body">
@@ -12,7 +12,7 @@
   </div>
   <div class="col-lg-4" id="cmts" *ngIf='showDetail'>
     <nb-card>
-      <nb-card-header >CMTS</nb-card-header>
+      <nb-card-header >{{title | uppercase}}</nb-card-header>
       <nb-card-body >
         <ng2-smart-table [settings]="settings_some" [source]="source" (userRowSelect)="onUserRowSelect($event)"></ng2-smart-table>
       </nb-card-body>

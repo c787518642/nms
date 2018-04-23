@@ -13,6 +13,7 @@ const routes: Routes = [{
     path: 'cmts/cmts-upstream',
     component: CmtsUpstreamComponent,
   },{
+    
     path: 'cmts/cmts-downstream',
     component: CmtsDownstreamComponent,
   },{
@@ -20,6 +21,9 @@ const routes: Routes = [{
     component: CmtsEthernetComponent,
   },{
     path: 'cmts',
+    component: CmtsComponent,
+  },{
+    path: 'dcmts',
     component: CmtsComponent,
   },{
     path: '',
