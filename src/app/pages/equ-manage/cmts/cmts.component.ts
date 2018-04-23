@@ -14,6 +14,7 @@ import { query } from '@angular/animations';
 })
 export class CmtsComponent implements OnInit {
   public source = new LocalDataSource();
+  title="cmts"
   settings: any = {
     // selectMode: 'multi',
     hideSubHeader: true,
@@ -44,22 +45,30 @@ export class CmtsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.route.url.subscribe(data => {
+      let path = data[0].path;
+      this.title=path
+      switch (path) {
+        case "cmts": { this.getCmtsList(); break }
+        case "dcmts": { this.getDcmtsList(); break }
+      }
+    })
     this.route.queryParamMap.subscribe(data => {
-      this.getCmtsList();
+    
       document.getElementsByClassName("scrollable-container")[0].scrollTop = 0;
       this.cid = data.get("cid")
       if (!this.cid) {
         this.showDetail = false;
         this.breadcrumb.set([
           { name: '设备管理', link: '/pages/equ-manage' },
-          { name: 'CMTS', link: '/pages/equ-manage/cmts' }
+          { name: this.title.toUpperCase(), link: '/pages/equ-manage/'+this.title }
         ]);
       } else {
         this.showDetail = true;
         this.breadcrumb.set([
           { name: '设备管理', link: '/pages/equ-manage' },
-          { name: 'CMTS', link: '/pages/equ-manage/cmts' },
-          { name: '详情', link: '/pages/equ-manage/cmts', queryParams: { cid: this.cid } }
+          { name: this.title.toUpperCase(), link: '/pages/equ-manage/'+this.title },
+          { name: '详情', link: '/pages/equ-manage/'+this.title, queryParams: { cid: this.cid } }
         ]);
       }
     })
@@ -80,11 +89,19 @@ export class CmtsComponent implements OnInit {
     this.pageIndex = data.source.pagingConf.page;
     this.showDetail = true;
     this.cid = data.data['cid'];
-    this.router.navigate(["/pages/equ-manage/cmts"], { queryParams: { cid: this.cid } })
+    this.router.navigate(["/pages/equ-manage/"+this.title], { queryParams: { cid: this.cid } })
   }
 
   getCmtsList() {
     this.cmtsService.getCmtsList().subscribe(data => {
+      if (data["code"] && data["code"] == 1) {
+        this.source.load(data["data"]);
+        this.source.setPage(this.pageIndex, false)
+      }
+    })
+  }
+  getDcmtsList(){
+    this.cmtsService.getDcmtsList().subscribe(data => {
       if (data["code"] && data["code"] == 1) {
         this.source.load(data["data"]);
         this.source.setPage(this.pageIndex, false)
