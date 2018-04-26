@@ -26,12 +26,14 @@ export class CmtsDetailComponent implements OnInit {
     private route: ActivatedRoute
   ) { }
   ngOnChanges(){
-    this.getDetailNum({ cid: this.cid })
+    
+    if(this.cid){
+        this.getDetailNum({ cid: this.cid })
+    }
+    
   }
   ngOnInit() {
-    this.route.url.subscribe(data=>{
-      this.title=data[0].path;
-    })
+    
   
   }
 
@@ -39,7 +41,6 @@ export class CmtsDetailComponent implements OnInit {
     this.detailNumService.getCmtsInfoNum(obj).subscribe(response =>{
       if(response['code']&&response['code']==1){
          this.data=response['data'];
-         
       }
   })  
   }
