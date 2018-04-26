@@ -9,6 +9,8 @@ export class TempChangeComponent implements OnInit,AfterViewInit ,OnChanges {
   @Input() Item;
   options:any;
   updateOptions:any;
+  x_obj=[];
+  data_obj=[];
   constructor() { }
 
   ngOnInit() {
@@ -37,19 +39,20 @@ export class TempChangeComponent implements OnInit,AfterViewInit ,OnChanges {
           extraCssText: 'box-shadow: 0 0 5px rgba(0,0,0,0.3)'
       },
       grid:{
-          top:100,
+          top:80,
           bottom:35,
           left:60,
           width:"92%"
       },
       xAxis: [
           {   
-              show:false,
-              type: 'category',
-              axisLine: { show: true,lineStyle:{ color:'#212529' }},
-              axisLabel:{interval:0,textStyle:{color:'#212529',fontSize:14} },
-              axisTick : {show: false},
-              data:['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+               //   show:false,
+               type: 'category',
+               boundaryGap: false,
+               //   axisLine: { show: false,lineStyle:{ color:'#212529' }},
+               //   axisLabel:{interval:50,textStyle:{color:'#212529',fontSize:14} },
+               //   axisTick : {show: false},
+               data:this.x_obj,
           },
       ],
       yAxis: [
@@ -85,7 +88,7 @@ export class TempChangeComponent implements OnInit,AfterViewInit ,OnChanges {
                   width: 4
               }
           },
-          data: [42, 32, 31, 48, 39, 33,46],
+          data:this.data_obj,
           
        }
      ]
@@ -93,6 +96,26 @@ export class TempChangeComponent implements OnInit,AfterViewInit ,OnChanges {
   }
 
   ngOnChanges(){
-
+    var data=[];
+    var x=[];
+    if(this.Item){
+        for(var i=0;i<this.Item.length;i++){
+            x.push(this.Item[i].time)
+            data.push(this.Item[i].temp);
+         }
+         
+    }
+    this.x_obj=x;
+    this.data_obj=data;
+    
+     //更新图表
+     this.updateOptions = {
+        xAxis: [{   
+            data:x,
+        }],
+        series:[{
+            data:data
+        }]
+    };
   }
 }

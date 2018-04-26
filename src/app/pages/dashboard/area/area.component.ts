@@ -49,7 +49,7 @@ export class AreaComponent implements OnInit,AfterViewInit,OnDestroy {
     
                 tooltip: {
                   trigger: 'item',
-                  formatter: "{a} <br/>{b}: {c} ({d}%)"
+                  formatter: "{a} <br/>{b}: {d}%"
               },
               legend: {
                   x : 'center',
@@ -61,7 +61,7 @@ export class AreaComponent implements OnInit,AfterViewInit,OnDestroy {
                       fontSize:20,
                   },
                   formatter:function(name){
-                       if(name=="优秀"){
+                       if(name=="优质"){
                            return "95-100"+"\n"+name;
                        }else if(name=="良好"){
                           return "85-95"+"\n"+name;
@@ -73,12 +73,12 @@ export class AreaComponent implements OnInit,AfterViewInit,OnDestroy {
                         return "低于60"+"\n"+name;
                      }
                   },
-                  data:['优秀','良好','一般','较差','差'],
+                  data:['优质','良好','一般','较差','差'],
               
               },
               series: [
                   {
-                      name:'SNR',
+                      name:'NPA',
                       type:'pie',
                       radius: ['40%', '65%'],
                       center : ['50%', '45%'],
@@ -102,7 +102,7 @@ export class AreaComponent implements OnInit,AfterViewInit,OnDestroy {
                           }
                       },
                       data:[
-                          {value:this.npa5, name:'优秀',itemStyle: {normal:{color: '#43d280'}}},
+                          {value:this.npa5, name:'优质',itemStyle: {normal:{color: '#43d280'}}},
                           {value:this.npa4, name:'良好',itemStyle: {normal:{color: '#5fc7fe'}}},
                           {value:this.npa3, name:'一般',itemStyle: {normal:{color: '#fddc42'}}},
                           {value:this.npa2, name:'较差',itemStyle: {normal:{color: '#f39c11'}}},
@@ -133,7 +133,10 @@ export class AreaComponent implements OnInit,AfterViewInit,OnDestroy {
     this.sub=Observable.fromEvent(window,'resize')
     .subscribe((event) => {
     this.Echart_width=this.echartsInstance.getWidth();
-    if(this.Echart_width<=740&&this.Echart_width>468){
+    if(this.Echart_width<=1000&&this.Echart_width>740){
+        this.Gap=30;
+        this.Padding=0;
+    }else if(this.Echart_width<=740&&this.Echart_width>468){
         this.Gap=30;
         this.Padding=0;
     }else if(this.Echart_width<=468&&this.Echart_width>429){

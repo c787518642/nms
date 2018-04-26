@@ -28,7 +28,9 @@ export class CmtsDetailComponent implements OnInit {
   ngOnInit() {
     this.route.queryParamMap.subscribe(data =>{
       this.cid = data.get("cid")
-      this.getDetailNum({ cid: this.cid })
+      if(this.cid){
+        this.getDetailNum({ cid: this.cid })
+      }
     })
     
   }
@@ -37,7 +39,7 @@ export class CmtsDetailComponent implements OnInit {
     this.detailNumService.getCmtsInfoNum(obj).subscribe(response =>{
       if(response['code']&&response['code']==1){
          this.data=response['data'];
-         this.detailNumService.a.emit(this.data)
+         
       }
   })  
   }

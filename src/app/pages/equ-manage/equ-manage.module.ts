@@ -7,8 +7,6 @@ import { CmtsComponent } from './cmts/cmts.component';
 import { CmtsDetailComponent } from './cmts-detail/cmts-detail.component';
 import { DetailNumService } from './cmts-detail/detail-num.service';
 import { WaterChartComponent } from './cmts-detail/water-chart/water-chart.component';
-import { TemperatureComponent } from './cmts-detail/temperature/temperature.component';
-import { TemperatureDraggerComponent } from './cmts-detail/temperature/temperature-dragger/temperature-dragger.component';
 import { EquManageRoutingModule } from './equ-manage-routing.module';
 import { ThemeModule } from '../../@theme/theme.module';
 import { CmtsTableComponent } from './cmts-detail/cmts-table/cmts-table.component';
@@ -47,8 +45,6 @@ import { CmtsNpaComponent } from './cmts-detail/cmts-detail-charts/cmts-npa/cmts
     CmtsDetailComponent,
     WaterChartComponent,
    
-    TemperatureComponent,
-    TemperatureDraggerComponent,
     CmtsTableComponent,
     CmtsListTableSnmpComponent,
     CmtsCollectionChangeComponent,

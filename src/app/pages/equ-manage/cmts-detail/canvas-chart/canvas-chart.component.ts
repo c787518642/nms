@@ -28,14 +28,27 @@ export class CanvasChartComponent implements OnInit,OnChanges {
       this.cpu_value=this.Item.cpu_r;
       this.mem_value=this.Item.mem_r;
       this.temp_value=this.Item.temp;
-      this.draw(this.canvas1, this.cpu_value,0,100,"#42db7d");
-      this.draw(this.canvas2,this.mem_value,0,100,"#fddc42");
-      this.draw(this.canvas3,this.temp_value,0,100,"#4cc2ff");
+      this.draw(this.canvas1, this.cpu_value,0,100);
+      this.draw(this.canvas2,this.mem_value,0,100);
+      this.draw(this.canvas3,this.temp_value,0,100);
      }
   }
   //CPU
-  draw(obj,value,min,max,color){
+  draw(obj,value,min,max){
+    var color="#42db7d";
     if(value=="--"||value==undefined){value=0;}
+    if(value>=0&&value<=20){
+      color="#42db7d";
+    }else if(value>20&&value<40){
+      color="#4cc2ff";
+    }else if(value>=40&&value<=60){
+      color="#fddc42";
+    }else if(value>60&&value<80){
+      color="#ffa400";
+    }else if(value>=80&&value<=100){
+      color="#fb4765";
+    }
+   
     let canvas1 = obj.nativeElement;
     canvas1.height=canvas1.width;
     var width=canvas1.height/2;
@@ -43,7 +56,7 @@ export class CanvasChartComponent implements OnInit,OnChanges {
     var ctx = canvas1.getContext('2d');
     var centerX=width;       
     var centrtY=height-0.26*height;
-    var radius=0.6*width;          //圆环半径
+    var radius=0.56*width;          //圆环半径
     var linewidth=12;        //圆环粗细
     var color=color;     //圆环颜色   绿色为#5ce191  深色为#42db7d
     var min=min;
@@ -80,7 +93,7 @@ export class CanvasChartComponent implements OnInit,OnChanges {
         ctx.beginPath();
         ctx.lineCap = 'round';    //笔帽带上圆角
         ctx.lineWidth = linewidth;
-        ctx.strokeStyle = '#5ce191';
+        ctx.strokeStyle = color;
         ctx.arc(centerX,centrtY,radius,0.75*Math.PI,angle_obj);
         ctx.stroke();
         ctx.closePath();
@@ -89,7 +102,7 @@ export class CanvasChartComponent implements OnInit,OnChanges {
         ctx.beginPath();
         ctx.lineCap = 'round';    //笔帽带上圆角
         ctx.lineWidth = 5;
-        ctx.strokeStyle = '#5ce191';
+        ctx.strokeStyle = color;
         ctx.arc(Rx_obj,Ry_obj,8,0*Math.PI,2*Math.PI);
         ctx.stroke();
         ctx.closePath();

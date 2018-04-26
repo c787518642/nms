@@ -11,6 +11,13 @@ export class CmtsDetailChartsComponent implements OnInit {
   show_detail=[true,false,false,false,false,false,false];
   selectedKey:any;
   CONTENT="Ping丢包率";
+  data_length=[
+    { content: '显示最近一天' },
+    { content: '显示最近一周' },
+    { content: '显示最近一月' },
+    { content: '显示最近三月' },
+  ];
+  DateConetent="显示最近一天";
   data=[
     {index:0, content: 'Ping丢包率',class:"selected"},
     {index:1, content: 'Ping延时',class:"normal"},
@@ -48,10 +55,25 @@ export class CmtsDetailChartsComponent implements OnInit {
     }
     this.show_detail[key.index]=true;  
    }
+   get_line(conetent){
+    this.DateConetent=conetent;
+    if(this.DateConetent=="显示最近一天"){
+      this.getChartData({ cid: this.cid,day_len:1 })
+    }else if(this.DateConetent=="显示最近一周"){
+      this.getChartData({ cid: this.cid,day_len:7 })
+    }else if(this.DateConetent=="显示最近一月"){
+      this.getChartData({ cid: this.cid,day_len:30 })
+    }else if(this.DateConetent=="显示最近三月"){
+      this.getChartData({ cid: this.cid,day_len:90 })
+    }
+  }
   ngOnInit() {
     this.route.queryParamMap.subscribe(data =>{
       this.cid = data.get("cid")
-      this.getChartData({ cid: this.cid,day_len:7 })
+      if(this.cid){
+        this.getChartData({ cid: this.cid,day_len:1 })
+      }
+      
     })
   }
   getChartData(obj){
@@ -74,8 +96,7 @@ export class CmtsDetailChartsComponent implements OnInit {
     this.detailChartsService.getCmtsTemp(obj).subscribe(response =>{
       if(response['code']&&response['code']==1){
           if(response['data']){
-               this.data3=response['data'];
-              
+               this.data3=response['data'];   
           }
       }
     })

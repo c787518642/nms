@@ -24,7 +24,10 @@ export class CmtsCollectionChangeComponent implements OnInit {
   ngOnInit() {
     this.route.queryParamMap.subscribe(data =>{
       this.cid = data.get("cid")
-      this.getCmtsCollection({ cid: this.cid })
+      if(this.cid){
+        this.getCmtsCollection({ cid: this.cid })
+      }
+      
     })
      
   }

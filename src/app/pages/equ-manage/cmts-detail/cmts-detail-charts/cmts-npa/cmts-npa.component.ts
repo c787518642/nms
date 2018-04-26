@@ -40,18 +40,19 @@ export class CmtsNpaComponent implements OnInit,AfterViewInit,OnChanges {
           extraCssText: 'box-shadow: 0 0 5px rgba(0,0,0,0.3)'
       },
       grid:{
-          top:100,
+          top:80,
           bottom:35,
           left:60,
-          width:"92%"
+          width:"90%"
       },
       xAxis: [
           {   
-              show:false,
+              //   show:false,
               type: 'category',
-              axisLine: { show: true,lineStyle:{ color:'#212529' }},
-              axisLabel:{interval:0,textStyle:{color:'#212529',fontSize:14} },
-              axisTick : {show: false},
+            //   boundaryGap: false,
+              //   axisLine: { show: false,lineStyle:{ color:'#212529' }},
+              //   axisLabel:{interval:50,textStyle:{color:'#212529',fontSize:14} },
+              //   axisTick : {show: false},
               data:this.x_obj,
           },
       ],
@@ -78,6 +79,7 @@ export class CmtsNpaComponent implements OnInit,AfterViewInit,OnChanges {
       series: [{
           name:"NPA",
           type: 'bar',
+          barWidth: '40%',
           smooth: true,
           symbol:"emptyCircle",
           symbolSize:10,

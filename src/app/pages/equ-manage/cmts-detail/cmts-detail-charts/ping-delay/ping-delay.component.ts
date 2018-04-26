@@ -39,19 +39,20 @@ export class PingDelayComponent implements OnInit,AfterViewInit,OnChanges {
           extraCssText: 'box-shadow: 0 0 5px rgba(0,0,0,0.3)'
       },
       grid:{
-          top:100,
+          top:80,
           bottom:35,
           left:60,
           width:"92%"
       },
       xAxis: [
           {   
-              show:false,
-              type: 'category',
-              axisLine: { show: true,lineStyle:{ color:'#212529' }},
-              axisLabel:{interval:40,textStyle:{color:'#212529',fontSize:14} },
-              axisTick : {show: false},
-              data:this.x_obj,
+               //   show:false,
+               type: 'category',
+               boundaryGap: false,
+               //   axisLine: { show: false,lineStyle:{ color:'#212529' }},
+               //   axisLabel:{interval:50,textStyle:{color:'#212529',fontSize:14} },
+               //   axisTick : {show: false},
+               data:this.x_obj,
           },
       ],
       yAxis: [
@@ -98,7 +99,6 @@ export class PingDelayComponent implements OnInit,AfterViewInit,OnChanges {
     var data=[];
     var x=[];
     if(this.Item){
-     
         for(var i=0;i<this.Item.length;i++){
             x.push(this.Item[i].time)
             data.push(this.Item[i].cmts_delay);

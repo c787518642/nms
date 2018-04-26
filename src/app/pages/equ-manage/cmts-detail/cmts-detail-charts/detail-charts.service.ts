@@ -21,7 +21,7 @@ export class DetailChartsService {
   }
   //温度变化
   getCmtsTemp(obj: { cid,day_len}){
-    let path=environment.getPath()+'/tw-cmts-server/cmts/get_cpumem';
+    let path=environment.getPath()+'/tw-cmts-server/cmts/get_temp';
     return this.http.post(path,toFormData(obj),{
       headers:new HttpHeaders({'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'}),
     });

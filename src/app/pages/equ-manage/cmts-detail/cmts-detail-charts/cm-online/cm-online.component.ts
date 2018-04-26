@@ -12,6 +12,7 @@ export class CmOnlineComponent implements OnInit ,AfterViewInit,OnChanges{
   x_obj=[];
   cm_num=[];
   cm_online=[];
+  cm_offline=[];
   constructor() { }
 
   ngOnInit() {
@@ -40,19 +41,20 @@ export class CmOnlineComponent implements OnInit ,AfterViewInit,OnChanges{
           extraCssText: 'box-shadow: 0 0 5px rgba(0,0,0,0.3)'
       },
       grid:{
-          top:100,
+          top:80,
           bottom:35,
           left:60,
           width:"92%"
       },
       xAxis: [
           {   
-              show:false,
-              type: 'category',
-              axisLine: { show: true,lineStyle:{ color:'#212529' }},
-              axisLabel:{interval:40,textStyle:{color:'#212529',fontSize:14} },
-              axisTick : {show: false},
-              data:this.x_obj,
+               //   show:false,
+               type: 'category',
+               boundaryGap: false,
+               //   axisLine: { show: false,lineStyle:{ color:'#212529' }},
+               //   axisLabel:{interval:50,textStyle:{color:'#212529',fontSize:14} },
+               //   axisTick : {show: false},
+               data:this.x_obj,
           },
       ],
       yAxis: [
@@ -72,7 +74,7 @@ export class CmOnlineComponent implements OnInit ,AfterViewInit,OnChanges{
               fontSize:20,
           },
   
-          data:['Total','Online'],
+          data:['Total','Online','Offline'],
       
       },
       series: [{
@@ -104,7 +106,21 @@ export class CmOnlineComponent implements OnInit ,AfterViewInit,OnChanges{
               }
           },
           data: this.cm_online,  
-        }
+        },{
+            name:"Offline",
+            type: 'line',
+            smooth: true,
+            symbol:"emptyCircle",
+            symbolSize:10,
+            showSymbol: false,
+            itemStyle: {normal:{color: '#e64d3d'}},
+            lineStyle: {
+                normal: {
+                    width: 4
+                }
+            },
+            data: this.cm_offline,  
+          }
       ]
     };
   }
@@ -112,6 +128,7 @@ export class CmOnlineComponent implements OnInit ,AfterViewInit,OnChanges{
   ngOnChanges(){
     var data1=[];
     var data2=[];
+    var data3=[];
     var x=[];
     if(this.Item){
      
@@ -119,12 +136,14 @@ export class CmOnlineComponent implements OnInit ,AfterViewInit,OnChanges{
             x.push(this.Item[i].time)
             data1.push(this.Item[i].cm_sum);
             data2.push(this.Item[i].cm_online_sum);
+            data3.push(this.Item[i].cm_offline);
          }
          
     }
     this.x_obj=x;
     this.cm_num=data1;
     this.cm_online=data2;
+    this.cm_offline=data3;
     
      //更新图表
      this.updateOptions = {
@@ -135,6 +154,8 @@ export class CmOnlineComponent implements OnInit ,AfterViewInit,OnChanges{
             data:data1
         },{
             data:data2
+        },{
+            data:data3
         }
         ]
     }; 
