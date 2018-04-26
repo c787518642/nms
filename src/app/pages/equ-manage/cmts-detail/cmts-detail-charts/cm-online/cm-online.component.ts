@@ -1,12 +1,17 @@
-import { Component, OnInit,AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnChanges,Input } from '@angular/core';
 
 @Component({
   selector: 'tw-cm-online',
   templateUrl: './cm-online.component.html',
   styleUrls: ['./cm-online.component.scss']
 })
-export class CmOnlineComponent implements OnInit ,AfterViewInit{
+export class CmOnlineComponent implements OnInit ,AfterViewInit,OnChanges{
+  @Input() Item;
   options:any;
+  updateOptions:any;
+  x_obj=[];
+  cm_num=[];
+  cm_online=[];
   constructor() { }
 
   ngOnInit() {
@@ -37,15 +42,17 @@ export class CmOnlineComponent implements OnInit ,AfterViewInit{
       grid:{
           top:100,
           bottom:35,
-          left:60
+          left:60,
+          width:"92%"
       },
       xAxis: [
           {   
+              show:false,
               type: 'category',
               axisLine: { show: true,lineStyle:{ color:'#212529' }},
-              axisLabel:{interval:0,textStyle:{color:'#212529',fontSize:14} },
+              axisLabel:{interval:40,textStyle:{color:'#212529',fontSize:14} },
               axisTick : {show: false},
-              data:['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+              data:this.x_obj,
           },
       ],
       yAxis: [
@@ -81,7 +88,7 @@ export class CmOnlineComponent implements OnInit ,AfterViewInit{
                   width: 4
               }
           },
-          data: [1820, 1932, 1901, 1934, 2290, 2330, 2320],
+          data: this.cm_num,
           
       },{
           name:"Online",
@@ -96,10 +103,41 @@ export class CmOnlineComponent implements OnInit ,AfterViewInit{
                   width: 4
               }
           },
-          data: [688, 632,591, 624, 690, 630, 620],  
+          data: this.cm_online,  
         }
       ]
     };
-  
+  }
+
+  ngOnChanges(){
+    var data1=[];
+    var data2=[];
+    var x=[];
+    if(this.Item){
+     
+        for(var i=0;i<this.Item.length;i++){
+            x.push(this.Item[i].time)
+            data1.push(this.Item[i].cm_sum);
+            data2.push(this.Item[i].cm_online_sum);
+         }
+         
+    }
+    this.x_obj=x;
+    this.cm_num=data1;
+    this.cm_online=data2;
+    
+     //更新图表
+     this.updateOptions = {
+        xAxis: [{   
+            data:x,
+        }],
+        series:[{
+            data:data1
+        },{
+            data:data2
+        }
+        ]
+    }; 
+
   }
 }

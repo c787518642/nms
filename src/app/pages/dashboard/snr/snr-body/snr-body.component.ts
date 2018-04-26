@@ -83,7 +83,7 @@ export class SnrBodyComponent implements OnInit , AfterViewInit,OnDestroy{
              
             }
         }
-     }, error => { environment.error(error["status"]) })
+     })
 
      this.options = {
         tooltip: {

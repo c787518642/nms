@@ -17,6 +17,7 @@ import { CmtsService } from './cmts/cmts.service';
 import { CmtsCollectionChangeComponent } from './cmts-detail/cmts-collection-change/cmts-collection-change.component';
 import { CmtsCollettionService } from './cmts-detail/cmts-collection-change/cmts-collettion.service';
 import { CmtsDetailChartsComponent } from './cmts-detail/cmts-detail-charts/cmts-detail-charts.component';
+import { DetailChartsService } from './cmts-detail/cmts-detail-charts/detail-charts.service';
 import { Ng2SmartTableModule } from '../../../ng2-smart-table';
 import { CmtsListTableSnmpComponent } from './cmts/cmts-list-table-snmp/cmts-list-table-snmp.component';
 import { CmtsUpstreamComponent } from './cmts-upstream/cmts-upstream.component';
@@ -72,7 +73,8 @@ import { CmtsNpaComponent } from './cmts-detail/cmts-detail-charts/cmts-npa/cmts
     CmtsService,
     DetailNumService,
     CmtsTableService,
-    CmtsCollettionService
+    CmtsCollettionService,
+    DetailChartsService
   ]
 })
 export class EquManageModule { }

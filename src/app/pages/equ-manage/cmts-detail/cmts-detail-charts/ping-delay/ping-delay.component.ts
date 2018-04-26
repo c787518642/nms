@@ -1,12 +1,16 @@
-import { Component, OnInit,AfterViewInit } from '@angular/core';
+import { Component, OnInit,AfterViewInit,OnChanges,Input} from '@angular/core';
 
 @Component({
   selector: 'tw-ping-delay',
   templateUrl: './ping-delay.component.html',
   styleUrls: ['./ping-delay.component.scss']
 })
-export class PingDelayComponent implements OnInit,AfterViewInit {
+export class PingDelayComponent implements OnInit,AfterViewInit,OnChanges {
+  @Input() Item;
   options:any;
+  updateOptions:any;
+  x_obj=[];
+  data_obj=[];
   constructor() { }
 
   ngOnInit() {
@@ -37,15 +41,17 @@ export class PingDelayComponent implements OnInit,AfterViewInit {
       grid:{
           top:100,
           bottom:35,
-          left:60
+          left:60,
+          width:"92%"
       },
       xAxis: [
           {   
+              show:false,
               type: 'category',
               axisLine: { show: true,lineStyle:{ color:'#212529' }},
-              axisLabel:{interval:0,textStyle:{color:'#212529',fontSize:14} },
+              axisLabel:{interval:40,textStyle:{color:'#212529',fontSize:14} },
               axisTick : {show: false},
-              data:['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+              data:this.x_obj,
           },
       ],
       yAxis: [
@@ -81,10 +87,35 @@ export class PingDelayComponent implements OnInit,AfterViewInit {
                   width: 4
               }
           },
-          data: [82, 93, 90, 93, 129, 133, 113],
+          data: this.data_obj,
           
         }
       ]
+    };
+  }
+
+  ngOnChanges(){
+    var data=[];
+    var x=[];
+    if(this.Item){
+        console.log(this.Item.length);
+        for(var i=0;i<this.Item.length;i++){
+            x.push(this.Item[i].time)
+            data.push(this.Item[i].cmts_delay);
+         }
+         
+    }
+    this.x_obj=x;
+    this.data_obj=data;
+    
+     //更新图表
+     this.updateOptions = {
+        xAxis: [{   
+            data:x,
+        }],
+        series:[{
+            data:data
+        }]
     };
   }
 }

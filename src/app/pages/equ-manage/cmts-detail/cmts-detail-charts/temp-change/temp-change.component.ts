@@ -1,12 +1,14 @@
-import { Component, OnInit ,AfterViewInit } from '@angular/core';
+import { Component, OnInit ,AfterViewInit,OnChanges,Input} from '@angular/core';
 
 @Component({
   selector: 'tw-temp-change',
   templateUrl: './temp-change.component.html',
   styleUrls: ['./temp-change.component.scss']
 })
-export class TempChangeComponent implements OnInit,AfterViewInit  {
+export class TempChangeComponent implements OnInit,AfterViewInit ,OnChanges {
+  @Input() Item;
   options:any;
+  updateOptions:any;
   constructor() { }
 
   ngOnInit() {
@@ -37,10 +39,12 @@ export class TempChangeComponent implements OnInit,AfterViewInit  {
       grid:{
           top:100,
           bottom:35,
-          left:60
+          left:60,
+          width:"92%"
       },
       xAxis: [
           {   
+              show:false,
               type: 'category',
               axisLine: { show: true,lineStyle:{ color:'#212529' }},
               axisLabel:{interval:0,textStyle:{color:'#212529',fontSize:14} },
@@ -86,5 +90,9 @@ export class TempChangeComponent implements OnInit,AfterViewInit  {
        }
      ]
     };
+  }
+
+  ngOnChanges(){
+
   }
 }

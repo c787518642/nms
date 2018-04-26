@@ -13,29 +13,29 @@ export class CanvasChartComponent implements OnInit,OnChanges {
   desc1="CPU";
   desc2="Mem";
   desc3="Temp";
-  cpu_value=35;
-  mem_value=53;
-  temp_value=42;
+  cpu_value=0;
+  mem_value=0;
+  temp_value=0;
 
   constructor(private service:DetailNumService) { 
-     this.service.a.subscribe(data =>{
-        this.cpu_value=data.cpu_r;
-        this.mem_value=data.mem_r;
-        this.temp_value=data.temp;
-        this.draw(this.canvas1, this.cpu_value,0,100,"#42db7d");
-        this.draw(this.canvas2,this.mem_value,0,100,"#fddc42");
-        this.draw(this.canvas3,this.temp_value,0,100,"#4cc2ff");
-     })
+    
   }
  
   ngOnInit() {
   }
   ngOnChanges(){
-     console.log(this.Item);
+     if(this.Item){
+      this.cpu_value=this.Item.cpu_r;
+      this.mem_value=this.Item.mem_r;
+      this.temp_value=this.Item.temp;
+      this.draw(this.canvas1, this.cpu_value,0,100,"#42db7d");
+      this.draw(this.canvas2,this.mem_value,0,100,"#fddc42");
+      this.draw(this.canvas3,this.temp_value,0,100,"#4cc2ff");
+     }
   }
   //CPU
   draw(obj,value,min,max,color){
-    if(value=="--"){value=0;}
+    if(value=="--"||value==undefined){value=0;}
     let canvas1 = obj.nativeElement;
     canvas1.height=canvas1.width;
     var width=canvas1.height/2;

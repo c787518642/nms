@@ -1,6 +1,7 @@
 
 import { DetailNumService } from './detail-num.service';
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'cmts-detail',
@@ -18,18 +19,27 @@ export class CmtsDetailComponent implements OnInit {
     cpu_r:0,
     mem_r:0,
   }
+  cid:any;
   constructor(
     private detailNumService:DetailNumService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.detailNumService.getCmtsInfoNum().subscribe(response =>{
-        if(response['code']&&response['code']==1){
-           this.data=response['data'];
-           this.detailNumService.a.emit(this.data)
-        }
+    this.route.queryParamMap.subscribe(data =>{
+      this.cid = data.get("cid")
+      this.getDetailNum({ cid: this.cid })
     })
-     
+    
+  }
+
+  getDetailNum(obj){
+    this.detailNumService.getCmtsInfoNum(obj).subscribe(response =>{
+      if(response['code']&&response['code']==1){
+         this.data=response['data'];
+         this.detailNumService.a.emit(this.data)
+      }
+  })  
   }
 
 }
