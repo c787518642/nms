@@ -9,6 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./cmts-detail.component.scss']
 })
 export class CmtsDetailComponent implements OnInit {
+  title="cmts";
   data={
     cm_dow_rate:0,
     cm_online:0,
@@ -26,6 +27,9 @@ export class CmtsDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.route.url.subscribe(data=>{
+      this.title=data[0].path;
+    })
     this.route.queryParamMap.subscribe(data =>{
       this.cid = data.get("cid")
       if(this.cid){

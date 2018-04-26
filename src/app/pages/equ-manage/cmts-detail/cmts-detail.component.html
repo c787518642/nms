@@ -2,13 +2,13 @@
 <div class="row">
   <div class="col-md-12">
     <nb-card>
-      <nb-card-header>CMTS详细信息</nb-card-header>
+      <nb-card-header>{{title | uppercase}}详细信息</nb-card-header>
       <nb-card-body>
         <div class="row">
           <div class="col-md-4">
             <div class="box-primary">
-              <ul>
-                <li class="Msg Msg-primary"><i>{{data.cmts_up_sum}}</i></li>
+              <ul class="link" routerLink="./cmts-upstream" [queryParams]="{cid:cid}">
+                <li  class="Msg Msg-primary"><i>{{data.cmts_up_sum}}</i></li>
                 <li class="port-num"><i>上行端口数</i></li>
               </ul>
               
@@ -16,7 +16,7 @@
           </div>
           <div class=" col-md-4">
               <div class="box-info">
-                <ul>
+                <ul class="link" routerLink="./cmts-downstream" [queryParams]="{cid:cid}">
                   <li class="Msg Msg-info"><i>{{data.cmts_dow_sum}}</i></li>
                   <li class="port-num"><i>下行端口数</i></li>
                 </ul>
@@ -24,7 +24,7 @@
           </div>
           <div class=" col-md-4">
               <div class="box-warning">
-                  <ul>
+                  <ul class="link" routerLink="./cmts-ethernet" [queryParams]="{cid:cid}">
                       <li class="Msg Msg-warning"><i>{{data.cmts_eth_sum}}</i></li>
                       <li class="port-num"><i>上联端口数</i></li>
                     </ul>

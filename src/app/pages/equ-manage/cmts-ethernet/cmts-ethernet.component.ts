@@ -11,6 +11,7 @@ import { environment } from '../../../../environments/environment';
   styleUrls: ['./cmts-ethernet.component.scss']
 })
 export class CmtsEthernetComponent implements OnInit {
+  title="cmts"
   public source = new LocalDataSource();
   settings: any = {
     // selectMode: 'multi',
@@ -61,14 +62,16 @@ export class CmtsEthernetComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-   
+    this.route.url.subscribe(data=>{
+      this.title=data[0].path;
+    })
     this.route.queryParamMap.subscribe((data) => {
       let cid = data.get("cid")
       this.getCmtsEthernetList({ cid: cid });
       this.breadcrumb.set([
         { name: '设备管理', link: '/pages/equ-manage' },
-        { name: 'CMTS', link: '/pages/equ-manage/cmts' },
-        { name: '上联口列表', link: '/pages/equ-manage/cmts/cmts-ethernet', queryParams: { cid: cid } }
+        { name: this.title.toUpperCase(), link: `/pages/equ-manage/${this.title}` },
+        { name: '上联口列表', link: `/pages/equ-manage/${this.title}/cmts-ethernet`, queryParams: { cid: cid } }
       ]);
     })
 

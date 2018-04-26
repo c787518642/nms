@@ -1,7 +1,7 @@
-import { DetailChartsService } from './detail-charts.service';
 import { Component, OnInit, Optional } from '@angular/core';
 import { take } from 'rxjs/operators/take';
 import { Router, ActivatedRoute } from '@angular/router';
+import { DetailChartsService } from './detail-charts.service';
 @Component({
   selector: 'tw-cmts-detail-charts',
   templateUrl: './cmts-detail-charts.component.html',

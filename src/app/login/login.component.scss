@@ -57,7 +57,8 @@ button:disabled{
     // width: 35rem;
     width: 30rem;
     // height: 37.5rem;
-    box-shadow: 3px 3px 7px rgba(#000, 0.3);
+    -webkit-box-shadow: 3px 3px 7px rgba(#000, 0.3);
+            box-shadow: 3px 3px 7px rgba(#000, 0.3);
 
 }
 // .content>div:first-child{
@@ -101,7 +102,9 @@ button:disabled{
 
 .form-group-left{
     -webkit-user-select: none;
-    user-select: none;
+    -moz-user-select: none;
+     -ms-user-select: none;
+         user-select: none;
     position: relative;
     // margin-left:5.6rem;
     margin-left:4.1rem;
@@ -145,10 +148,8 @@ input[type="text"]::-moz-placeholder,input[type="password"]::-moz-placeholder{
 input[type="text"]:-ms-input-placeholder,input[type="password"]:-ms-input-placeholder{
     color: #949699;
 }
-button{
-    background: -webkit-linear-gradient(left, #35e2ab, #5aee90); /* Safari 5.1 - 6.0 */
-    background: -o-linear-gradient(right, #35e2ab, #5aee90); /* Opera 11.1 - 12.0 */
-    background: -moz-linear-gradient(right, #35e2ab, #5aee90); /* Firefox 3.6 - 15 */
+button{ /* Safari 5.1 - 6.0 */ /* Opera 11.1 - 12.0 */ /* Firefox 3.6 - 15 */
+    background: -webkit-gradient(linear, left top, right top, from(#35e2ab) , to(#5aee90));
     background: linear-gradient(to right, #35e2ab , #5aee90); /* 标准的语法（必须放在最后） */
     border-radius: 0.4rem;
     width: 22rem;
@@ -163,17 +164,13 @@ button{
 button:focus{
     outline:none;
 }
-button:hover{
-    background: -webkit-linear-gradient(left, #7cffcb, #7bff92); /* Safari 5.1 - 6.0 */
-    background: -o-linear-gradient(right, #7cffcb, #7bff92); /* Opera 11.1 - 12.0 */
-    background: -moz-linear-gradient(right, #7cffcb, #7bff92); /* Firefox 3.6 - 15 */
+button:hover{ /* Safari 5.1 - 6.0 */ /* Opera 11.1 - 12.0 */ /* Firefox 3.6 - 15 */
+    background: -webkit-gradient(linear, left top, right top, from(#7cffcb) , to(#7bff92));
     background: linear-gradient(to right, #7cffcb , #7bff92); /* 标准的语法（必须放在最后） */
 
 }
-.btn-ing:hover{
-    background: -webkit-linear-gradient(left, #35e2ab, #5aee90); /* Safari 5.1 - 6.0 */
-    background: -o-linear-gradient(right, #35e2ab, #5aee90); /* Opera 11.1 - 12.0 */
-    background: -moz-linear-gradient(right, #35e2ab, #5aee90); /* Firefox 3.6 - 15 */
+.btn-ing:hover{ /* Safari 5.1 - 6.0 */ /* Opera 11.1 - 12.0 */ /* Firefox 3.6 - 15 */
+    background: -webkit-gradient(linear, left top, right top, from(#35e2ab) , to(#5aee90));
     background: linear-gradient(to right, #35e2ab , #5aee90); /* 标准的语法（必须放在最后） */
   
 }
@@ -230,7 +227,8 @@ label{
         width: 100%;
         margin-top: 0;
         border-radius: 0rem;
-        box-shadow: 0px 0px 0px #ffffff;
+        -webkit-box-shadow: 0px 0px 0px #ffffff;
+                box-shadow: 0px 0px 0px #ffffff;
     }
     .form-group-left{
         margin-left: 10%;
@@ -258,4 +256,7 @@ label{
         color: #747474;
     }
     
+}
+#IEcheckbox{
+    margin-left: 0;
 }

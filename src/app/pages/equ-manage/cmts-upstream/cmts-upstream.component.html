@@ -2,7 +2,7 @@
   <div class="col-md-12" *ngIf="!show_detial">
     <nb-card>
       <nb-card-header>
-        CMTS上行端口列表
+        {{title | uppercase}}上行端口列表
         <!-- <input #search  class="form-control form-control-success" type="text" placeholder="Search..." (keydown.enter)="onSearch(search.value)"> -->
       </nb-card-header>
       <nb-card-body >
@@ -15,7 +15,7 @@
   <div class="col-md-4" *ngIf="show_detial" id="cmts">
     <nb-card>
       <nb-card-header>
-        CMTS上行端口列表
+        {{title | uppercase}}上行端口列表
         <!-- <input #search  class="form-control form-control-success" type="text" placeholder="Search..." (keydown.enter)="onSearch(search.value)"> -->
       </nb-card-header>
       <nb-card-body >
