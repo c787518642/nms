@@ -27,11 +27,11 @@ export class LoginComponent implements OnInit {
   ) { }
   ngOnInit() {
     this.IE=this.isIE();
-    console.log(this.IE)
     let isLogin = this.route.snapshot.paramMap.get("logout");
    
     if (isLogin === "logout") {
       location.href = "./"
+      // this.router.navigate(["./"]);
       // 清除登录信息
       this.loginService.logout().subscribe((data) => {
         
@@ -94,8 +94,9 @@ export class LoginComponent implements OnInit {
     this.loginService.login(jsonObj).subscribe(
       data => {
         if (data['code'] && data['code'] == 1) {
-          // if成功,跳转
-          this.router.navigate(['./pages'])
+          // if成功,跳转;
+          // this.router.navigate(['./pages'])
+          this.router.navigate(['./'])
           // if登录成功记住用户名
           localStorage.setItem("username", jsonObj.username)
         } else {

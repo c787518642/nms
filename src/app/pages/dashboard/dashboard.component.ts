@@ -12,10 +12,10 @@ export class DashboardComponent implements OnInit{
   device_count:any[];
   //数据的默认值
   device_data={
-    room:30,
-    cmts:40,
-    dcmts:50,
-    fs:3000
+    room:0,
+    cmts:0,
+    dcmts:0,
+    fs:0
   };
   code:any;
   constructor(

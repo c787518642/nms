@@ -1,4 +1,4 @@
-<nb-card  [ngClass]="{'off': !on}">
+<nb-card  [ngClass]="{'off': !on}" (click)="navigate()">
 <!-- <nb-card (click)="on = !on" [ngClass]="{'off': !on}"> -->
     <div class="icon-container">
         <div class="icon {{ type }}">
