@@ -26,12 +26,14 @@ export class CmtsDetailComponent implements OnInit {
     private route: ActivatedRoute
   ) { }
   ngOnChanges(){
-    this.getDetailNum({ cid: this.cid })
+    
+    if(this.cid){
+        this.getDetailNum({ cid: this.cid })
+    }
+    
   }
   ngOnInit() {
-    this.route.url.subscribe(data=>{
-      this.title=data[0].path;
-    })
+    
   
   }
 
