@@ -52,4 +52,48 @@ label i{
     color: #2a2a2a;
     font-weight: 600;
 }
+@media screen and (max-width:440px){
+    // .tab-head{
+    //     width: 110%;
+    // }
+    label{
+        width: 31%;
+        height: 50px;
+       
+    }
+    label i{
+        padding-left: 0px;
+        padding-right: 0px;
+     }
+    .selected{
+        width: 31%;
+        height: 50px;  
+    }
+    .selected i:after{
+        width: 110%;
+        margin-left:-105%; 
+    }
+}
+@media screen and (max-width:380px){
+    // .tab-head{
+    //     width: 110%;
+    // }
+    label{
+        width: 31%;
+        height: 50px;
+        font-size:17px; 
+        font-weight: 600;
+    }
+    .selected{
+        width: 31%;
+        height: 50px;  
+        font-size:17px; 
+    }
+    .selected i:after{
+       
+        width: 110%;
+        margin-left:-105%; 
+      
+    }
+}
 

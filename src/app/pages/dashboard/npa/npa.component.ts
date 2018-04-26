@@ -38,7 +38,7 @@ export class NpaComponent implements OnInit {
           this.datas1=[
             { num: "低于65分", date: data1[0].p65},
             { num: "低于75分", date: data1[0].p75},
-            { num: "低于80分", date: data1[0].p80},
+            // { num: "低于80分", date: data1[0].p80},
             { num: "低于85分", date: data1[0].p85},
             { num: "低于95分", date: data1[0].p95},
             { num: "低于100分", date: data1[0].p100},
@@ -46,7 +46,7 @@ export class NpaComponent implements OnInit {
            this.datas2=[
             { num: "低于65分", date: data1[0].fs65},
             { num: "低于75分", date: data1[0].fs75},
-            { num: "低于85分", date: data1[0].fs80},
+            // { num: "低于80分", date: data1[0].fs80},
             { num: "低于85分", date: data1[0].fs85},
             { num: "低于95分", date: data1[0].fs95},
             { num: "低于100分", date:data1[0].fs100},

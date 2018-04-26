@@ -7,8 +7,6 @@ import { CmtsComponent } from './cmts/cmts.component';
 import { CmtsDetailComponent } from './cmts-detail/cmts-detail.component';
 import { DetailNumService } from './cmts-detail/detail-num.service';
 import { WaterChartComponent } from './cmts-detail/water-chart/water-chart.component';
-import { TemperatureComponent } from './cmts-detail/temperature/temperature.component';
-import { TemperatureDraggerComponent } from './cmts-detail/temperature/temperature-dragger/temperature-dragger.component';
 import { EquManageRoutingModule } from './equ-manage-routing.module';
 import { ThemeModule } from '../../@theme/theme.module';
 import { CmtsTableComponent } from './cmts-detail/cmts-table/cmts-table.component';
@@ -17,6 +15,7 @@ import { CmtsService } from './cmts/cmts.service';
 import { CmtsCollectionChangeComponent } from './cmts-detail/cmts-collection-change/cmts-collection-change.component';
 import { CmtsCollettionService } from './cmts-detail/cmts-collection-change/cmts-collettion.service';
 import { CmtsDetailChartsComponent } from './cmts-detail/cmts-detail-charts/cmts-detail-charts.component';
+import { DetailChartsService } from './cmts-detail/cmts-detail-charts/detail-charts.service';
 import { Ng2SmartTableModule } from '../../../ng2-smart-table';
 import { CmtsListTableSnmpComponent } from './cmts/cmts-list-table-snmp/cmts-list-table-snmp.component';
 import { CmtsUpstreamComponent } from './cmts-upstream/cmts-upstream.component';
@@ -30,6 +29,7 @@ import { TempChangeComponent } from './cmts-detail/cmts-detail-charts/temp-chang
 import { CmOnlineComponent } from './cmts-detail/cmts-detail-charts/cm-online/cm-online.component';
 import { CmtsFlowComponent } from './cmts-detail/cmts-detail-charts/cmts-flow/cmts-flow.component';
 import { CmtsNpaComponent } from './cmts-detail/cmts-detail-charts/cmts-npa/cmts-npa.component';
+import { CmtsNameComponent } from './cmts/cmts-name/cmts-name.component';
 
 
 @NgModule({
@@ -46,8 +46,6 @@ import { CmtsNpaComponent } from './cmts-detail/cmts-detail-charts/cmts-npa/cmts
     CmtsDetailComponent,
     WaterChartComponent,
    
-    TemperatureComponent,
-    TemperatureDraggerComponent,
     CmtsTableComponent,
     CmtsListTableSnmpComponent,
     CmtsCollectionChangeComponent,
@@ -63,16 +61,19 @@ import { CmtsNpaComponent } from './cmts-detail/cmts-detail-charts/cmts-npa/cmts
     CmOnlineComponent,
     CmtsFlowComponent,
     CmtsNpaComponent,
+    CmtsNameComponent,
 
   ],
   entryComponents:[
-    CmtsListTableSnmpComponent
+    CmtsListTableSnmpComponent,
+    CmtsNameComponent
   ],
   providers:[
     CmtsService,
     DetailNumService,
     CmtsTableService,
-    CmtsCollettionService
+    CmtsCollettionService,
+    DetailChartsService
   ]
 })
 export class EquManageModule { }

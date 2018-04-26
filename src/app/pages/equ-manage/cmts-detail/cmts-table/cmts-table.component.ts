@@ -1,5 +1,6 @@
 import { CmtsTableService } from './cmts-table.service';
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs/operators/take';
 
 
@@ -28,16 +29,27 @@ export class CmtsTableComponent implements OnInit {
    status:true,
    up_flow_max:0
   }
-  constructor(private cmtsTableService:CmtsTableService) { }
+  cid:any;
+  constructor(
+    private cmtsTableService:CmtsTableService,
+    private route: ActivatedRoute
+  ) { }
   
   ngOnInit() {
-    this.cmtsTableService.getCmtsInfo().subscribe(response =>{
-       if(response['code']&&response['code']==1){
-         let data=response['data'];
-         this.data=data;
-       }
-       
+    this.route.queryParamMap.subscribe(data =>{
+      this.cid = data.get("cid")
+      this.getCmtsTableInfo({ cid: this.cid })
     })
+  }
+
+  getCmtsTableInfo(obj){
+    this.cmtsTableService.getCmtsInfo(obj).subscribe(response =>{
+      if(response['code']&&response['code']==1){
+        let data=response['data'];
+        this.data=data;
+      }
+      
+   })
   }
 
   change(){

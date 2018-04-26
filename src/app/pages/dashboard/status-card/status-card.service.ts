@@ -8,19 +8,19 @@ export class StatusCardService {
    }
   deviceCount=[{
     name:'hub',
-    count:40,
+    count:0,
     color:"purple"
   },{
     name:'cmts',
-    count:40,
+    count:0,
     color:"green"
   },{
     name:'dcmts',
-    count:140,
+    count:0,
     color:"blue"
   },{
     name:'op',
-    count:4000,
+    count:0,
     color:"orange"
   }];
   get(){

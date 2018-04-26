@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SnrService } from './../snr.service';
 import { environment } from '../../../../../environments/environment';
+
 @Component({
   selector: 'tw-snr-line',
   templateUrl: './snr-line.component.html',
@@ -9,22 +10,42 @@ import { environment } from '../../../../../environments/environment';
 
 export class SnrLineComponent  implements OnInit {
   options: any;
-  CONTENT="显示最近一天";
+  CONTENT="显示最近两周";
+  fromTime:any;
+  toTime:any;
   data_length=[
-    { content: '显示最近一天' },
-    { content: '显示最近一周' },
+    { content: '显示最近两周' },
     { content: '显示最近一月' },
+    { content: '显示最近三月' },
   ];
    
   get_line(conetent){
       this.CONTENT=conetent;
+      if(this.CONTENT=='显示最近两周'){
+        this.getPreDate(15)
+        this.getSnrLine(this.fromTime,this.toTime);
+      }else if(this.CONTENT=='显示最近一月'){
+        this.getPreDate(30)
+        this.getSnrLine(this.fromTime,this.toTime);
+      }else if(this.CONTENT=='显示最近三月'){
+        this.getPreDate(90)
+        this.getSnrLine(this.fromTime,this.toTime);
+      }
       
   }
 
-  constructor(private snrService:SnrService) { }
+  constructor(
+      private snrService:SnrService,
+   
+    ) { }
 
   ngOnInit() {
-    this.snrService.getSnrLine().subscribe(response =>{
+    this.getPreDate(15)
+    this.getSnrLine(this.fromTime,this.toTime);
+  }
+
+  getSnrLine(fromTime,toTime){
+    this.snrService.getSnrLine(fromTime,toTime).subscribe(response =>{
         if(response['code']&&response['code']==1){
             let data=response['result']
             let x=[];
@@ -67,9 +88,10 @@ export class SnrLineComponent  implements OnInit {
             xAxis: [
                 {   
                     type: 'category',
-                    axisLine: { show: true,lineStyle:{ color:'#212529' }},
-                    axisLabel:{interval:0,textStyle:{color:'#212529',fontSize:14} },
-                    axisTick : {show: false},
+                    boundaryGap: false,
+                    // axisLine: { show: true,lineStyle:{ color:'#212529' }},
+                    // axisLabel:{interval:0,textStyle:{color:'#212529',fontSize:14} },
+                    // axisTick : {show: false},
                     data:x,
                 },
             ],
@@ -90,11 +112,11 @@ export class SnrLineComponent  implements OnInit {
                     fontSize:20,
                 },
         
-                data:['优秀','良好','一般','差'],
+                data:['优质','良好','一般','差'],
             
             },
             series: [{
-                name:"优秀",
+                name:"优质",
                 type: 'line',
                 smooth: true,
                 symbol:"emptyCircle",
@@ -163,8 +185,16 @@ export class SnrLineComponent  implements OnInit {
         }
         
     })
+  }
+
+  getPreDate(length){
+      let date=new Date();
+      this.toTime=(date.getFullYear())+'-'+(date.getMonth()+1)+'-'+(date.getDate());
+      let time=date.getTime();
+      let Pretime=time-1000*length*24*3600;
+      let PreDate=new Date(Pretime);
+      this.fromTime=(PreDate.getFullYear())+'-'+(PreDate.getMonth()+1)+'-'+(PreDate.getDate());
   
-    
   }
 
 }

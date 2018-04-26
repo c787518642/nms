@@ -8,7 +8,7 @@
 }
 nb-card-body{
     padding-bottom:0; 
-    padding-top:0; 
+    
 
 }
 ul{
@@ -16,6 +16,9 @@ ul{
     height: 60px;
     margin: 0;
     padding: 0;
+}
+ul.link{
+    cursor: pointer;
 }
 li{
     float: left;
@@ -27,7 +30,7 @@ li{
 .Msg{
     width:28%;
     font-size: 22px;
-    border-radius: 4px;
+    border-radius: 4px 0 0 4px;
     text-align: center;
     line-height: 60px;
     color: #fff;

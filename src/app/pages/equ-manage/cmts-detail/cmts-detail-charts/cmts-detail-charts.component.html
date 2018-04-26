@@ -17,35 +17,48 @@
           </ul>
       </div>
       </div>
-       
-       <div class="row">
+      <div class="row">
+        <div class="col-xs-8 col-is-7 col-sm-5 col-md-8 col-lg-6 col-xxxl-4">
+            <div class="dropdown ghost-dropdown" id="date_change" placement="bottom" ngbDropdown>
+                <button id="date-length" class="btn btn-success" type="button" ngbDropdownToggle>
+                        {{DateConetent}}
+                </button>
+                <ul class="dropdown-menu" ngbDropdownMenu>
+                    <li class="dropdown-item" *ngFor="let key of data_length"  (click)="get_line(key.content)">
+                        {{key.content}}
+                    </li> 
+                </ul>
+            </div>
+        </div>
+      </div>
+      <div class="row">
           <div class="col-md-12" *ngIf='show_detail[0]' >
-            <tw-ping-lost></tw-ping-lost>
-            <!-- <div echarts [options]="options1"  class="echart"></div> -->
+            <tw-ping-lost [Item]='data1'></tw-ping-lost>
+           
           </div>
           <div class="col-md-12" *ngIf='show_detail[1]'>
-            <tw-ping-delay></tw-ping-delay>
-            <!-- <div echarts [options]="options2"  class="echart"></div> -->
+            <tw-ping-delay [Item]='data1'></tw-ping-delay>
+         
           </div>
           <div class="col-md-12" *ngIf='show_detail[2]'>
-            <tw-mem-rate></tw-mem-rate>
-            <!-- <div echarts [options]="options3"  class="echart"></div> -->
+            <tw-mem-rate [Item]='data2'></tw-mem-rate>
+         
           </div>
           <div class="col-md-12" *ngIf='show_detail[3]'>
-            <tw-temp-change></tw-temp-change>
-            <!-- <div echarts [options]="options4"  class="echart"></div> -->
+            <tw-temp-change [Item]='data3'></tw-temp-change>
+           
           </div>
           <div class="col-md-12" *ngIf='show_detail[4]'>
-            <tw-cm-online></tw-cm-online>
-            <!-- <div echarts [options]="options5"  class="echart"></div> -->
+            <tw-cm-online [Item]='data4'></tw-cm-online>
+          
           </div>
           <div class="col-md-12" *ngIf='show_detail[5]'>
-            <tw-cmts-flow></tw-cmts-flow>
-            <!-- <div echarts [options]="options6"  class="echart"></div> -->
+            <tw-cmts-flow [Item]='data5'></tw-cmts-flow>
+           
           </div>
           <div class="col-md-12" *ngIf='show_detail[6]'>
-            <tw-cmts-npa></tw-cmts-npa>
-            <!-- <div echarts [options]="options7"  class="echart"></div> -->
+            <tw-cmts-npa [Item]='data6'></tw-cmts-npa>
+          
           </div>
        </div>
 

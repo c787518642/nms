@@ -5,15 +5,10 @@ import { environment } from '../../../../../environments/environment';
 export class CmtsTableService {
 
   constructor(private http:HttpClient) { }
-  getCmtsInfo(){
-    let url=window.location.href;
-    let Url=url.split("=");
-    let cid=Url[1];
+  getCmtsInfo(obj: { cid }){
+    
     let path=environment.getPath()+'/tw-cmts-server/cmts/information';
-    var json_Obj={
-      cid:cid
-    };
-    return this.http.post(path,toFormData(json_Obj),{
+    return this.http.post(path,toFormData(obj),{
       headers:new HttpHeaders({'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'}),
     });
   }

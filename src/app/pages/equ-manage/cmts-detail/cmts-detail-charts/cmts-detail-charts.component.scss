@@ -15,9 +15,10 @@ nb-card-body{
 }
 .secleted-head{
     height: 50px;
-    width: 30%;
+    width: 166px;
     display: none;  
 }
+
 #date-length{
     margin-left: 20px;
     margin-top: 10px;
@@ -26,6 +27,9 @@ nb-card-body{
     line-height: 0px;
   }
 
+#date_change{
+    width: 166px;
+}
 
 label{
     cursor: pointer;
@@ -81,25 +85,36 @@ label i{
     .secleted-head{
         display: block;
     }
-    
+      
 }
-@media screen and (max-width:600px){
-    .tab-head{
-        display: none;
-    }
-    .secleted-head{
-        display: block;
-        width: 36%;
-    }
+// @media screen and (max-width:600px){
+//     .tab-head{
+//         display: none;
+//     }
+//     .secleted-head{
+//         display: block;
+//         width: 36%;
+//     }
+//     #date_change{
+//         width: 95%;
+//     }
+// }
+// @media screen and (max-width:575px){
     
-}
-@media screen and (max-width:460px){
-    .tab-head{
-        display: none;
-    }
-    .secleted-head{
-        display: block;
-        width: 160px;
-    }
+//     #date_change{
+//         width: 65%;
+//     }
+// }
+// @media screen and (max-width:460px){
+//     .tab-head{
+//         display: none;
+//     }
+//     .secleted-head{
+//         display: block;
+//         width: 160px;
+//     }
+//     #date_change{
+//         width: 160px;
+//     }
     
-}
+// }

@@ -33,15 +33,22 @@ export class SnrBodyComponent implements OnInit , AfterViewInit,OnDestroy{
         }else if(document.body.clientWidth<=952&&document.body.clientWidth>912){
            this.Gap=10;
            this.Padding=0;
-        }else if(document.body.clientWidth<=912){
+        }else if(document.body.clientWidth<=912&&document.body.clientWidth>400){
            this.Gap=5;
            this.Padding=0;
-        }
-       
+        }else if(document.body.clientWidth<=400){
+            this.Gap=20;
+            this.Padding=0;
+         }
+    
        this.sub=Observable.fromEvent(window,'resize')
         .subscribe((event) => {
         this.Echart_width=this.echartsInstance.getWidth();
-        if(this.Echart_width<=740&&this.Echart_width>351){
+        console.log(this.Echart_width)
+        if(this.Echart_width<=1000&&this.Echart_width>740){
+            this.Gap=30;
+            this.Padding=0;
+        }else if(this.Echart_width<=740&&this.Echart_width>351){
             this.Gap=30;
             this.Padding=0;
         }else if(this.Echart_width<=351&&this.Echart_width>322){
@@ -50,6 +57,7 @@ export class SnrBodyComponent implements OnInit , AfterViewInit,OnDestroy{
         }else if(this.Echart_width<=322){
             this.Gap=5;
             this.Padding=0;
+
         }
        
         //更新图表
@@ -73,22 +81,22 @@ export class SnrBodyComponent implements OnInit , AfterViewInit,OnDestroy{
                 this.updateOptions = {
                     series:[{
                         data:[
-                            {value:data[0].snrnum, name:'优秀',itemStyle: {normal:{color: '#43d280'}}},
-                            {value:data[1].snrnum, name:'良好',itemStyle: {normal:{color: '#5fc7fe'}}},
-                            {value:data[2].snrnum, name:'一般',itemStyle: {normal:{color: '#fddc42'}}},
-                            {value:data[3].snrnum, name:'差',itemStyle: {normal:{color: '#e64d3d'}}}
+                            {value:data[0].pie, name:'优质',itemStyle: {normal:{color: '#43d280'}}},
+                            {value:data[1].pie, name:'良好',itemStyle: {normal:{color: '#5fc7fe'}}},
+                            {value:data[2].pie, name:'一般',itemStyle: {normal:{color: '#fddc42'}}},
+                            {value:data[3].pie, name:'差',itemStyle: {normal:{color: '#e64d3d'}}}
                         ]
                     }]
                 };
              
             }
         }
-     }, error => { environment.error(error["status"]) })
+     })
 
      this.options = {
         tooltip: {
           trigger: 'item',
-        //   formatter: "{a} <br/>{b}: {c} ({d}%)"
+          formatter: "{a} <br/>{b}: {c}%"
       },
       legend: {
           x : 'center',
@@ -100,7 +108,7 @@ export class SnrBodyComponent implements OnInit , AfterViewInit,OnDestroy{
               fontSize:20,
           },
           formatter:function(name){
-               if(name=="优秀"){
+               if(name=="优质"){
                    return "30-45"+"\n"+name;
                }else if(name=="良好"){
                   return "28-30"+"\n"+name;
@@ -110,7 +118,7 @@ export class SnrBodyComponent implements OnInit , AfterViewInit,OnDestroy{
                   return "26-0"+"\n"+name;
                }
           },
-          data:['优秀','良好','一般','差'],
+          data:['优质','良好','一般','差'],
       
       },
       series: [
@@ -139,7 +147,7 @@ export class SnrBodyComponent implements OnInit , AfterViewInit,OnDestroy{
                   }
               },
               data:[
-                  {value:0, name:'优秀',itemStyle: {normal:{color: '#43d280'}}},
+                  {value:0, name:'优质',itemStyle: {normal:{color: '#43d280'}}},
                   {value:0, name:'良好',itemStyle: {normal:{color: '#5fc7fe'}}},
                   {value:0, name:'一般',itemStyle: {normal:{color: '#fddc42'}}},
                   {value:0, name:'差',itemStyle: {normal:{color: '#e64d3d'}}}
