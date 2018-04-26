@@ -1,6 +1,6 @@
 
 import { DetailNumService } from './detail-num.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -20,23 +20,19 @@ export class CmtsDetailComponent implements OnInit {
     cpu_r:0,
     mem_r:0,
   }
-  cid:any;
+  @Input() cid:any;
   constructor(
     private detailNumService:DetailNumService,
     private route: ActivatedRoute
   ) { }
-
+  ngOnChanges(){
+    this.getDetailNum({ cid: this.cid })
+  }
   ngOnInit() {
     this.route.url.subscribe(data=>{
       this.title=data[0].path;
     })
-    this.route.queryParamMap.subscribe(data =>{
-      this.cid = data.get("cid")
-      if(this.cid){
-        this.getDetailNum({ cid: this.cid })
-      }
-    })
-    
+  
   }
 
   getDetailNum(obj){
@@ -47,5 +43,5 @@ export class CmtsDetailComponent implements OnInit {
       }
   })  
   }
-
+ 
 }

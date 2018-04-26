@@ -33,7 +33,7 @@ export class CmtsComponent implements OnInit {
   };
   settings_some = {
     hideSubHeader: true, actions: { add: false, edit: false, delete: false },
-    columns: { c_nickname: { title: 'CMTS', }, mac_domain:{title : 'MAC域'}, }
+    columns: { c_nickname: { title: 'CMTS',  type: "custom", renderComponent:CmtsNameComponent }, mac_domain:{title : 'MAC域'}, }
   };
   cid;
   pageIndex = 1;
