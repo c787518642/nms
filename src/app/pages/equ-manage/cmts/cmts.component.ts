@@ -6,6 +6,7 @@ import { CmtsListTableSnmpComponent } from './cmts-list-table-snmp/cmts-list-tab
 import { BreadcrumbService } from '../../../@theme/components/header/breadcrumb/breadcrumb.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { query } from '@angular/animations';
+import { CmtsNameComponent } from './cmts-name/cmts-name.component';
 
 @Component({
   selector: 'app-cmts',
@@ -23,15 +24,16 @@ export class CmtsComponent implements OnInit {
       // index: { title: '序号', valuePrepareFunction: (cell, row ) => { return cell.row.index + 1 } },
       company_name: { title: '公司', },
       sr_name: { title: '机房', },
-      c_nickname: { title: 'CMTS' },
+      c_nickname: { title: 'CMTS' , type: "custom", renderComponent:CmtsNameComponent },
+      mac_domain:{title : 'MAC域'},
       snmpStatus: { title: 'SNMP 状态', type: "custom", renderComponent: CmtsListTableSnmpComponent },
       npa_avg: { title: 'NPA', type: "html", valuePrepareFunction: (cell, row) => { if (cell < 90) { return `<span class="text-danger">${cell}</span>` } else return cell } },
-      cm_online: { title: '在线率(%)', valuePrepareFunction: (cell, row) => { return (cell * 100).toFixed(0) } }
+      cm_online: { title: '在线率(%)', valuePrepareFunction: (cell, row) => { return (cell) } }
     }
   };
   settings_some = {
     hideSubHeader: true, actions: { add: false, edit: false, delete: false },
-    columns: { c_nickname: { title: 'CMTS', }, snmpStatus: { title: 'SNMP 状态', type: "custom", renderComponent: CmtsListTableSnmpComponent }, }
+    columns: { c_nickname: { title: 'CMTS', }, mac_domain:{title : 'MAC域'}, }
   };
   cid;
   pageIndex = 1;

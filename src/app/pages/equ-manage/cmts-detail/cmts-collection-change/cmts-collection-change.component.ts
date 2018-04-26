@@ -32,8 +32,9 @@ export class CmtsCollectionChangeComponent implements OnInit {
   getCmtsCollection(obj){
       this.cmtsCollettionService.getCmtsCollection(obj).subscribe(response =>{
         if(response['code']&&response['code']==1){
-          if(response['data']){
+          if(response['data']&&response['data'].length>0){
             this.data=response['data'];
+
             this.length=this.data.length-1;
             this.collection_data=this.data[this.length];
 
