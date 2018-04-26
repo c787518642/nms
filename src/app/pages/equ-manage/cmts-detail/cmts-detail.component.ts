@@ -43,7 +43,6 @@ export class CmtsDetailComponent implements OnInit {
     this.detailNumService.getCmtsInfoNum(obj).subscribe(response =>{
       if(response['code']&&response['code']==1){
          this.data=response['data'];
-         
       }
   })  
   }

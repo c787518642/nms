@@ -68,13 +68,13 @@ export class CmtsDetailChartsComponent implements OnInit {
     }
   }
   ngOnInit() {
-    this.route.queryParamMap.subscribe(data =>{
-      this.cid = data.get("cid")
+   
+      this.cid =  this.route.snapshot.queryParamMap.get("cid")
       if(this.cid){
         this.getChartData({ cid: this.cid,day_len:1 })
       }
       
-    })
+   
   }
   getChartData(obj){
     this.detailChartsService.getCmtsPingChart(obj).subscribe(response =>{

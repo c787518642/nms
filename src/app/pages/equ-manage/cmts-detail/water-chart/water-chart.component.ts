@@ -1,4 +1,4 @@
-import { Component, OnInit,AfterViewInit, Input} from '@angular/core';
+import { Component, OnInit,AfterViewInit, Input,OnChanges} from '@angular/core';
 import { Observable }from'rxjs/Rx';
 import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 import { DetailNumService } from '../detail-num.service';
@@ -8,8 +8,8 @@ declare var echarts;
   templateUrl: './water-chart.component.html',
   styleUrls: ['./water-chart.component.scss']
 })
-export class WaterChartComponent implements OnInit,AfterViewInit {
- 
+export class WaterChartComponent implements OnInit,AfterViewInit,OnChanges{
+  @Input() Item;
   options1: any;
   options2: any;
   options3: any;
@@ -65,35 +65,7 @@ export class WaterChartComponent implements OnInit,AfterViewInit {
   }
   constructor(
     private service:DetailNumService
-  ) { 
-    this.service.a.subscribe(data=>{
-      if(data){
-        let cm_up_rate=data.cm_up_rate/100;
-        let cm_dow_rate=data.cm_dow_rate/100;
-        let cm_online=data.cm_online/100;
-        // this.updateOptions1 = {
-        //     series:[{
-        //       data: [cm_up_rate]
-        //   }]
-        // };
-        // this.updateOptions2 = {
-        //   series:[{
-        //     data: [cm_dow_rate]
-        //   }]
-        // };
-        // this.updateOptions3 = {
-        //   series:[{
-        //     data: [cm_online]
-        //   }]
-        // };
-
-        this.drawChart1(cm_up_rate);
-        this.drawChart2(cm_dow_rate);
-        this.drawChart3(cm_online);
-      } 
-    })
-
-  }
+  ) {}
   onChartInit(e: any) {
     this.echartsInstance = e;
   }
@@ -194,13 +166,23 @@ export class WaterChartComponent implements OnInit,AfterViewInit {
   }
 
   ngAfterViewInit(){
-    
+     
   }
- 
+   
   ngOnDestroy(){
     this.sub.unsubscribe();
   }  
-  
+  ngOnChanges(){
+    if(this.Item){
+      let cm_up_rate=this.Item.cm_up_rate/100;
+      let cm_dow_rate=this.Item.cm_dow_rate/100;
+      let cm_online=this.Item.cm_online/100;
+      this.drawChart1(cm_up_rate);
+      this.drawChart2(cm_dow_rate);
+      this.drawChart3(cm_online);
+    } 
+  }
+
   drawChart1(value) {
     if(value>=0&&value<=0.2){
       this.style=this.green;
