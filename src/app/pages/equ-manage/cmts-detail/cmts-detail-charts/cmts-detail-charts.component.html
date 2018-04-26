@@ -17,8 +17,21 @@
           </ul>
       </div>
       </div>
-       
-       <div class="row">
+      <div class="row">
+        <div class="col-xs-8 col-is-7 col-sm-5 col-md-8 col-lg-6 col-xxxl-4">
+            <div class="dropdown ghost-dropdown" id="date_change" placement="bottom" ngbDropdown>
+                <button id="date-length" class="btn btn-success" type="button" ngbDropdownToggle>
+                        {{DateConetent}}
+                </button>
+                <ul class="dropdown-menu" ngbDropdownMenu>
+                    <li class="dropdown-item" *ngFor="let key of data_length"  (click)="get_line(key.content)">
+                        {{key.content}}
+                    </li> 
+                </ul>
+            </div>
+        </div>
+      </div>
+      <div class="row">
           <div class="col-md-12" *ngIf='show_detail[0]' >
             <tw-ping-lost [Item]='data1'></tw-ping-lost>
            

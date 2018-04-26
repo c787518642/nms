@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   upcase = false;
   errorInfo: string;
   isLogin = false;
+  IE;
   constructor(
     private loginService: LoginService,
     private router: Router,
@@ -25,10 +26,12 @@ export class LoginComponent implements OnInit {
     // private routes:Routes
   ) { }
   ngOnInit() {
+    this.IE=this.isIE();
     let isLogin = this.route.snapshot.paramMap.get("logout");
    
     if (isLogin === "logout") {
       location.href = "./"
+      // this.router.navigate(["./"]);
       // 清除登录信息
       this.loginService.logout().subscribe((data) => {
         
@@ -91,8 +94,9 @@ export class LoginComponent implements OnInit {
     this.loginService.login(jsonObj).subscribe(
       data => {
         if (data['code'] && data['code'] == 1) {
-          // if成功,跳转
-          this.router.navigate(['./pages'])
+          // if成功,跳转;
+          // this.router.navigate(['./pages'])
+          this.router.navigate(['./'])
           // if登录成功记住用户名
           localStorage.setItem("username", jsonObj.username)
         } else {
@@ -110,5 +114,36 @@ export class LoginComponent implements OnInit {
       }
     )
 
+  }
+
+  isIE(){
+   
+      var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串  
+      var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1; //判断是否IE<11浏览器  
+      var isEdge = userAgent.indexOf("Edge") > -1 && !isIE; //判断是否IE的Edge浏览器  
+      var isIE11 = userAgent.indexOf('Trident') > -1 && userAgent.indexOf("rv:11.0") > -1;
+      if(isIE) {
+          var reIE = new RegExp("MSIE (\\d+\\.\\d+);");
+          reIE.test(userAgent);
+          var fIEVersion = parseFloat(RegExp["$1"]);
+          if(fIEVersion == 7) {
+              return 7;
+          } else if(fIEVersion == 8) {
+              return 8;
+          } else if(fIEVersion == 9) {
+              return 9;
+          } else if(fIEVersion == 10) {
+              return 10;
+          } else {
+              return 6;//IE版本<=7
+          }   
+      } else if(isEdge) {
+          return 'edge';//edge
+      } else if(isIE11) {
+          return 11; //IE11  
+      }else{
+          return -1;//不是ie浏览器
+      }
+  
   }
 }

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, Input } from '@angular/core';
 
 @Component({
@@ -12,4 +13,13 @@ export class StatusCardComponent {
   @Input() on = true;
   @Input() count :number;
   @Input() color : string;
+  @Input() link : string;
+
+  constructor(
+    private router:Router
+  ){}
+  navigate(){
+    console.log(this.link)
+    // this.router.navigate([this.link])
+  }
 }

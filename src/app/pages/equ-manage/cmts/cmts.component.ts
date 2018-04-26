@@ -6,6 +6,7 @@ import { CmtsListTableSnmpComponent } from './cmts-list-table-snmp/cmts-list-tab
 import { BreadcrumbService } from '../../../@theme/components/header/breadcrumb/breadcrumb.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { query } from '@angular/animations';
+import { CmtsNameComponent } from './cmts-name/cmts-name.component';
 
 @Component({
   selector: 'app-cmts',
@@ -14,6 +15,7 @@ import { query } from '@angular/animations';
 })
 export class CmtsComponent implements OnInit {
   public source = new LocalDataSource();
+  title="cmts"
   settings: any = {
     // selectMode: 'multi',
     hideSubHeader: true,
@@ -22,15 +24,16 @@ export class CmtsComponent implements OnInit {
       // index: { title: '序号', valuePrepareFunction: (cell, row ) => { return cell.row.index + 1 } },
       company_name: { title: '公司', },
       sr_name: { title: '机房', },
-      c_nickname: { title: 'CMTS' },
+      c_nickname: { title: 'CMTS' , type: "custom", renderComponent:CmtsNameComponent },
+      mac_domain:{title : 'MAC域'},
       snmpStatus: { title: 'SNMP 状态', type: "custom", renderComponent: CmtsListTableSnmpComponent },
       npa_avg: { title: 'NPA', type: "html", valuePrepareFunction: (cell, row) => { if (cell < 90) { return `<span class="text-danger">${cell}</span>` } else return cell } },
-      cm_online: { title: '在线率(%)', valuePrepareFunction: (cell, row) => { return (cell * 100).toFixed(0) } }
+      cm_online: { title: '在线率(%)', valuePrepareFunction: (cell, row) => { return (cell) } }
     }
   };
   settings_some = {
     hideSubHeader: true, actions: { add: false, edit: false, delete: false },
-    columns: { c_nickname: { title: 'CMTS', }, snmpStatus: { title: 'SNMP 状态', type: "custom", renderComponent: CmtsListTableSnmpComponent }, }
+    columns: { c_nickname: { title: 'CMTS',  type: "custom", renderComponent:CmtsNameComponent }, mac_domain:{title : 'MAC域'}, }
   };
   cid;
   pageIndex = 1;
@@ -44,22 +47,30 @@ export class CmtsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.route.url.subscribe(data => {
+      let path = data[0].path;
+      this.title=path
+      switch (path) {
+        case "cmts": { this.getCmtsList(); break }
+        case "dcmts": { this.getDcmtsList(); break }
+      }
+    })
     this.route.queryParamMap.subscribe(data => {
-      this.getCmtsList();
+    
       document.getElementsByClassName("scrollable-container")[0].scrollTop = 0;
       this.cid = data.get("cid")
       if (!this.cid) {
         this.showDetail = false;
         this.breadcrumb.set([
           { name: '设备管理', link: '/pages/equ-manage' },
-          { name: 'CMTS', link: '/pages/equ-manage/cmts' }
+          { name: this.title.toUpperCase(), link: '/pages/equ-manage/'+this.title }
         ]);
       } else {
         this.showDetail = true;
         this.breadcrumb.set([
           { name: '设备管理', link: '/pages/equ-manage' },
-          { name: 'CMTS', link: '/pages/equ-manage/cmts' },
-          { name: '详情', link: '/pages/equ-manage/cmts', queryParams: { cid: this.cid } }
+          { name: this.title.toUpperCase(), link: '/pages/equ-manage/'+this.title },
+          { name: '详情', link: '/pages/equ-manage/'+this.title, queryParams: { cid: this.cid } }
         ]);
       }
     })
@@ -80,11 +91,19 @@ export class CmtsComponent implements OnInit {
     this.pageIndex = data.source.pagingConf.page;
     this.showDetail = true;
     this.cid = data.data['cid'];
-    this.router.navigate(["/pages/equ-manage/cmts"], { queryParams: { cid: this.cid } })
+    this.router.navigate(["/pages/equ-manage/"+this.title], { queryParams: { cid: this.cid } })
   }
 
   getCmtsList() {
     this.cmtsService.getCmtsList().subscribe(data => {
+      if (data["code"] && data["code"] == 1) {
+        this.source.load(data["data"]);
+        this.source.setPage(this.pageIndex, false)
+      }
+    })
+  }
+  getDcmtsList(){
+    this.cmtsService.getDcmtsList().subscribe(data => {
       if (data["code"] && data["code"] == 1) {
         this.source.load(data["data"]);
         this.source.setPage(this.pageIndex, false)

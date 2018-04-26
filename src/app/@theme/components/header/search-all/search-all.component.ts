@@ -61,6 +61,10 @@ export class SearchAllComponent implements OnInit {
               result.push({ link: "./equ-manage/cmts", id: i.id, name: i.name, type: i.type })
               break;
             }
+            case "dcmts": {
+              result.push({ link: "./equ-manage/dcmts", id: i.id, name: i.name, type: i.type })
+              break;
+            }
           }
         }
         this.result = result.slice(0, 4);

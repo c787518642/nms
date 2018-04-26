@@ -33,16 +33,17 @@ export class UpPieComponent implements OnInit,AfterViewInit,OnDestroy {
     this.upstreamService.getUpPie().subscribe(response =>{
         if(response['code']&&response['code']==1){
             let data=response['data'];
-            let value1=data.cmHisPieChart[0].cmnum;
-            let value2=data.cmHisPieChart[1].cmnum+data.cmHisPieChart[2].cmnum;
-            let value3=data.cmHisPieChart[3].cmnum+data.cmHisPieChart[4].cmnum;
-            let value4=data.cmHisPieChart[5].cmnum+data.cmHisPieChart[6].cmnum;
-            let value5=data.cmHisPieChart[7].cmnum+data.cmHisPieChart[8].cmnum;
+            let value1=data.cmHisPieChart[0].pie;
+            let value2=(data.cmHisPieChart[1].pie+data.cmHisPieChart[2].pie).toFixed(2);
+            let value3=(data.cmHisPieChart[3].pie+data.cmHisPieChart[4].pie).toFixed(2);
+            let value4=(data.cmHisPieChart[5].pie+data.cmHisPieChart[6].pie).toFixed(2);
+            let value5=(data.cmHisPieChart[7].pie+data.cmHisPieChart[8].pie).toFixed(2);
             
             this.options = {
     
                 tooltip: {
                   trigger: 'item',
+                  formatter: "{a} <br/>{b}: {c}%"
                  
               },
           
@@ -58,7 +59,7 @@ export class UpPieComponent implements OnInit,AfterViewInit,OnDestroy {
                       fontSize:20,
                   },
                   formatter:function(name){
-                       if(name=="优秀"){
+                       if(name=="优质"){
                            return "30-45"+"\n"+name;
                        }else if(name=="良好"){
                           return "28-30"+"\n"+name;
@@ -70,12 +71,12 @@ export class UpPieComponent implements OnInit,AfterViewInit,OnDestroy {
                           return "10-0"+"\n"+name;
                        }
                   },
-                  data:['优秀','良好','一般','较差','差'],
+                  data:['优质','良好','一般','较差','差'],
               
               },
               series: [
                   {
-                      name:'SNR',
+                      name:'上行电平',
                       type:'pie',
                       radius: ['40%', '65%'],
                       center : ['50%', '40%'],
@@ -99,7 +100,7 @@ export class UpPieComponent implements OnInit,AfterViewInit,OnDestroy {
                           }
                       },
                       data:[
-                          {value:value1, name:'优秀',itemStyle: {normal:{color: '#43d280'}}},
+                          {value:value1, name:'优质',itemStyle: {normal:{color: '#43d280'}}},
                           {value:value2, name:'良好',itemStyle: {normal:{color: '#5fc7fe'}}},
                           {value:value3, name:'一般',itemStyle: {normal:{color: '#fddc42'}}},
                           {value:value4, name:'较差',itemStyle: {normal:{color: '#f39c11'}}},
@@ -128,7 +129,10 @@ export class UpPieComponent implements OnInit,AfterViewInit,OnDestroy {
     this.sub=Observable.fromEvent(window,'resize')
     .subscribe((event) => {
     this.Echart_width=this.echartsInstance.getWidth();
-    if(this.Echart_width<=740&&this.Echart_width>450){
+    if(this.Echart_width<=1000&&this.Echart_width>740){
+        this.Gap=30;
+        this.Padding=0;
+    }else if(this.Echart_width<=740&&this.Echart_width>450){
         this.Gap=30;
         this.Padding=0;
     }else if(this.Echart_width<=450&&this.Echart_width>407){

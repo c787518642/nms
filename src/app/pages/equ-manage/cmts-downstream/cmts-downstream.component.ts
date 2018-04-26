@@ -11,6 +11,7 @@ import { environment } from '../../../../environments/environment';
   styleUrls: ['./cmts-downstream.component.scss']
 })
 export class CmtsDownstreamComponent implements OnInit {
+  title="cmts"
   public source = new LocalDataSource();
   settings: any = {
     // selectMode: 'multi',
@@ -59,13 +60,16 @@ export class CmtsDownstreamComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.route.url.subscribe(data=>{
+      this.title=data[0].path;
+    })
     this.route.queryParamMap.subscribe((data) => {
       let cid = data.get("cid")
       this.getCmtsDownstreamList({ cid: cid });
       this.breadcrumb.set([
         { name: '设备管理', link: '/pages/equ-manage' },
-        { name: 'CMTS', link: '/pages/equ-manage/cmts' },
-        { name: '下行端口列表', link: '/pages/equ-manage/cmts/cmts-downstream', queryParams: { cid: cid } }
+        { name: this.title.toUpperCase(), link: `/pages/equ-manage/${this.title}`},
+        { name: '下行端口列表', link: `/pages/equ-manage/${this.title}/cmts-downstream`, queryParams: { cid: cid } }
       ]);
     })
   }

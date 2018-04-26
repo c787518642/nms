@@ -1,0 +1,4 @@
+a:not([href]):not([tabindex]){
+    cursor: pointer;
+    text-decoration: underline #000;
+}
