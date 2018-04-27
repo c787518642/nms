@@ -7,6 +7,7 @@ import { BreadcrumbService } from '../../../@theme/components/header/breadcrumb/
 import { Router, ActivatedRoute } from '@angular/router';
 import { query } from '@angular/animations';
 import { CmtsNameComponent } from './cmts-name/cmts-name.component';
+import { CmtsMacComponent } from './cmts-mac/cmts-mac.component';
 
 @Component({
   selector: 'app-cmts',
@@ -15,7 +16,7 @@ import { CmtsNameComponent } from './cmts-name/cmts-name.component';
 })
 export class CmtsComponent implements OnInit {
   public source = new LocalDataSource();
-  title="cmts"
+  title = "cmts"
   settings: any = {
     // selectMode: 'multi',
     hideSubHeader: true,
@@ -24,8 +25,8 @@ export class CmtsComponent implements OnInit {
       // index: { title: '序号', valuePrepareFunction: (cell, row ) => { return cell.row.index + 1 } },
       company_name: { title: '公司', },
       sr_name: { title: '机房', },
-      c_nickname: { title: 'CMTS' , type: "custom", renderComponent:CmtsNameComponent },
-      mac_domain:{title : 'MAC域'},
+      c_nickname: { title: 'CMTS', type: "custom", renderComponent: CmtsNameComponent },
+      domainNum: { title: 'MAC域', type: "custom", renderComponent: CmtsMacComponent },
       snmpStatus: { title: 'SNMP 状态', type: "custom", renderComponent: CmtsListTableSnmpComponent },
       npa_avg: { title: 'NPA', type: "html", valuePrepareFunction: (cell, row) => { if (cell < 90) { return `<span class="text-danger">${cell}</span>` } else return cell } },
       cm_online: { title: '在线率(%)', valuePrepareFunction: (cell, row) => { return (cell) } }
@@ -33,9 +34,10 @@ export class CmtsComponent implements OnInit {
   };
   settings_some = {
     hideSubHeader: true, actions: { add: false, edit: false, delete: false },
-    columns: { c_nickname: { title: 'CMTS',  type: "custom", renderComponent:CmtsNameComponent }, mac_domain:{title : 'MAC域'}, }
+    columns: { c_nickname: { title: 'CMTS', type: "custom", renderComponent: CmtsNameComponent }, domainNum: { title: 'MAC域', type: "custom", renderComponent: CmtsMacComponent }, }
   };
   cid;
+  c_nickname;
   pageIndex = 1;
   showDetail = false;
 
@@ -49,28 +51,27 @@ export class CmtsComponent implements OnInit {
   ngOnInit() {
     this.route.url.subscribe(data => {
       let path = data[0].path;
-      this.title=path
+      this.title = path
       switch (path) {
         case "cmts": { this.getCmtsList(); break }
         case "dcmts": { this.getDcmtsList(); break }
       }
     })
     this.route.queryParamMap.subscribe(data => {
-    
+
       document.getElementsByClassName("scrollable-container")[0].scrollTop = 0;
       this.cid = data.get("cid")
       if (!this.cid) {
         this.showDetail = false;
         this.breadcrumb.set([
-          { name: '设备管理', link: '/pages/equ-manage' },
-          { name: this.title.toUpperCase(), link: '/pages/equ-manage/'+this.title }
+          { name: this.title.toUpperCase(), link: '/pages/equ-manage/' + this.title }
         ]);
       } else {
-        this.showDetail = true;
+        this.showDetail = true;        
+        this.c_nickname=data.get("c_nickname")
         this.breadcrumb.set([
-          { name: '设备管理', link: '/pages/equ-manage' },
-          { name: this.title.toUpperCase(), link: '/pages/equ-manage/'+this.title },
-          { name: '详情', link: '/pages/equ-manage/'+this.title, queryParams: { cid: this.cid } }
+          { name: this.title.toUpperCase(), link: '/pages/equ-manage/' + this.title },
+          { name: '详情', link: '/pages/equ-manage/' + this.title, queryParams: { cid: this.cid } }
         ]);
       }
     })
@@ -91,7 +92,7 @@ export class CmtsComponent implements OnInit {
     this.pageIndex = data.source.pagingConf.page;
     this.showDetail = true;
     this.cid = data.data['cid'];
-    this.router.navigate(["/pages/equ-manage/"+this.title], { queryParams: { cid: this.cid } })
+    this.router.navigate(["/pages/equ-manage/" + this.title], { queryParams: { cid: this.cid } })
   }
 
   getCmtsList() {
@@ -102,7 +103,7 @@ export class CmtsComponent implements OnInit {
       }
     })
   }
-  getDcmtsList(){
+  getDcmtsList() {
     this.cmtsService.getDcmtsList().subscribe(data => {
       if (data["code"] && data["code"] == 1) {
         this.source.load(data["data"]);

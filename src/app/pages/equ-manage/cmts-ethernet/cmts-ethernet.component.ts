@@ -69,7 +69,6 @@ export class CmtsEthernetComponent implements OnInit {
       let cid = data.get("cid")
       this.getCmtsEthernetList({ cid: cid });
       this.breadcrumb.set([
-        { name: '设备管理', link: '/pages/equ-manage' },
         { name: this.title.toUpperCase(), link: `/pages/equ-manage/${this.title}` },
         { name: '上联口列表', link: `/pages/equ-manage/${this.title}/cmts-ethernet`, queryParams: { cid: cid } }
       ]);

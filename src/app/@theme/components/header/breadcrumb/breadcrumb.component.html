@@ -1,6 +1,6 @@
   <!-- 面包屑导航 -->
   <div class="breadcrumb flat" >
       <a routerLink='./'><i class="iconfont icon-_shouye"></i></a>
-      <a *ngFor='let item of items'   routerLink='{{item.link}}' [queryParams]='item.queryParams'>{{item.name}}</a>
+      <a *ngFor='let item of items'   routerLink='{{item.link}}'  [queryParams]='item.queryParams' >{{item.name}}</a>
   </div>
  

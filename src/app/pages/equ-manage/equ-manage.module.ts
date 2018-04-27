@@ -30,6 +30,10 @@ import { CmOnlineComponent } from './cmts-detail/cmts-detail-charts/cm-online/cm
 import { CmtsFlowComponent } from './cmts-detail/cmts-detail-charts/cmts-flow/cmts-flow.component';
 import { CmtsNpaComponent } from './cmts-detail/cmts-detail-charts/cmts-npa/cmts-npa.component';
 import { CmtsNameComponent } from './cmts/cmts-name/cmts-name.component';
+import { MacDomainComponent } from './mac-domain/mac-domain.component';
+import { CmtsMacComponent } from './cmts/cmts-mac/cmts-mac.component';
+import { MacDomainNameComponent } from './mac-domain/mac-domain-name/mac-domain-name.component';
+import { MacDomainDetailComponent } from './mac-domain-detail/mac-domain-detail.component';
 
 
 @NgModule({
@@ -62,11 +66,17 @@ import { CmtsNameComponent } from './cmts/cmts-name/cmts-name.component';
     CmtsFlowComponent,
     CmtsNpaComponent,
     CmtsNameComponent,
+    MacDomainComponent,
+    CmtsMacComponent,
+    MacDomainNameComponent,
+    MacDomainDetailComponent,
 
   ],
   entryComponents:[
     CmtsListTableSnmpComponent,
-    CmtsNameComponent
+    CmtsNameComponent,
+    CmtsMacComponent,
+    MacDomainNameComponent
   ],
   providers:[
     CmtsService,

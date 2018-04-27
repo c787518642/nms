@@ -10,6 +10,7 @@ export class CmtsNameComponent implements OnInit {
   @Input() value: string | number;
   @Input() rowData: any;
   cid;
+  c_nickname;
   title="cmts"
   constructor(
     private router:Router,
@@ -23,10 +24,11 @@ export class CmtsNameComponent implements OnInit {
     
     })
     this.cid=this.rowData.cid
+    this.c_nickname=this.rowData.c_nickname
   }
   toCmtsDetial(){
     console.log()
-    this.router.navigate([`/pages/equ-manage/${this.title}`], { queryParams: { cid: this.cid } })
+    this.router.navigate([`/pages/equ-manage/${this.title}`], { queryParams: { cid: this.cid ,c_nickname:this.c_nickname} })
 
     // this.router.navigate(["./"])
 

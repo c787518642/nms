@@ -21,6 +21,7 @@ export class CmtsDetailComponent implements OnInit {
     mem_r:0,
   }
   @Input() cid:any;
+  @Input() c_nickname:any;
   constructor(
     private detailNumService:DetailNumService,
     private route: ActivatedRoute

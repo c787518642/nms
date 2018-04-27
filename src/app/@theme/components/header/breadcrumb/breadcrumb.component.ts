@@ -16,7 +16,7 @@ export class BreadcrumbComponent implements OnInit {
   }
   getItems() {
     this.breadcrumb.items.subscribe(data => {
-     
+     console.log(data)
       this.items = data;
     })
   }

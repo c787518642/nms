@@ -13,10 +13,10 @@ export class EquManageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.breadcrumb.set( [
-        {name:'设备管理',link:'/pages/equ-manage'},
-        {name:'CMTS',link:'/pages/equ-manage/cmts'},
-      ])
+    // this.breadcrumb.set( [
+    //     {name:'设备管理',link:'/pages/equ-manage'},
+    //     {name:'CMTS',link:'/pages/equ-manage/cmts'},
+    //   ])
   }
 
 }

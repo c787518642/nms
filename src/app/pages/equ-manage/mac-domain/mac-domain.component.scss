@@ -1,0 +1,23 @@
+
+@media (max-width:500px){
+    .form-control{
+        display: none
+    }
+    
+}
+@media( min-width:768px){
+    #someColunms{
+        display: none
+    }
+}
+@media( max-width:767px){
+    #fullColunms{
+        display: none
+    }
+}
+@media( max-width:991px){
+    #cmts{
+        display: none;
+    }
+   
+}

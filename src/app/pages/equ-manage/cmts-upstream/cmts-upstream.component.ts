@@ -66,7 +66,6 @@ export class CmtsUpstreamComponent implements OnInit {
       this.getCmtsUpstreamList({ cid: this.cid })
       if (!this.pid) {
         this.breadcrumb.set([
-          { name: '设备管理', link: '/pages/equ-manage' },
           { name: this.title.toUpperCase(), link: `/pages/equ-manage/${this.title}` },
           { name: '上行端口列表', link: `/pages/equ-manage/${this.title}/cmts-upstream`, queryParams: { cid: this.cid } }
         ]);
@@ -74,7 +73,6 @@ export class CmtsUpstreamComponent implements OnInit {
       }
       else {
         this.breadcrumb.set([
-          { name: '设备管理', link: '/pages/equ-manage' },
           { name: this.title.toUpperCase(), link: '/pages/equ-manage/'+this.title  },
           { name: '上行端口列表', link: `/pages/equ-manage/${this.title}/cmts-upstream`, queryParams: { cid: this.cid } },
           { name: '详情', link: `/pages/equ-manage/${this.title}/cmts-upstream`, queryParams: { cid: this.cid, pid: this.pid } }

@@ -9,4 +9,11 @@ export class BreadcrumbService {
     this.breadcrumb = x;
     this.items.emit(this.breadcrumb)
   }
+  add(x){
+    this.items.emit([...this.breadcrumb,...x]);
+  }
+  back(){
+    this.breadcrumb.pop()
+    this.items.emit( this.breadcrumb);
+  }
 }
