@@ -1,18 +1,18 @@
 <nb-card>
     <nb-card-header>
-      CM全网上行电平
+      <span i18n='@@cmUpLevel'>CM全网上行电平</span>
     </nb-card-header>
     <nb-card-body>
        <div class="tab-head">
-         <label  (click)='show()' [class.selected]="show_detail"><i class="iconfont icon-bingtu"></i>饼状图</label>
-         <label  (click)='show()' [class.selected]="!show_detail"><i class="iconfont icon-quxiantu"></i>曲线图</label>
+         <label  (click)='show1()' [class.selected]="show_detail1"><i class="iconfont icon-bingtu"></i>饼状图</label>
+         <label  (click)='show2()' [class.selected]="show_detail2"><i class="iconfont icon-quxiantu"></i>曲线图</label>
        </div>
        
        <div class="row">
-          <div class="col-md-12" *ngIf='show_detail'>
+          <div class="col-md-12" *ngIf='show_detail1'>
               <tw-up-pie></tw-up-pie>
           </div>
-          <div class="col-md-12" *ngIf='!show_detail'>
+          <div class="col-md-12" *ngIf='show_detail2'>
               <tw-up-line></tw-up-line>
           </div>
        </div>

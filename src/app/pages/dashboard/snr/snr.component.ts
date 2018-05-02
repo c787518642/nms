@@ -5,16 +5,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./snr.component.scss']
 })
 export class SnrComponent implements OnInit {
-  show_detail=true;
- 
+  show_detail1=true;
+  show_detail2=false;
   
   constructor() { }
 
   ngOnInit() {
   }
-  show(){
-    this.show_detail=!this.show_detail;
-
-   }
+  show1(){
+    if(this.show_detail1){
+      return;
+    }else{
+      this.show_detail1=!this.show_detail1;
+      this.show_detail2=!this.show_detail2;
+    }
+  }
+  show2(){
+    if(this.show_detail2){
+      return;
+    }else{
+      this.show_detail1=!this.show_detail1;
+      this.show_detail2=!this.show_detail2;
+    }
+  }
   
 }

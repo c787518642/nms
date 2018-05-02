@@ -2,25 +2,69 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
-      <trans-unit id="collection" datatype="html">
-        <source>
-          <x id="INTERPOLATION"/>
-        </source>
-        <target> 
-            {i.id,plural, =0 {CM总数} =1 {CM在线数} =2 {上行端口数} =3 {下行端口数} =4 {64QAM<br>上行端口数} other {a wolf pack}}
-        </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app\pages\dashboard\collection\collection-body\collection-body.component.ts</context>
-          <context context-type="linenumber">4</context>
-        </context-group>
+    <trans-unit id="webname" datatype="html">
+        <source>天威综合网管系统</source>
+        <target>TOPWAY NMS</target>
       </trans-unit>
-      <trans-unit id="hello" datatype="html">
-        <source>hello</source>
-        <target>哈哈哈</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app\pages\dashboard\collection\collection-body\collection-body.component.ts</context>
-          <context context-type="linenumber">7</context>
-        </context-group>
+      <trans-unit id="rememberUser" datatype="html">
+        <source>记住用户名</source>
+        <target>Remember User</target>
+      </trans-unit>
+      <trans-unit id="login" datatype="html">
+        <source>登录</source>
+        <target>Login</target>
+      </trans-unit>
+      <trans-unit id="logging" datatype="html">
+        <source>登录中</source>
+        <target>Logging...</target>
+      </trans-unit>
+      <trans-unit id="userNull" datatype="html">
+        <source>用户名为空！</source>
+        <target>User name is empty!</target>
+      </trans-unit>
+      <trans-unit id="userWrong" datatype="html">
+        <source>用户名有误！</source>
+        <target>User name is wrong!</target>
+      </trans-unit>
+      <trans-unit id="pwdNull" datatype="html">
+        <source>密码为空！</source>
+        <target>The password is empty!</target>
+      </trans-unit>
+      <trans-unit id="capital" datatype="html">
+        <source>大写已开启</source>
+        <target>Capitalization is turned on</target>
+      </trans-unit>
+      <trans-unit id="topway" datatype="html">
+        <source>天威网络工程有限公司</source>
+        <target>Topway Network Engineering Co., Ltd.</target>
+      </trans-unit>
+      <trans-unit id="cmtsAlarm" datatype="html">
+        <source>CTMS告警预览</source>
+        <target>CMTS Alarm Preview</target>
+      </trans-unit>
+      <trans-unit id="snrWeeklyReport" datatype="html">
+        <source>上行通道信噪比全网周报表</source>
+        <target>UP SNR Weekly Report</target>
+      </trans-unit>
+      <trans-unit id="cmUpLevel" datatype="html">
+        <source>CM全网上行电平</source>
+        <target>CM Network Up Level</target>
+      </trans-unit>
+      <trans-unit id="areaHeader" datatype="html">
+        <source>全网小区运行质量统计</source>
+        <target>Regional Operation Quality Statistics</target>
+      </trans-unit>
+      <trans-unit id="qualityCurve" datatype="html">
+        <source>全网网络质量运行图</source>
+        <target>Network Quality Operating Curve</target>
+      </trans-unit>
+      <trans-unit id="npaScore" datatype="html">
+        <source>全网NPA分数统计</source>
+        <target>HFC NPA Score</target>
+      </trans-unit>
+      <trans-unit id="portStatistics" datatype="html">
+        <source>全网端口统计</source>
+        <target> HFC Port Statistics</target>
       </trans-unit>
     </body>
   </file>

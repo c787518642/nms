@@ -32,91 +32,6 @@ export class AreaComponent implements OnInit,AfterViewInit,OnDestroy {
  
 
   ngOnInit() {
-
-  }
-
-  ngAfterViewInit(){
-    this.areaService.getNpavalues().subscribe(response => {
-        if(response['code']&&response['code']==1){
-            let data=response['data'];
-            this.npa1=data.npa1;
-            this.npa2=data.npa2;
-            this.npa3=data.npa3;
-            this.npa4=data.npa4;
-            this.npa5=data.npa5;
-
-            this.options = {
-    
-                tooltip: {
-                  trigger: 'item',
-                  formatter: "{a} <br/>{b}: {d}%"
-              },
-              legend: {
-                  x : 'center',
-                  y : 'bottom',
-                  itemWidth:5,
-                  itemHeight:50,
-                  itemGap:this.Gap,
-                  textStyle:{
-                      fontSize:20,
-                  },
-                  formatter:function(name){
-                       if(name=="优质"){
-                           return "95-100"+"\n"+name;
-                       }else if(name=="良好"){
-                          return "85-95"+"\n"+name;
-                       }else if(name=="一般"){
-                          return "70-85"+"\n"+name;
-                       }else if(name=="较差"){
-                          return "60-70"+"\n"+name;
-                       }else if(name=="差"){
-                        return "低于60"+"\n"+name;
-                     }
-                  },
-                  data:['优质','良好','一般','较差','差'],
-              
-              },
-              series: [
-                  {
-                      name:'NPA',
-                      type:'pie',
-                      radius: ['40%', '65%'],
-                      center : ['50%', '45%'],
-                      avoidLabelOverlap: false,
-                      label: {
-                          normal: {
-                              show: false,
-                              position: 'center'
-                          },
-                          emphasis: {
-                              show: true,
-                              textStyle: {
-                                  fontSize: '30',
-                                  fontWeight: 'bold'
-                              }
-                          }
-                      },
-                      labelLine: {
-                          normal: {
-                              show: false
-                          }
-                      },
-                      data:[
-                          {value:this.npa5, name:'优质',itemStyle: {normal:{color: '#43d280'}}},
-                          {value:this.npa4, name:'良好',itemStyle: {normal:{color: '#5fc7fe'}}},
-                          {value:this.npa3, name:'一般',itemStyle: {normal:{color: '#fddc42'}}},
-                          {value:this.npa2, name:'较差',itemStyle: {normal:{color: '#f39c11'}}},
-                          {value:this.npa1, name:'差',itemStyle: {normal:{color: '#e64d3d'}}}
-          
-                      
-                      ]
-                  }
-                ]
-              };
-      
-        }
-    
-      })
     if(document.body.clientWidth<=1336&&document.body.clientWidth>1257){
         this.Gap=20;
         this.Padding=0;
@@ -159,14 +74,110 @@ export class AreaComponent implements OnInit,AfterViewInit,OnDestroy {
             itemGap:this.Gap,
             padding:[0,this.Padding=0]
         } 
-      };
-      
-         
+      };   
     });
+  }
+
+  ngAfterViewInit(){
+      this.getAreaData();
+      this.options = {
+        tooltip: {
+          trigger: 'item',
+          formatter: "{a} <br/>{b}: {d}%"
+      },
+      legend: {
+          x : 'center',
+          y : 'bottom',
+          itemWidth:5,
+          itemHeight:50,
+          itemGap:this.Gap,
+          textStyle:{
+              fontSize:20,
+          },
+          formatter:function(name){
+               if(name=="优质"){
+                   return "95-100"+"\n"+name;
+               }else if(name=="良好"){
+                  return "85-95"+"\n"+name;
+               }else if(name=="一般"){
+                  return "70-85"+"\n"+name;
+               }else if(name=="较差"){
+                  return "60-70"+"\n"+name;
+               }else if(name=="差"){
+                return "低于60"+"\n"+name;
+             }
+          },
+          data:['优质','良好','一般','较差','差'],
+      
+      },
+      series: [
+          {
+              name:'NPA',
+              type:'pie',
+              radius: ['40%', '65%'],
+              center : ['50%', '45%'],
+              avoidLabelOverlap: false,
+              label: {
+                  normal: {
+                      show: false,
+                      position: 'center'
+                  },
+                  emphasis: {
+                      show: true,
+                      textStyle: {
+                          fontSize: '30',
+                          fontWeight: 'bold'
+                      }
+                  }
+              },
+              labelLine: {
+                  normal: {
+                      show: false
+                  }
+              },
+              data:[
+                  {value:this.npa5, name:'优质',itemStyle: {normal:{color: '#43d280'}}},
+                  {value:this.npa4, name:'良好',itemStyle: {normal:{color: '#5fc7fe'}}},
+                  {value:this.npa3, name:'一般',itemStyle: {normal:{color: '#fddc42'}}},
+                  {value:this.npa2, name:'较差',itemStyle: {normal:{color: '#f39c11'}}},
+                  {value:this.npa1, name:'差',itemStyle: {normal:{color: '#e64d3d'}}}
+              ]
+          }
+        ]
+      };
   }
 
   ngOnDestroy(){
     this.sub.unsubscribe();
   } 
+
+  getAreaData(){
+    this.areaService.getNpavalues().subscribe(response => {
+        if(response['code']&&response['code']==1){
+            if(response['data']){
+                let data=response['data'];
+                this.npa1=data.npa1;
+                this.npa2=data.npa2;
+                this.npa3=data.npa3;
+                this.npa4=data.npa4;
+                this.npa5=data.npa5;
+                   //更新图表
+                this.updateOptions = {
+                    series:[{
+                        data:[
+                            {value:this.npa5, name:'优质',itemStyle: {normal:{color: '#43d280'}}},
+                            {value:this.npa4, name:'良好',itemStyle: {normal:{color: '#5fc7fe'}}},
+                            {value:this.npa3, name:'一般',itemStyle: {normal:{color: '#fddc42'}}},
+                            {value:this.npa2, name:'较差',itemStyle: {normal:{color: '#f39c11'}}},
+                            {value:this.npa1, name:'差',itemStyle: {normal:{color: '#e64d3d'}}}
+                        ]
+                    }]
+                }; 
+            }
+        }
+      })
+
+     
+  }
 
 }

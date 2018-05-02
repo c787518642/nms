@@ -8,40 +8,40 @@
     <div class="content">
         <div class="welcome">
             <div>Welcome to</div>
-            <div>天威综合网管系统</div>
+            <div i18n='@@webname'>天威综合网管系统</div>
         </div>
 
         <form #f='ngForm'>
             <div class="form-group" id="username_group">
                 <input ngModel name="username" #username='ngModel' [(ngModel)]='default_username' required (change)='changed(username)' (keyup)='resetStatus()'
                     class="username" type="text" placeholder="用户名" autocomplete="off" pattern="^[0-9a-zA-Z_]{1,}$">
-                <div *ngIf='username.touched&&username.invalid&&username.errors.required||username_empty' class="errorInfo">用户名为空！</div>
-                <div *ngIf='username.touched&&username.invalid&&username.errors.pattern' class="errorInfo">用户名有误！</div>
+                <div *ngIf='username.touched&&username.invalid&&username.errors.required||username_empty' class="errorInfo"><span i18n='@@userNull'>用户名为空！</span></div>
+                <div *ngIf='username.touched&&username.invalid&&username.errors.pattern' class="errorInfo"><span i18n='@@userWrong'>用户名有误！</span></div>
             </div>
             <div class="form-group" id="password_group">
                 <input ngModel name='pwd' id="pwd" #pwd='ngModel' required (change)='changed(pwd)' (keyup)='resetStatus()' (keyup)='upCase($event)'
                     (keyup.enter)='onSubmit(f)' class="password" type="password" placeholder="密码" autocomplete="off">
-                <div *ngIf='pwd.touched&&pwd.invalid&&pwd.errors.required||pwd_empty' class="errorInfo">密码为空！</div>
+                <div *ngIf='pwd.touched&&pwd.invalid&&pwd.errors.required||pwd_empty' class="errorInfo"><span i18n='@@pwdNull'>密码为空！</span></div>
                 <div *ngIf='hadError' class="errorInfo">{{errorInfo}}</div>
-                <div *ngIf='upcase' class="upCaseInfo">大写已开启</div>
+                <div *ngIf='upcase' class="upCaseInfo"><span i18n='@@capital'>大写已开启</span></div>
 
             </div>
 
             <div class="form-group-left"  >
-                <nb-checkbox  *ngIf="!(IE==10||IE==9||IE==8||IE==7)" [value]="rem_user" (click)='checkboxClick($event)'>记住用户名</nb-checkbox>
+                <nb-checkbox  *ngIf="!(IE==10||IE==9||IE==8||IE==7)" [value]="rem_user" (click)='checkboxClick($event)'><span i18n="@@rememberUser">记住用户名</span></nb-checkbox>
                 <label id="IEcheckbox" *ngIf="(IE==10||IE==9||IE==8||IE==7)">
-                    <input  type="checkbox" [value]="rem_user"> 记住用户名
+                    <input  type="checkbox" [value]="rem_user"> <span i18n="@@rememberUser">记住用户名</span>
 
                 </label>
             </div>
             <div class="form-group">
-                <button type="submit" class="submit" *ngIf="!isLogin" (click)="onSubmit(f)">登录</button>
-                <button type="submit" class="btn-ing" *ngIf="isLogin">登录中...</button>
+                <button type="submit" class="submit" *ngIf="!isLogin" (click)="onSubmit(f)"><span i18n='@@login'>登录</span></button>
+                <button type="submit" class="btn-ing" *ngIf="isLogin"><span i18n='@@logging'>登录中...</span></button>
             </div>
             <div class="form-group footer">
                 <div class="copyright">
-                    Powered By 天威网络工程有限公司
-                    <br> Copyright © 2013-2018天威综合网管系统V3.0
+                    Powered By <span i18n='@@topway'>天威网络工程有限公司</span>
+                    <br> Copyright © 2013-2018<span i18n='@@webname'>天威综合网管系统</span>V3.0
                 </div>
             </div>
         </form>

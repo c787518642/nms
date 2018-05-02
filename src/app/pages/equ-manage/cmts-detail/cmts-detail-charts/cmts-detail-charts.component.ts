@@ -1,13 +1,13 @@
-import { Component, OnInit, Optional } from '@angular/core';
+import { Component, OnInit,Input,OnChanges} from '@angular/core';
 import { take } from 'rxjs/operators/take';
-import { Router, ActivatedRoute } from '@angular/router';
 import { DetailChartsService } from './detail-charts.service';
 @Component({
   selector: 'tw-cmts-detail-charts',
   templateUrl: './cmts-detail-charts.component.html',
   styleUrls: ['./cmts-detail-charts.component.scss']
 })
-export class CmtsDetailChartsComponent implements OnInit {
+export class CmtsDetailChartsComponent implements OnInit ,OnChanges{
+  @Input() cid:any;
   show_detail=[true,false,false,false,false,false,false];
   selectedKey:any;
   CONTENT="Ping丢包率";
@@ -35,10 +35,10 @@ export class CmtsDetailChartsComponent implements OnInit {
   data5: any;
   data6: any;
   data7: any;
-  cid:any;
+
   constructor(
     private detailChartsService:DetailChartsService,
-    private route: ActivatedRoute
+    
   ) { }
   show(key){
     this.data[0].class="normal";
@@ -68,15 +68,16 @@ export class CmtsDetailChartsComponent implements OnInit {
     }
   }
   ngOnInit() {
-    this.route.queryParamMap.subscribe(data =>{
-      console.log(data);
-      this.cid = data.get("cid")
-      if(this.cid){
-        this.getChartData({ cid: this.cid,day_len:1 })
-      }
-      
-    })
+    
   }
+
+  ngOnChanges(){
+   
+    if(this.cid){
+      this.getChartData({ cid: this.cid,day_len:1 })
+    }
+  }
+
   getChartData(obj){
     this.detailChartsService.getCmtsPingChart(obj).subscribe(response =>{
       if(response['code']&&response['code']==1){

@@ -15,7 +15,7 @@
     "start": "ng serve h",
     "start proxy": "ng serve h --proxy-config proxy.conf.json ",
     "start proxy 172": "ng serve h --proxy-config proxy.conf.json --host 172.100.30.220 ",
-    "start:zh-cn": "ng serve h --aot --i18nFile=src/i18n/messages.zh-cn.xlf --locale=en ",
+    "start:zh-cn": "ng serve h --aot --i18nFile=src/i18n/messages.zh-cn.xlf --locale=en  --proxy-config proxy.conf.json",
     "start:hmr": "ng serve --hmr",
     "start:aot": "ng serve --aot",
     "build": "rimraf dist && ng build",

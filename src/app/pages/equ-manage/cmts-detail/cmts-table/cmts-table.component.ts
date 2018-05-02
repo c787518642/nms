@@ -1,6 +1,6 @@
 import { CmtsTableService } from './cmts-table.service';
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit,Input,OnChanges } from '@angular/core';
+
 import { take } from 'rxjs/operators/take';
 
 
@@ -9,7 +9,8 @@ import { take } from 'rxjs/operators/take';
   templateUrl: './cmts-table.component.html',
   styleUrls: ['./cmts-table.component.scss']
 })
-export class CmtsTableComponent implements OnInit {
+export class CmtsTableComponent implements OnInit,OnChanges{
+  @Input() cid:any;
   show_detail=true;
   data={
    c_ip:"10.228.0.1",
@@ -29,18 +30,21 @@ export class CmtsTableComponent implements OnInit {
    status:true,
    up_flow_max:0
   }
-  cid:any;
+ 
   constructor(
     private cmtsTableService:CmtsTableService,
-    private route: ActivatedRoute
+  
   ) { }
   
   ngOnInit() {
-    this.route.queryParamMap.subscribe(data =>{
-      this.cid = data.get("cid")
-      this.getCmtsTableInfo({ cid: this.cid })
-    })
+    
   }
+  
+  ngOnChanges(){
+     if(this.cid){
+      this.getCmtsTableInfo({ cid: this.cid })
+     }
+  } 
 
   getCmtsTableInfo(obj){
     this.cmtsTableService.getCmtsInfo(obj).subscribe(response =>{
