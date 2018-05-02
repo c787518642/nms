@@ -6,11 +6,37 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CmtsDownstreamComponent } from './cmts-downstream/cmts-downstream.component';
 import { MacDomainComponent } from './mac-domain/mac-domain.component';
+import { CableModemComponent } from './cable-modem/cable-modem.component';
+import { PortComponent } from './port/port.component';
 
 const routes: Routes = [{
   path: '',
   component: EquManageComponent,
   children: [{
+    // 大C端口
+    path: 'cmts/port',
+    component: PortComponent,
+  }, {
+    // 小C端口
+    path: 'dcmts/port',
+    component: PortComponent,
+  }, {
+    // 大C猫(mac域)
+    path: 'cmts/mac-domain/cm',
+    component: CableModemComponent,
+  }, {
+    // 小C猫(mac域)
+    path: 'dcmts/mac-domain/cm',
+    component: CableModemComponent,
+  }, {
+    // 大C猫(mac域>端口)
+    path: 'cmts/mac-domain-port/cm',
+    component: CableModemComponent,
+  }, {
+    // 小C猫(mac域>端口)
+    path: 'dcmts/mac-domain-port/cm',
+    component: CableModemComponent,
+  }, {
     // 大C MAC域
     path: 'cmts/mac-domain',
     component: MacDomainComponent,
@@ -18,6 +44,14 @@ const routes: Routes = [{
     // 小C MAC域
     path: 'dcmts/mac-domain',
     component: MacDomainComponent,
+  }, {
+    // 大C猫(上行)
+    path: 'cmts/cmts-upstream/cm',
+    component: CableModemComponent,
+  }, {
+    // 小C猫(上行)
+    path: 'dcmts/cmts-upstream/cm',
+    component: CableModemComponent,
   }, {
     // 大C上行
     path: 'cmts/cmts-upstream',
@@ -43,6 +77,10 @@ const routes: Routes = [{
     path: 'dcmts/cmts-ethernet',
     component: CmtsEthernetComponent,
   }, {
+    //   // 大C详情
+    //   path: 'cmts/:cid',
+    //   component: CmtsComponent,
+    // }, {
     // 大C
     path: 'cmts',
     component: CmtsComponent,

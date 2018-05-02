@@ -5,7 +5,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Chrome",
-            "url": "http://localhost:4200",
+            "url": "http://172.100.30.220:4200",
             "sourceMaps": true,
             "webRoot": "${workspaceRoot}"
         },

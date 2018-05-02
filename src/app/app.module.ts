@@ -20,11 +20,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
 import { AppErrorHandler } from './errors/errorHandler';
+import { NotificationsComponent } from './errors/notifications/notifications.component';
+import { ToasterService, ToasterModule } from 'angular2-toaster';
 // import { HttpHeaders } from '@angular/common/http';
 enableProdMode();
 @NgModule({
-  declarations: [AppComponent,LoginComponent],
+  declarations: [AppComponent,LoginComponent, NotificationsComponent],
   imports: [
+   
     BrowserModule,
     BrowserAnimationsModule,
     HttpModule,
@@ -37,6 +40,7 @@ enableProdMode();
   ],
   bootstrap: [AppComponent],
   providers: [
+    // ToasterService,
     LoginService,
     {provide: ErrorHandler, useClass: AppErrorHandler},
     // HttpHeaders,

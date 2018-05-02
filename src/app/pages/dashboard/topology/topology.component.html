@@ -1,4 +1,4 @@
 <div class="img-container">
-  <div class="img" alt="网络拓扑图" (click)='navigate("topology")' style="background:url(./assets/img/topology.png) no-repeat center 0"></div>
   <div class="img" alt="系统公告" (click)='navigate("notice")' style="background:url(./assets/img/notice.png) no-repeat center 0"></div>
+  <div class="img" alt="网络拓扑图" (click)='navigate("topology")' [ngStyle]="topologyPng"></div>
 </div>

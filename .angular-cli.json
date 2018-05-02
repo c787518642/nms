@@ -36,6 +36,7 @@
         "../node_modules/pace-js/templates/pace-theme-flash.tmpl.css",
         "./app/@theme/styles/styles.scss",
         "../src/assets/icon/TopwayIcon/iconfont.css",
+        "../node_modules/angular2-toaster/toaster.css",
         "./styles.css"
       ],
       "scripts": [

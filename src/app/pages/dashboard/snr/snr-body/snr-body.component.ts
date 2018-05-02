@@ -44,7 +44,6 @@ export class SnrBodyComponent implements OnInit , AfterViewInit,OnDestroy{
        this.sub=Observable.fromEvent(window,'resize')
         .subscribe((event) => {
         this.Echart_width=this.echartsInstance.getWidth();
-        console.log(this.Echart_width)
         if(this.Echart_width<=1000&&this.Echart_width>740){
             this.Gap=30;
             this.Padding=0;

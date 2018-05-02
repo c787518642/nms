@@ -7,14 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./topology.component.scss']
 })
 export class TopologyComponent implements OnInit {
-
+  topologyPng = { background:`url(./assets/img/topology.png) no-repeat center 0` }
   constructor(
-    private router:Router
+    private router: Router
   ) { }
 
   ngOnInit() {
+    setTimeout(() => {
+      this.topologyPng={ background:`url(./assets/img/topology.png) no-repeat center 0` };
+    }, 500);
   }
-  navigate(x){
-    this.router.navigate(['./pages'])
+  navigate(x) {
+    this.router.navigate(['./pages']);
+  
   }
 }

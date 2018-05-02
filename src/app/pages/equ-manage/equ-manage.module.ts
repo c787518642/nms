@@ -34,6 +34,13 @@ import { MacDomainComponent } from './mac-domain/mac-domain.component';
 import { CmtsMacComponent } from './cmts/cmts-mac/cmts-mac.component';
 import { MacDomainNameComponent } from './mac-domain/mac-domain-name/mac-domain-name.component';
 import { MacDomainDetailComponent } from './mac-domain-detail/mac-domain-detail.component';
+import { CableModemComponent } from './cable-modem/cable-modem.component';
+import { MacDomainCmComponent } from './mac-domain/mac-domain-cm/mac-domain-cm.component';
+import { MacDomainPortComponent } from './mac-domain/mac-domain-port/mac-domain-port.component';
+import { PortComponent } from './port/port.component';
+import { CmtsDownstreamBodyComponent } from './cmts-downstream/cmts-downstream-body/cmts-downstream-body.component';
+import { CmtsUpstreamBodyComponent } from './cmts-upstream/cmts-upstream-body/cmts-upstream-body.component';
+import { CmtsUpstreamCmComponent } from './cmts-upstream/cmts-upstream-cm/cmts-upstream-cm.component';
 
 
 @NgModule({
@@ -70,13 +77,23 @@ import { MacDomainDetailComponent } from './mac-domain-detail/mac-domain-detail.
     CmtsMacComponent,
     MacDomainNameComponent,
     MacDomainDetailComponent,
+    CableModemComponent,
+    MacDomainCmComponent,
+    MacDomainPortComponent,
+    PortComponent,
+    CmtsDownstreamBodyComponent,
+    CmtsUpstreamBodyComponent,
+    CmtsUpstreamCmComponent,
 
   ],
   entryComponents:[
     CmtsListTableSnmpComponent,
     CmtsNameComponent,
     CmtsMacComponent,
-    MacDomainNameComponent
+    MacDomainNameComponent,
+    MacDomainCmComponent,
+    MacDomainPortComponent,
+    CmtsUpstreamCmComponent
   ],
   providers:[
     CmtsService,

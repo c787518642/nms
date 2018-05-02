@@ -1,4 +1,5 @@
-a:not([href]):not([tabindex]){
+a:not([href]):not([tabindex]),{
     cursor: pointer;
-    text-decoration: underline #000;
+    -webkit-text-decoration: underline #000;
+            text-decoration: underline #000;
 }

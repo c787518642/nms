@@ -30,12 +30,13 @@ export class LoginComponent implements OnInit {
     let isLogin = this.route.snapshot.paramMap.get("logout");
    
     if (isLogin === "logout") {
-      location.href = "./"
-      // this.router.navigate(["./"]);
+
+      // location.href = "./"
+      this.router.navigate(["./"]);
       // 清除登录信息
       this.loginService.logout().subscribe((data) => {
         
-        // console.log('退出系统')
+        console.log('退出系统')
       })
       
     }

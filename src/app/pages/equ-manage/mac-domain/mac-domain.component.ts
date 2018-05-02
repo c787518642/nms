@@ -4,6 +4,8 @@ import { Component, OnInit, Output } from '@angular/core';
 import { LocalDataSource } from '../../../../ng2-smart-table';
 import { CmtsService } from '../cmts/cmts.service';
 import { BreadcrumbService } from '../../../@theme/components/header/breadcrumb/breadcrumb.service';
+import { MacDomainCmComponent } from './mac-domain-cm/mac-domain-cm.component';
+import { MacDomainPortComponent } from './mac-domain-port/mac-domain-port.component';
 
 @Component({
   selector: 'tw-mac-domain',
@@ -20,16 +22,23 @@ export class MacDomainComponent implements OnInit {
       // index: { title: '序号', valuePrepareFunction: (cell, row ) => { return cell.row.index + 1 } },
       macName: { title: 'MAC域', type: "custom", renderComponent: MacDomainNameComponent },
       usFlow: { title: '上行流量(Mbps)', },
-      cmTotal: { title: 'CM总数', },
+      cmTotal: { title: 'CM总数',type: "custom", renderComponent: MacDomainCmComponent},
       cmOnline: { title: 'CM在线数', },
-      port: { title: '上下行端口', },
+      port: { title: '上下行端口', type: "custom", renderComponent: MacDomainPortComponent},
+
     }
   };
   settings_some = {
     hideSubHeader: true, actions: { add: false, edit: false, delete: false },
-    columns: { macName: { title: 'MAC域', type: "custom", renderComponent: MacDomainNameComponent}, cmTotal: { title: 'CM总数', }, port: { title: '上下行端口', } }
+    columns: { 
+      macName: { title: 'MAC域', type: "custom", renderComponent: MacDomainNameComponent}, 
+      cmTotal: { title: 'CM总数', type: "custom", renderComponent:MacDomainCmComponent}, 
+      port: { title: '上下行端口', type: "custom", renderComponent: MacDomainPortComponent} ,
+
+    }
   };
   cid: any;
+  c_nickname;
   pid;
   macName;
   title = "cmts"
@@ -55,6 +64,7 @@ export class MacDomainComponent implements OnInit {
       this.pid = data.get("pid")
       if (this.pid) {
         this.macName=data.get("macName")
+       
         this.showDetail = true;
         this.breadcrumb.set([
           { name: this.title.toUpperCase(), link: '/pages/equ-manage/' + this.title },
@@ -63,9 +73,11 @@ export class MacDomainComponent implements OnInit {
         ]);
       } else {
         this.showDetail = false;
+        this.c_nickname=data.get("c_nickname");
         this.breadcrumb.set([
           { name: this.title.toUpperCase(), link: '/pages/equ-manage/' + this.title },
-          { name: 'MAC域', link: `/pages/equ-manage/${this.title}/mac-domain`, queryParams: { cid: this.cid } },
+          // { name: 'MAC域', link: `/pages/equ-manage/${this.title}/mac-domain`, queryParams: { cid: this.cid } },
+          { name: 'MAC域' },
     
         ])
       }
