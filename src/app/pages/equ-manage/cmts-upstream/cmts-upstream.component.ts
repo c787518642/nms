@@ -11,41 +11,11 @@ import { environment } from '../../../../environments/environment';
   styleUrls: ['./cmts-upstream.component.scss']
 })
 export class CmtsUpstreamComponent implements OnInit {
-  title="cmts";
-  public source = new LocalDataSource();
-  settings: any = {
-    // selectMode: 'multi',
-    hideSubHeader: true,
-    actions: { add: false, edit: false, delete: false },
-    // pager:{
-    //   perPage:50
-    // },
-    columns: {
-      // index: { title: '序号', valuePrepareFunction: (s, row, cell) => { return cell.row.index + 1 } },
-      p_name: { title: '名称', },
-      status: {
-        title: '状态', type: "html", valuePrepareFunction: (cell, row) => {
-          if (cell) {
-            return ` <i  class="fa fa-circle green" ></i> `
-          } else {
-            return ` <i class="fa fa-circle red" ></i>`
-          }
-        }
-      },
-      qam: { title: '调制方式' },
-      snr: { title: 'SNR(dB)' },
-      ber: { title: 'BER(%)' },
-      npa: { title: 'NPA', type: "html", valuePrepareFunction: (cell, row) => { if (cell < 90) { return `<span class="text-danger">${cell}</span>` } else return cell } }
-    }
-  };
-  settings_some: any = {
-    hideSubHeader: true, actions: { add: false, edit: false, delete: false },
-    columns: { p_name: { title: '名称', }, status: { title: '状态', type: "html", valuePrepareFunction: (cell, row) => { if (cell) { return ` <i  class="fa fa-circle green" ></i> ` } else { return ` <i class="fa fa-circle red" ></i>` } } }, }
-  };
+  title = "cmts";
   show_detial = false;
   pageIndex = 1;
   cid;
-  pid;
+  pid
 
   constructor(
     private cmtsService: CmtsService,
@@ -56,24 +26,23 @@ export class CmtsUpstreamComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.url.subscribe(data=>{
-      this.title=data[0].path;
+    this.route.url.subscribe(data => {
+      this.title = data[0].path;
     })
     this.route.queryParamMap.subscribe((data) => {
-      document.getElementsByClassName("scrollable-container")[0].scrollTop = 0;
       this.cid = data.get("cid")
       this.pid = data.get("pid")
-      this.getCmtsUpstreamList({ cid: this.cid })
       if (!this.pid) {
         this.breadcrumb.set([
           { name: this.title.toUpperCase(), link: `/pages/equ-manage/${this.title}` },
-          { name: '上行端口列表', link: `/pages/equ-manage/${this.title}/cmts-upstream`, queryParams: { cid: this.cid } }
+          // { name: '上行端口列表', link: `/pages/equ-manage/${this.title}/cmts-upstream`, queryParams: { cid: this.cid } }
+          { name: '上行端口列表' }
         ]);
         this.show_detial = false;
       }
       else {
         this.breadcrumb.set([
-          { name: this.title.toUpperCase(), link: '/pages/equ-manage/'+this.title  },
+          { name: this.title.toUpperCase(), link: '/pages/equ-manage/' + this.title },
           { name: '上行端口列表', link: `/pages/equ-manage/${this.title}/cmts-upstream`, queryParams: { cid: this.cid } },
           { name: '详情', link: `/pages/equ-manage/${this.title}/cmts-upstream`, queryParams: { cid: this.cid, pid: this.pid } }
         ]);
@@ -81,20 +50,12 @@ export class CmtsUpstreamComponent implements OnInit {
     })
 
   }
-  getCmtsUpstreamList(obj) {
 
-    this.cmtsService.getCmtsUpstreamList(obj).subscribe((data) => {
-      if (data["code"] && data["code"] == 1) {
-        this.source.load(data["data"]);
-        this.source.setPage(this.pageIndex, false)
-      }
-    })
-  }
   onUserRowSelect(data) {
-  //   this.pageIndex = data.source.pagingConf.page;
-  //   this.show_detial = true;
-  //   this.pid = 1
+    //   this.pageIndex = data.source.pagingConf.page;
+    //   this.show_detial = true;
+    //   this.pid = 1
 
-  //   this.router.navigate(["/pages/equ-manage/cmts/cmts-upstream"], { queryParams: { cid: this.cid, pid: this.pid } })
+    //   this.router.navigate(["/pages/equ-manage/cmts/cmts-upstream"], { queryParams: { cid: this.cid, pid: this.pid } })
   }
 }

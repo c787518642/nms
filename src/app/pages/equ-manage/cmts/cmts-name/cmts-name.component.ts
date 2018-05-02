@@ -27,7 +27,6 @@ export class CmtsNameComponent implements OnInit {
     this.c_nickname=this.rowData.c_nickname
   }
   toCmtsDetial(){
-    console.log()
     this.router.navigate([`/pages/equ-manage/${this.title}`], { queryParams: { cid: this.cid ,c_nickname:this.c_nickname} })
 
     // this.router.navigate(["./"])

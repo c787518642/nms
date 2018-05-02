@@ -33,7 +33,7 @@ export class DashboardComponent implements OnInit{
     })
     this.device_count=this.statusCardService.get()
     this.breadcrumb.set( [
-      {name:'工作台',link:'./'},
+      {name:'工作台'},
     ])
   }
 }

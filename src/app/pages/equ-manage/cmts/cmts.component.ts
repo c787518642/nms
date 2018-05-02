@@ -57,24 +57,27 @@ export class CmtsComponent implements OnInit {
         case "dcmts": { this.getDcmtsList(); break }
       }
     })
-    this.route.queryParamMap.subscribe(data => {
-
+    this.route.queryParamMap.subscribe(data=>{
+      
       document.getElementsByClassName("scrollable-container")[0].scrollTop = 0;
       this.cid = data.get("cid")
       if (!this.cid) {
         this.showDetail = false;
         this.breadcrumb.set([
-          { name: this.title.toUpperCase(), link: '/pages/equ-manage/' + this.title }
+          // { name: this.title.toUpperCase(), link: '/pages/equ-manage/' + this.title }
+          { name: this.title.toUpperCase()}
         ]);
       } else {
         this.showDetail = true;        
         this.c_nickname=data.get("c_nickname")
         this.breadcrumb.set([
           { name: this.title.toUpperCase(), link: '/pages/equ-manage/' + this.title },
-          { name: '详情', link: '/pages/equ-manage/' + this.title, queryParams: { cid: this.cid } }
+          // { name: '详情', link: '/pages/equ-manage/' + this.title, queryParams: { cid: this.cid ,c_nickname:this.c_nickname} }
+          { name: '详情'}
         ]);
       }
     })
+   
   }
 
   // 筛选框

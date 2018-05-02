@@ -1,5 +1,6 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Input, Output } from '@angular/core';
+import { ToasterService, BodyOutputType, ToasterConfig } from 'angular2-toaster';
 
 @Component({
   selector: 'tw-mac-domain-name',
@@ -12,9 +13,12 @@ export class MacDomainNameComponent implements OnInit {
   pid;
   cid;
   macName;
+
   constructor(
+    private toasterService:ToasterService,
+
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
@@ -26,13 +30,18 @@ export class MacDomainNameComponent implements OnInit {
   }
   toMacDomainDetial() {
     if (this.pid) {
-      this.router.navigate(["/pages/equ-manage/cmts/mac-domain"], {
-        queryParams:{
-            cid: this.cid,
-            pid: this.pid,
-            macName:this.macName
-          }
-      })
+      // console.log("goMacDomainDetail");
+      this.toasterService.popAsync({
+        type: 'info',
+        body: "Mac域详情 暂无",
+      });
+      // this.router.navigate(["/pages/equ-manage/cmts/mac-domain"], {
+      //   queryParams:{
+      //       cid: this.cid,
+      //       pid: this.pid,
+      //       macName:this.macName
+      //     }
+      // })
     }
   }
 }

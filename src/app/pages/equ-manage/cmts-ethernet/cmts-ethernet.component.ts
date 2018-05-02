@@ -70,7 +70,8 @@ export class CmtsEthernetComponent implements OnInit {
       this.getCmtsEthernetList({ cid: cid });
       this.breadcrumb.set([
         { name: this.title.toUpperCase(), link: `/pages/equ-manage/${this.title}` },
-        { name: '上联口列表', link: `/pages/equ-manage/${this.title}/cmts-ethernet`, queryParams: { cid: cid } }
+        // { name: '上联口列表', link: `/pages/equ-manage/${this.title}/cmts-ethernet`, queryParams: { cid: cid } }
+        { name: '上联口列表'}
       ]);
     })
 

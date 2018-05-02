@@ -1,20 +1,20 @@
 <div class="row">
   <div class="col-xxxl-3 col-md-6">
-    <ngx-status-card title="机房" count='{{device_data.room}}' color='{{device_count[0].color}}' type="primary">
+    <ngx-status-card  title="机房" count='{{device_data.room}}' color='{{device_count[0].color}}' type="primary">
       <!-- <i class="nb-lightbulb"></i> -->
       <i class="iconfont icon-jifang"></i>
     </ngx-status-card>
   </div>
 
   <div class="col-xxxl-3 col-md-6">
-    <ngx-status-card  title="CMTS" count='{{device_data.cmts}}' color='{{device_count[1].color}}' type="success">
+    <ngx-status-card link="./pages/equ-manage/cmts" title="CMTS" count='{{device_data.cmts}}' color='{{device_count[1].color}}' type="success">
       <!-- <i class="nb-roller-shades"></i> -->
       <i  class="iconfont icon-CMTS"></i>
     </ngx-status-card>
   </div>
 
   <div class="col-xxxl-3 col-md-6">
-    <ngx-status-card title="DCMTS" count='{{device_data.dcmts}}' color='{{device_count[2].color}}' type="info">
+    <ngx-status-card link="./pages/equ-manage/dcmts" title="DCMTS" count='{{device_data.dcmts}}' color='{{device_count[2].color}}' type="info">
       <!-- <i class="nb-audio"></i> -->
       <i class="iconfont icon-DCMTS"></i>
     </ngx-status-card>

@@ -1,10 +1,11 @@
 <div class="row">
   <div class="col-md-12 "  *ngIf='!showDetail'>
     <nb-card>
-      <nb-card-header id="header">MAC域
+      <nb-card-header id="header">{{c_nickname}} MAC域
         <!-- <input #search  class="form-control form-control-success" type="text" placeholder="Search..." (keydown.enter)="onSearch(search.value)"> -->
       </nb-card-header>
       <nb-card-body>
+
         <ng2-smart-table id="fullColunms" [settings]="settings" [source]="source" ></ng2-smart-table>
         <ng2-smart-table id="someColunms" [settings]="settings_some" [source]="source" ></ng2-smart-table>
       </nb-card-body>
@@ -12,13 +13,13 @@
   </div>
   <div class="col-lg-4" id="cmts" *ngIf='showDetail'>
     <nb-card>
-      <nb-card-header >MAC域</nb-card-header>
+      <nb-card-header >{{c_nickname}} MAC域</nb-card-header>
       <nb-card-body >
         <ng2-smart-table [settings]="settings_some" [source]="source"></ng2-smart-table>
       </nb-card-body>
     </nb-card>
   </div>
   <div  class="col-md-12 col-lg-8 " *ngIf='showDetail'>
-    <tw-mac-domain-detail [macName]="macName" [pid]="pid" ></tw-mac-domain-detail>
+    <tw-mac-domain-detail [macName]="macName"  [pid]="pid" ></tw-mac-domain-detail>
   </div>
 </div>

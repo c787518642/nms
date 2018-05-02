@@ -22,14 +22,14 @@ export class CmtsService {
     return this.http.post(path, {})
   }
   // cmts上行列表
-  getCmtsUpstreamList(obj: { cid }) {
+  getCmtsUpstreamList(obj: { cid ,domainIndex?}) {
     let path = environment.getPath() + '/tw-cmts-server/cmts/updata';
     return this.http.post(path, toFormData(obj), {
       headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' }),
     })
   }
   // cmts下行列表
-  getCmtsDownstreamList(obj: { cid }) {
+  getCmtsDownstreamList(obj: { cid,domainIndex? }) {
     let path = environment.getPath() + '/tw-cmts-server/cmts/dowdata';
     return this.http.post(path, toFormData(obj), {
       headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' }),

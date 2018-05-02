@@ -5,6 +5,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MENU_ITEMS } from './pages-menu';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
+import { ToasterConfig } from 'angular2-toaster';
 
 @Component({
   selector: 'ngx-pages',
@@ -14,6 +15,15 @@ import { HttpHeaders } from '@angular/common/http';
 export class PagesComponent implements OnInit {
   url;
   b = "";
+  config= new ToasterConfig({
+    positionClass: "toast-top-right",
+    timeout: "5000",
+    newestOnTop: true,
+    tapToDismiss: true,
+    preventDuplicates: false,
+    animation: "fade",
+    limit: 5,
+  });
   constructor(
     private router: Router,
     // private breadcrumb: BreadcrumbService,
