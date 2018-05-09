@@ -7,10 +7,10 @@ export const environment = {
   production: true,
   getPath: () => {
     if (location.protocol == "https:") {
-      return "https://172.100.30.163:8478"
+      return "https://172.100.100.122:8478"
     }
     else {
-      return "http://172.100.30.163:8079"
+      return "http://172.100.100.122:8079"
     }
   },
 };

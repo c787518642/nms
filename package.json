@@ -1,10 +1,10 @@
 {
-  "name": "ngx-admin",
+  "name": "twnms",
   "version": "2.0.1",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/akveo/ngx-admin.git"
+    "url": "git+http://172.100.100.111/tw_nms_html_angularjs.git"
   },
   "bugs": {
     "url": "https://github.com/akveo/ngx-admin/issues"

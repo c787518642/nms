@@ -53,4 +53,18 @@ export class CmtsService {
       headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' }),
     })
   }
+    // CM列表
+    getCmListDatabase({cid,p_index}) {
+      let path=environment.getPath()+'/tw-cmts-server/otherObject';
+      var json_Obj={
+        objectUrl:"hfc-cminfo/get_port_database_cm_list",
+        cid:cid,
+        p_index:p_index,
+        pageIndex:0,
+        pageSize:99999
+      };
+      return this.http.post(path, toFormData(json_Obj), {
+        headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' }),
+      })
+    }
 }
